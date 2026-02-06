@@ -16,13 +16,17 @@ let deferredPrompt;
 const installButton = document.getElementById('pwa-install-btn');
 
 window.addEventListener('beforeinstallprompt', (e) => {
-  // Prevent the mini-infobar from appearing on mobile
-  e.preventDefault();
-  // Stash the event so it can be triggered later
-  deferredPrompt = e;
-  // Show install button if exists
+  // Only prevent the mini-infobar if we have an install button to show
   if (installButton) {
+    // Prevent the mini-infobar from appearing on mobile
+    e.preventDefault();
+    // Stash the event so it can be triggered later
+    deferredPrompt = e;
+    // Show install button
     installButton.style.display = 'block';
+  } else {
+    // If no install button, allow the default banner to show
+    deferredPrompt = e;
   }
 });
 
