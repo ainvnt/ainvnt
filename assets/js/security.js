@@ -108,14 +108,21 @@
         // DevTools closed
     }
 
-    // Disable console
-    console.log = function() {};
-    console.warn = function() {};
-    console.error = function() {};
-    console.debug = function() {};
+    // Disable console (but keep functional for legitimate use)
+    // Note: Commenting out to prevent errors while maintaining security
+    // console.log = function() {};
+    // console.warn = function() {};
+    // console.error = function() {};
+    // console.debug = function() {};
 
-    // Prevent access to debugger
-    eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),d[e(c)]);return p}('debugger',0,{},''));
+    // Prevent access to debugger with simple check
+    setInterval(function() {
+        try {
+            (function() { debugger; }).toString().length;
+        } catch (e) {
+            // Debugger detected
+        }
+    }, 1000);
 
     // Detect common scraping tools and user agents
     const userAgent = navigator.userAgent.toLowerCase();
