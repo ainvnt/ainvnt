@@ -356,90 +356,85 @@
     
     <!-- Contact Form Handler -->
     <script>
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
+        // Wait for DOM to be ready before attaching event listener
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contact-form');
             
-            // Get form elements
-            const submitBtn = document.getElementById('submit-btn');
-            const btnText = document.getElementById('btn-text');
-            const btnIcon = document.getElementById('btn-icon');
-            const formMessages = document.getElementById('form-messages');
-            
-            // Disable submit button and show loading state
-            submitBtn.disabled = true;
-            btnText.textContent = 'Sending...';
-            btnIcon.className = 'fas fa-spinner fa-spin';
-            
-            // Replace these with your actual EmailJS credentials
-            const serviceID = 'service_uemnwak';      // e.g., 'service_abc123'
-            const templateID = 'template_mksh6v4';    // e.g., 'template_xyz456'
-            
-            // Debug: Log the credentials
-            console.log('Sending email with:');
-            console.log('Service ID:', serviceID);
-            console.log('Template ID:', templateID);
-            console.log('Form data:', {
-                from_name: document.getElementById('from_name').value,
-                reply_to: document.getElementById('reply_to').value,
-                phone_number: document.getElementById('phone_number').value,
-                service_interest: document.getElementById('service_interest').value,
-                message: document.getElementById('message').value
-            });
-            
-            // Send email using EmailJS
-            emailjs.sendForm(serviceID, templateID, this)
-                .then(function(response) {
-                    console.log('SUCCESS!', response.status, response.text);
+            if (form) {
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault();
                     
-                    // Show success message
-                    formMessages.style.display = 'block';
-                    formMessages.style.background = '#D1FAE5';
-                    formMessages.style.color = '#065F46';
-                    formMessages.style.border = '1px solid #10B981';
-                    formMessages.innerHTML = '<i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully. We\'ll get back to you soon.';
+                    // Get form elements
+                    const submitBtn = document.getElementById('submit-btn');
+                    const btnText = document.getElementById('btn-text');
+                    const btnIcon = document.getElementById('btn-icon');
+                    const formMessages = document.getElementById('form-messages');
                     
-                    // Reset form
-                    document.getElementById('contact-form').reset();
+                    // Disable submit button and show loading state
+                    submitBtn.disabled = true;
+                    btnText.textContent = 'Sending...';
+                    btnIcon.className = 'fas fa-spinner fa-spin';
                     
-                    // Re-enable button
-                    submitBtn.disabled = false;
-                    btnText.textContent = 'Send Message';
-                    btnIcon.className = 'fas fa-paper-plane';
+                    // EmailJS credentials
+                    const serviceID = 'service_uemnwak';
+                    const templateID = 'template_mksh6v4';
                     
-                    // Hide success message after 5 seconds
-                    setTimeout(function() {
-                        formMessages.style.display = 'none';
-                    }, 5000);
-                    
-                }, function(error) {
-                    console.error('FAILED...', error);
-                    
-                    // Show detailed error message
-                    formMessages.style.display = 'block';
-                    formMessages.style.background = '#FEE2E2';
-                    formMessages.style.color = '#991B1B';
-                    formMessages.style.border = '1px solid #EF4444';
-                    
-                    let errorMsg = 'Oops! Something went wrong.';
-                    if (error.text) {
-                        errorMsg += ' Error: ' + error.text;
-                    }
-                    if (error.status) {
-                        errorMsg += ' (Status: ' + error.status + ')';
-                    }
-                    
-                    formMessages.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + errorMsg + '<br><small>Check browser console for details.</small>';
-                    
-                    // Re-enable button
-                    submitBtn.disabled = false;
-                    btnText.textContent = 'Send Message';
-                    btnIcon.className = 'fas fa-paper-plane';
-                    
-                    // Hide error message after 10 seconds
-                    setTimeout(function() {
-                        formMessages.style.display = 'none';
-                    }, 10000);
+                    // Send email using EmailJS - pass form selector string
+                    emailjs.sendForm(serviceID, templateID, '#contact-form')
+                        .then(function(response) {
+                            
+                            // Show success message
+                            formMessages.style.display = 'block';
+                            formMessages.style.background = '#D1FAE5';
+                            formMessages.style.color = '#065F46';
+                            formMessages.style.border = '1px solid #10B981';
+                            formMessages.innerHTML = '<i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully. We\'ll get back to you soon.';
+                            
+                            // Reset form
+                            form.reset();
+                            
+                            // Re-enable button
+                            submitBtn.disabled = false;
+                            btnText.textContent = 'Send Message';
+                            btnIcon.className = 'fas fa-paper-plane';
+                            
+                            // Hide success message after 5 seconds
+                            setTimeout(function() {
+                                formMessages.style.display = 'none';
+                            }, 5000);
+                            
+                        }, function(error) {
+                            
+                            // Show detailed error message
+                            formMessages.style.display = 'block';
+                            formMessages.style.background = '#FEE2E2';
+                            formMessages.style.color = '#991B1B';
+                            formMessages.style.border = '1px solid #EF4444';
+                            
+                            let errorMsg = 'Oops! Something went wrong.';
+                            if (error.text) {
+                                errorMsg += ' Error: ' + error.text;
+                            }
+                            if (error.status) {
+                                errorMsg += ' (Status: ' + error.status + ')';
+                            }
+                            
+                            formMessages.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + errorMsg + '<br><small>Check browser console for details.</small>';
+                            
+                            // Re-enable button
+                            submitBtn.disabled = false;
+                            btnText.textContent = 'Send Message';
+                            btnIcon.className = 'fas fa-paper-plane';
+                            
+                            // Hide error message after 10 seconds
+                            setTimeout(function() {
+                                formMessages.style.display = 'none';
+                            }, 10000);
+                        });
                 });
+            } else {
+                console.error('Contact form with ID "contact-form" not found in this page');
+            }
         });
     </script>
 
