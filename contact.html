@@ -374,6 +374,18 @@
             const serviceID = 'service_uemnwak';      // e.g., 'service_abc123'
             const templateID = 'template_mksh6v4';    // e.g., 'template_xyz456'
             
+            // Debug: Log the credentials
+            console.log('Sending email with:');
+            console.log('Service ID:', serviceID);
+            console.log('Template ID:', templateID);
+            console.log('Form data:', {
+                from_name: document.getElementById('from_name').value,
+                reply_to: document.getElementById('reply_to').value,
+                phone_number: document.getElementById('phone_number').value,
+                service_interest: document.getElementById('service_interest').value,
+                message: document.getElementById('message').value
+            });
+            
             // Send email using EmailJS
             emailjs.sendForm(serviceID, templateID, this)
                 .then(function(response) {
@@ -400,24 +412,33 @@
                     }, 5000);
                     
                 }, function(error) {
-                    console.log('FAILED...', error);
+                    console.error('FAILED...', error);
                     
-                    // Show error message
+                    // Show detailed error message
                     formMessages.style.display = 'block';
                     formMessages.style.background = '#FEE2E2';
                     formMessages.style.color = '#991B1B';
                     formMessages.style.border = '1px solid #EF4444';
-                    formMessages.innerHTML = '<i class="fas fa-exclamation-circle"></i> Oops! Something went wrong. Please try again or email us directly at ainvnt@outlook.com';
+                    
+                    let errorMsg = 'Oops! Something went wrong.';
+                    if (error.text) {
+                        errorMsg += ' Error: ' + error.text;
+                    }
+                    if (error.status) {
+                        errorMsg += ' (Status: ' + error.status + ')';
+                    }
+                    
+                    formMessages.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + errorMsg + '<br><small>Check browser console for details.</small>';
                     
                     // Re-enable button
                     submitBtn.disabled = false;
                     btnText.textContent = 'Send Message';
                     btnIcon.className = 'fas fa-paper-plane';
                     
-                    // Hide error message after 7 seconds
+                    // Hide error message after 10 seconds
                     setTimeout(function() {
                         formMessages.style.display = 'none';
-                    }, 7000);
+                    }, 10000);
                 });
         });
     </script>

@@ -103,35 +103,39 @@ document.addEventListener('click', (event) => {
 
 const contactForm = document.querySelector('.contact-form');
 
-if (contactForm) {
+if (contactForm && !contactForm.id.includes('contact-form')) {
+    // Skip if this is an EmailJS-handled form
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Get form values
+        // Get form values - check if they exist first
         const name = this.querySelector('input[placeholder="Your Name"]');
         const email = this.querySelector('input[placeholder="Your Email"]');
         const subject = this.querySelector('input[placeholder="Subject"]');
         const message = this.querySelector('textarea');
         
-        // Simple validation
-        if (!name.value.trim()) {
-            alert('Please enter your name');
-            return;
+        // Only process if we found the old-style form fields
+        if (name && email && message) {
+            // Simple validation
+            if (!name.value.trim()) {
+                alert('Please enter your name');
+                return;
+            }
+            
+            if (!email.value.trim() || !isValidEmail(email.value)) {
+                alert('Please enter a valid email');
+                return;
+            }
+            
+            if (!message.value.trim()) {
+                alert('Please enter your message');
+                return;
+            }
+            
+            // Show success message
+            alert('Thank you! We will get back to you soon.');
+            this.reset();
         }
-        
-        if (!email.value.trim() || !isValidEmail(email.value)) {
-            alert('Please enter a valid email');
-            return;
-        }
-        
-        if (!message.value.trim()) {
-            alert('Please enter your message');
-            return;
-        }
-        
-        // Show success message
-        alert('Thank you! We will get back to you soon.');
-        this.reset();
     });
 }
 
