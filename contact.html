@@ -234,22 +234,23 @@
                 <!-- Contact Form -->
                 <div style="background: white; padding: 40px; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
                     <h3 style="font-size: 1.8rem; color: #1F2937; margin-bottom: 25px;">Send Us a Message</h3>
-                    <form class="contact-form" style="display: flex; flex-direction: column; gap: 20px;">
+                    <form id="contact-form" class="contact-form" style="display: flex; flex-direction: column; gap: 20px;">
+                        <div id="form-messages" style="display: none; padding: 15px; border-radius: 8px; margin-bottom: 10px;"></div>
                         <div>
                             <label style="display: block; color: #374151; font-weight: 500; margin-bottom: 8px;">Full Name *</label>
-                            <input type="text" placeholder="John Doe" required style="width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; transition: all 0.3s;" onfocus="this.style.borderColor='#1E88E5'" onblur="this.style.borderColor='#E5E7EB'">
+                            <input type="text" name="from_name" id="from_name" placeholder="John Doe" required style="width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; transition: all 0.3s;" onfocus="this.style.borderColor='#1E88E5'" onblur="this.style.borderColor='#E5E7EB'">
                         </div>
                         <div>
                             <label style="display: block; color: #374151; font-weight: 500; margin-bottom: 8px;">Email Address *</label>
-                            <input type="email" placeholder="john@example.com" required style="width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; transition: all 0.3s;" onfocus="this.style.borderColor='#1E88E5'" onblur="this.style.borderColor='#E5E7EB'">
+                            <input type="email" name="reply_to" id="reply_to" placeholder="john@example.com" required style="width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; transition: all 0.3s;" onfocus="this.style.borderColor='#1E88E5'" onblur="this.style.borderColor='#E5E7EB'">
                         </div>
                         <div>
                             <label style="display: block; color: #374151; font-weight: 500; margin-bottom: 8px;">Phone Number</label>
-                            <input type="tel" placeholder="+91 XXXXX XXXXX" style="width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; transition: all 0.3s;" onfocus="this.style.borderColor='#1E88E5'" onblur="this.style.borderColor='#E5E7EB'">
+                            <input type="tel" name="phone_number" id="phone_number" placeholder="+91 XXXXX XXXXX" style="width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; transition: all 0.3s;" onfocus="this.style.borderColor='#1E88E5'" onblur="this.style.borderColor='#E5E7EB'">
                         </div>
                         <div>
                             <label style="display: block; color: #374151; font-weight: 500; margin-bottom: 8px;">Service Interest</label>
-                            <select style="width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; transition: all 0.3s; background: white;" onfocus="this.style.borderColor='#1E88E5'" onblur="this.style.borderColor='#E5E7EB'">
+                            <select name="service_interest" id="service_interest" style="width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; transition: all 0.3s; background: white;" onfocus="this.style.borderColor='#1E88E5'" onblur="this.style.borderColor='#E5E7EB'">
                                 <option>Select a service</option>
                                 <option>Web Applications</option>
                                 <option>Mobile Apps</option>
@@ -264,11 +265,11 @@
                         </div>
                         <div>
                             <label style="display: block; color: #374151; font-weight: 500; margin-bottom: 8px;">Message *</label>
-                            <textarea placeholder="Tell us about your project or inquiry..." rows="5" required style="width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; resize: vertical; transition: all 0.3s;" onfocus="this.style.borderColor='#1E88E5'" onblur="this.style.borderColor='#E5E7EB'"></textarea>
+                            <textarea name="message" id="message" placeholder="Tell us about your project or inquiry..." rows="5" required style="width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; resize: vertical; transition: all 0.3s;" onfocus="this.style.borderColor='#1E88E5'" onblur="this.style.borderColor='#E5E7EB'"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; gap: 10px;">
-                            <span>Send Message</span>
-                            <i class="fas fa-paper-plane"></i>
+                        <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                            <span id="btn-text">Send Message</span>
+                            <i id="btn-icon" class="fas fa-paper-plane"></i>
                         </button>
                         <p style="font-size: 0.9rem; color: #6B7280; text-align: center; margin-top: 10px;">We respect your privacy. Your information is safe with us.</p>
                     </form>
@@ -340,6 +341,86 @@
 
     <!-- Footer Container -->
     <div id="footer-container"></div>
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Initialize EmailJS with your Public Key
+        // Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key
+        (function(){
+            emailjs.init({
+                publicKey: 'YOUR_PUBLIC_KEY', // Replace this with your actual public key from EmailJS
+            });
+        })();
+    </script>
+    
+    <!-- Contact Form Handler -->
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Get form elements
+            const submitBtn = document.getElementById('submit-btn');
+            const btnText = document.getElementById('btn-text');
+            const btnIcon = document.getElementById('btn-icon');
+            const formMessages = document.getElementById('form-messages');
+            
+            // Disable submit button and show loading state
+            submitBtn.disabled = true;
+            btnText.textContent = 'Sending...';
+            btnIcon.className = 'fas fa-spinner fa-spin';
+            
+            // Replace these with your actual EmailJS credentials
+            const serviceID = 'service_uemnwak';      // e.g., 'service_abc123'
+            const templateID = 'template_mksh6v4';    // e.g., 'template_xyz456'
+            
+            // Send email using EmailJS
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    
+                    // Show success message
+                    formMessages.style.display = 'block';
+                    formMessages.style.background = '#D1FAE5';
+                    formMessages.style.color = '#065F46';
+                    formMessages.style.border = '1px solid #10B981';
+                    formMessages.innerHTML = '<i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully. We\'ll get back to you soon.';
+                    
+                    // Reset form
+                    document.getElementById('contact-form').reset();
+                    
+                    // Re-enable button
+                    submitBtn.disabled = false;
+                    btnText.textContent = 'Send Message';
+                    btnIcon.className = 'fas fa-paper-plane';
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(function() {
+                        formMessages.style.display = 'none';
+                    }, 5000);
+                    
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    
+                    // Show error message
+                    formMessages.style.display = 'block';
+                    formMessages.style.background = '#FEE2E2';
+                    formMessages.style.color = '#991B1B';
+                    formMessages.style.border = '1px solid #EF4444';
+                    formMessages.innerHTML = '<i class="fas fa-exclamation-circle"></i> Oops! Something went wrong. Please try again or email us directly at ainvnt@outlook.com';
+                    
+                    // Re-enable button
+                    submitBtn.disabled = false;
+                    btnText.textContent = 'Send Message';
+                    btnIcon.className = 'fas fa-paper-plane';
+                    
+                    // Hide error message after 7 seconds
+                    setTimeout(function() {
+                        formMessages.style.display = 'none';
+                    }, 7000);
+                });
+        });
+    </script>
 
     <script src="assets/js/main.js"></script>
     <script src="assets/js/footer-loader.js"></script>
