@@ -1,0 +1,48 @@
+User-agent: *
+Allow: /
+Disallow: /hts-cache/
+
+# Block common crawlers and scraping tools
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Wget
+Disallow: /
+
+User-agent: curl
+Disallow: /
+
+User-agent: Python
+Disallow: /
+
+User-agent: Java
+Disallow: /
+
+User-agent: Node
+Disallow: /
+
+User-agent: scrapy
+Disallow: /
+
+# Crawl delay for respectful bots
+Crawl-Delay: 120
+
+# Request rate limit
+Request-rate: 1/60
+
+Sitemap: https://ainvnt.com/sitemap.xml
