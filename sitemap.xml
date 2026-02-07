@@ -62,7 +62,23 @@
     <!-- AI/ML Solutions -->
     <url>
         <loc>https://ainvnt.com/ai-ml-solutions.html</loc>
-        <lastmod>2026-02-06</lastmod>
+        <lastmod>2026-02-07</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Azure -->
+    <url>
+        <loc>https://ainvnt.com/azure.html</loc>
+        <lastmod>2026-02-07</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- AWS -->
+    <url>
+        <loc>https://ainvnt.com/aws.html</loc>
+        <lastmod>2026-02-07</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -70,7 +86,71 @@
     <!-- BI Tools -->
     <url>
         <loc>https://ainvnt.com/bi-tools.html</loc>
-        <lastmod>2026-02-06</lastmod>
+        <lastmod>2026-02-07</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Big Data -->
+    <url>
+        <loc>https://ainvnt.com/big-data.html</loc>
+        <lastmod>2026-02-07</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Cloud Solutions -->
+    <url>
+        <loc>https://ainvnt.com/cloud-solutions.html</loc>
+        <lastmod>2026-02-07</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Cyber Security -->
+    <url>
+        <loc>https://ainvnt.com/cyber-security.html</loc>
+        <lastmod>2026-02-07</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Data Science -->
+    <url>
+        <loc>https://ainvnt.com/data-science.html</loc>
+        <lastmod>2026-02-07</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- DevOps -->
+    <url>
+        <loc>https://ainvnt.com/devops.html</loc>
+        <lastmod>2026-02-07</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Data Engineering -->
+    <url>
+        <loc>https://ainvnt.com/data-engineering.html</loc>
+        <lastmod>2026-02-07</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- RPA -->
+    <url>
+        <loc>https://ainvnt.com/rpa.html</loc>
+        <lastmod>2026-02-07</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Salesforce -->
+    <url>
+        <loc>https://ainvnt.com/sales-force.html</loc>
+        <lastmod>2026-02-07</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
