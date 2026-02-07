@@ -245,19 +245,19 @@
                         <input type="hidden" name="time" id="time" value="">
                         <div>
                             <label style="display: block; color: #374151; font-weight: 500; margin-bottom: 8px;">Full Name *</label>
-                            <input type="text" name="from_name" id="from_name" placeholder="John Doe" required style="width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; transition: all 0.3s;" onfocus="this.style.borderColor='#1E88E5'" onblur="this.style.borderColor='#E5E7EB'">
+                            <input type="text" name="name" id="from_name" placeholder="John Doe" required style="width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; transition: all 0.3s;" onfocus="this.style.borderColor='#1E88E5'" onblur="this.style.borderColor='#E5E7EB'">
                         </div>
                         <div>
                             <label style="display: block; color: #374151; font-weight: 500; margin-bottom: 8px;">Email Address *</label>
-                            <input type="email" name="reply_to" id="reply_to" placeholder="john@example.com" required style="width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; transition: all 0.3s;" onfocus="this.style.borderColor='#1E88E5'" onblur="this.style.borderColor='#E5E7EB'">
+                            <input type="email" name="email" id="reply_to" placeholder="john@example.com" required style="width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; transition: all 0.3s;" onfocus="this.style.borderColor='#1E88E5'" onblur="this.style.borderColor='#E5E7EB'">
                         </div>
                         <div>
                             <label style="display: block; color: #374151; font-weight: 500; margin-bottom: 8px;">Phone Number</label>
-                            <input type="tel" name="phone_number" id="phone_number" placeholder="+91 XXXXX XXXXX" style="width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; transition: all 0.3s;" onfocus="this.style.borderColor='#1E88E5'" onblur="this.style.borderColor='#E5E7EB'">
+                            <input type="tel" name="phone" id="phone_number" placeholder="+91 XXXXX XXXXX" style="width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; transition: all 0.3s;" onfocus="this.style.borderColor='#1E88E5'" onblur="this.style.borderColor='#E5E7EB'">
                         </div>
                         <div>
                             <label style="display: block; color: #374151; font-weight: 500; margin-bottom: 8px;">Service Interest</label>
-                            <select name="service_interest" id="service_interest" style="width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; transition: all 0.3s; background: white;" onfocus="this.style.borderColor='#1E88E5'" onblur="this.style.borderColor='#E5E7EB'">
+                            <select name="service" id="service_interest" style="width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; transition: all 0.3s; background: white;" onfocus="this.style.borderColor='#1E88E5'" onblur="this.style.borderColor='#E5E7EB'">
                                 <option>Select a service</option>
                                 <option>Web Applications</option>
                                 <option>Mobile Apps</option>
@@ -379,25 +379,25 @@
             const errors = {};
             
             // Validate Full Name
-            if (!formData.from_name || formData.from_name.trim().length < 2) {
-                errors.from_name = 'Please enter a valid name (at least 2 characters)';
+            if (!formData.name || formData.name.trim().length < 2) {
+                errors.name = 'Please enter a valid name (at least 2 characters)';
             }
             
             // Validate Email
-            if (!formData.reply_to) {
-                errors.reply_to = 'Email is required';
-            } else if (!validateEmail(formData.reply_to)) {
-                errors.reply_to = 'Please enter a valid email address';
+            if (!formData.email) {
+                errors.email = 'Email is required';
+            } else if (!validateEmail(formData.email)) {
+                errors.email = 'Please enter a valid email address';
             }
             
             // Validate Phone (optional but if provided, must be valid)
-            if (formData.phone_number && !validatePhone(formData.phone_number)) {
-                errors.phone_number = 'Please enter a valid phone number';
+            if (formData.phone && !validatePhone(formData.phone)) {
+                errors.phone = 'Please enter a valid phone number';
             }
             
             // Validate Service Interest
-            if (!formData.service_interest || formData.service_interest === 'Select a service') {
-                errors.service_interest = 'Please select a service';
+            if (!formData.service || formData.service === 'Select a service') {
+                errors.service = 'Please select a service';
             }
             
             // Validate Message
@@ -409,6 +409,15 @@
         }
         
         function showValidationErrors(errors) {
+            // Field mapping from form data keys to element IDs
+            const fieldMap = {
+                'name': 'from_name',
+                'email': 'reply_to',
+                'phone': 'phone_number',
+                'service': 'service_interest',
+                'message': 'message'
+            };
+            
             // Clear previous error styles
             document.querySelectorAll('.form-field-error').forEach(el => {
                 el.classList.remove('form-field-error');
@@ -418,7 +427,8 @@
             
             // Show new errors
             Object.keys(errors).forEach(fieldName => {
-                const field = document.getElementById(fieldName);
+                const elementId = fieldMap[fieldName] || fieldName;
+                const field = document.getElementById(elementId);
                 if (field) {
                     field.classList.add('form-field-error');
                     field.style.borderColor = '#EF4444';
@@ -441,10 +451,10 @@
                     
                     // Collect form data
                     const formData = {
-                        from_name: document.getElementById('from_name').value,
-                        reply_to: document.getElementById('reply_to').value,
-                        phone_number: document.getElementById('phone_number').value,
-                        service_interest: document.getElementById('service_interest').value,
+                        name: document.getElementById('from_name').value,
+                        email: document.getElementById('reply_to').value,
+                        phone: document.getElementById('phone_number').value,
+                        service: document.getElementById('service_interest').value,
                         message: document.getElementById('message').value
                     };
                     
