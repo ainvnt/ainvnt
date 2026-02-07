@@ -61,6 +61,7 @@
                         <a href="web-applications.html">Web Applications</a>
                         <a href="mobile-apps.html">Mobile Apps</a>
                         <a href="cloud-solutions.html">Cloud Solutions</a>
+                        <a href="devops.html">DevOps</a>
                         <a href="ai-ml-solutions.html">AI & ML Solutions</a>
                         <a href="bi-tools.html">BI & Analytics</a>
                         <a href="quality-assurance.html">Quality Assurance</a>
@@ -68,6 +69,7 @@
                 </li>
                 <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
                 <li><a href="careers.html" class="nav-link">Careers</a></li>
+                <li><a href="sitemap.html" class="nav-link">Menu</a></li>
                 <li><a href="contact.html" class="nav-link active">Contact</a></li>
             </ul>
         </div>
@@ -356,69 +358,85 @@
     
     <!-- Contact Form Handler -->
     <script>
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
+        // Wait for DOM to be ready before attaching event listener
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contact-form');
             
-            // Get form elements
-            const submitBtn = document.getElementById('submit-btn');
-            const btnText = document.getElementById('btn-text');
-            const btnIcon = document.getElementById('btn-icon');
-            const formMessages = document.getElementById('form-messages');
-            
-            // Disable submit button and show loading state
-            submitBtn.disabled = true;
-            btnText.textContent = 'Sending...';
-            btnIcon.className = 'fas fa-spinner fa-spin';
-            
-            // Replace these with your actual EmailJS credentials
-            const serviceID = 'service_uemnwak';      // e.g., 'service_abc123'
-            const templateID = 'template_mksh6v4';    // e.g., 'template_xyz456'
-            
-            // Send email using EmailJS
-            emailjs.sendForm(serviceID, templateID, this)
-                .then(function(response) {
-                    console.log('SUCCESS!', response.status, response.text);
+            if (form) {
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault();
                     
-                    // Show success message
-                    formMessages.style.display = 'block';
-                    formMessages.style.background = '#D1FAE5';
-                    formMessages.style.color = '#065F46';
-                    formMessages.style.border = '1px solid #10B981';
-                    formMessages.innerHTML = '<i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully. We\'ll get back to you soon.';
+                    // Get form elements
+                    const submitBtn = document.getElementById('submit-btn');
+                    const btnText = document.getElementById('btn-text');
+                    const btnIcon = document.getElementById('btn-icon');
+                    const formMessages = document.getElementById('form-messages');
                     
-                    // Reset form
-                    document.getElementById('contact-form').reset();
+                    // Disable submit button and show loading state
+                    submitBtn.disabled = true;
+                    btnText.textContent = 'Sending...';
+                    btnIcon.className = 'fas fa-spinner fa-spin';
                     
-                    // Re-enable button
-                    submitBtn.disabled = false;
-                    btnText.textContent = 'Send Message';
-                    btnIcon.className = 'fas fa-paper-plane';
+                    // EmailJS credentials
+                    const serviceID = 'service_uemnwak';
+                    const templateID = 'template_mksh6v4';
                     
-                    // Hide success message after 5 seconds
-                    setTimeout(function() {
-                        formMessages.style.display = 'none';
-                    }, 5000);
-                    
-                }, function(error) {
-                    console.log('FAILED...', error);
-                    
-                    // Show error message
-                    formMessages.style.display = 'block';
-                    formMessages.style.background = '#FEE2E2';
-                    formMessages.style.color = '#991B1B';
-                    formMessages.style.border = '1px solid #EF4444';
-                    formMessages.innerHTML = '<i class="fas fa-exclamation-circle"></i> Oops! Something went wrong. Please try again or email us directly at ainvnt@outlook.com';
-                    
-                    // Re-enable button
-                    submitBtn.disabled = false;
-                    btnText.textContent = 'Send Message';
-                    btnIcon.className = 'fas fa-paper-plane';
-                    
-                    // Hide error message after 7 seconds
-                    setTimeout(function() {
-                        formMessages.style.display = 'none';
-                    }, 7000);
+                    // Send email using EmailJS - pass form selector string
+                    emailjs.sendForm(serviceID, templateID, '#contact-form')
+                        .then(function(response) {
+                            
+                            // Show success message
+                            formMessages.style.display = 'block';
+                            formMessages.style.background = '#D1FAE5';
+                            formMessages.style.color = '#065F46';
+                            formMessages.style.border = '1px solid #10B981';
+                            formMessages.innerHTML = '<i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully. We\'ll get back to you soon.';
+                            
+                            // Reset form
+                            form.reset();
+                            
+                            // Re-enable button
+                            submitBtn.disabled = false;
+                            btnText.textContent = 'Send Message';
+                            btnIcon.className = 'fas fa-paper-plane';
+                            
+                            // Hide success message after 5 seconds
+                            setTimeout(function() {
+                                formMessages.style.display = 'none';
+                            }, 5000);
+                            
+                        }, function(error) {
+                            
+                            // Show detailed error message
+                            formMessages.style.display = 'block';
+                            formMessages.style.background = '#FEE2E2';
+                            formMessages.style.color = '#991B1B';
+                            formMessages.style.border = '1px solid #EF4444';
+                            
+                            let errorMsg = 'Oops! Something went wrong.';
+                            if (error.text) {
+                                errorMsg += ' Error: ' + error.text;
+                            }
+                            if (error.status) {
+                                errorMsg += ' (Status: ' + error.status + ')';
+                            }
+                            
+                            formMessages.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + errorMsg + '<br><small>Check browser console for details.</small>';
+                            
+                            // Re-enable button
+                            submitBtn.disabled = false;
+                            btnText.textContent = 'Send Message';
+                            btnIcon.className = 'fas fa-paper-plane';
+                            
+                            // Hide error message after 10 seconds
+                            setTimeout(function() {
+                                formMessages.style.display = 'none';
+                            }, 10000);
+                        });
                 });
+            } else {
+                console.error('Contact form with ID "contact-form" not found in this page');
+            }
         });
     </script>
 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Ainvnt is a digital transformation and IT consulting partner with 15+ years of expertise in cloud, web/mobile development, AI/ML, BI, HR consulting, and staffing.">
-    <meta name="keywords" content="digital transformation, IT consulting, cloud solutions, web development, mobile apps, AI solutions, machine learning, business intelligence, HR consulting, staffing solutions">
+    <meta name="keywords" content="digital transformation, IT consulting, cloud solutions, devops, ci/cd, infrastructure as code, devsecops, site reliability engineering, SRE, cloud migration, cloud architecture, multi-cloud, AWS, Azure, GCP, web development, web applications, mobile apps, app development, software development, product engineering, UI/UX design, AI solutions, machine learning, data analytics, business intelligence, BI tools, data engineering, data visualization, automation, cybersecurity, IT services, managed services, IT support, application modernization, legacy modernization, microservices, API development, system integration, HR consulting, staffing solutions, recruitment, talent acquisition, digital strategy">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="googlebot" content="index, follow">
@@ -63,6 +63,7 @@
                         <a href="web-applications.html">Web Applications</a>
                         <a href="mobile-apps.html">Mobile Apps</a>
                         <a href="cloud-solutions.html">Cloud Solutions</a>
+                        <a href="devops.html">DevOps</a>
                         <a href="ai-ml-solutions.html">AI & ML Solutions</a>
                         <a href="bi-tools.html">BI & Analytics</a>
                         <a href="quality-assurance.html">Quality Assurance</a>
@@ -70,6 +71,7 @@
                 </li>
                 <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
                 <li><a href="careers.html" class="nav-link">Careers</a></li>
+                <li><a href="sitemap.html" class="nav-link">Menu</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
         </div>
@@ -178,6 +180,28 @@
                         <span>✓ Infrastructure Design</span>
                     </div>
                     <a href="cloud-solutions.html" class="service-link">Learn More →</a>
+                </div>
+
+                <div class="service-card" id="devops">
+                    <div class="service-card-visual">
+                        <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="20" cy="40" r="8" fill="none" stroke="#1E88E5" stroke-width="2"/>
+                            <circle cx="50" cy="20" r="8" fill="none" stroke="#00BFA5" stroke-width="2"/>
+                            <circle cx="80" cy="40" r="8" fill="none" stroke="#42A5F5" stroke-width="2"/>
+                            <line x1="28" y1="36" x2="42" y2="24" stroke="#1E88E5" stroke-width="2"/>
+                            <line x1="58" y1="24" x2="72" y2="36" stroke="#42A5F5" stroke-width="2"/>
+                            <path d="M20 50 Q50 70 80 50" fill="none" stroke="#00BFA5" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>DevOps & Reliability</h3>
+                    <div class="service-badge">CI/CD | IaC | SRE</div>
+                    <p>Automate delivery with modern pipelines, infrastructure as code, and observability to keep releases fast, safe, and reliable.</p>
+                    <div class="service-features">
+                        <span>✓ CI/CD Pipelines</span>
+                        <span>✓ Infrastructure as Code</span>
+                        <span>✓ Monitoring & Alerts</span>
+                    </div>
+                    <a href="devops.html" class="service-link">Learn More →</a>
                 </div>
 
                 <div class="service-card" id="email-solutions">
@@ -435,7 +459,7 @@
                         <i class="fas fa-phone"></i>
                         <div>
                             <h3>Phone</h3>
-                            <p>+91 7075788767</p>
+                            <p>+91 9490364940</p>
                         </div>
                     </div>
                     <div class="info-item">
@@ -484,65 +508,79 @@
     
     <!-- Index Contact Form Handler -->
     <script>
-        document.getElementById('index-contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
+        // Wait for DOM to be ready before attaching event listener
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('index-contact-form');
             
-            // Get form elements
-            const submitBtn = document.getElementById('index-submit-btn');
-            const formMessages = document.getElementById('index-form-messages');
-            const originalText = submitBtn.textContent;
-            
-            // Disable submit button and show loading state
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-            
-            // Replace these with your actual EmailJS credentials
-            const serviceID = 'service_uemnwak';      // e.g., 'service_abc123'
-            const templateID = 'template_mksh6v4';    // e.g., 'template_xyz456'
-            
-            // Send email using EmailJS
-            emailjs.sendForm(serviceID, templateID, this)
-                .then(function(response) {
-                    console.log('SUCCESS!', response.status, response.text);
+            if (form) {
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault();
                     
-                    // Show success message
-                    formMessages.style.display = 'block';
-                    formMessages.style.background = '#D1FAE5';
-                    formMessages.style.color = '#065F46';
-                    formMessages.style.border = '1px solid #10B981';
-                    formMessages.innerHTML = '<i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully.';
+                    // Get form elements
+                    const submitBtn = document.getElementById('index-submit-btn');
+                    const formMessages = document.getElementById('index-form-messages');
+                    const originalText = submitBtn.textContent;
                     
-                    // Reset form
-                    document.getElementById('index-contact-form').reset();
+                    // Disable submit button and show loading state
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Sending...';
                     
-                    // Re-enable button
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = originalText;
+                    // EmailJS credentials
+                    const serviceID = 'service_uemnwak';
+                    const templateID = 'template_mksh6v4';
                     
-                    // Hide success message after 5 seconds
-                    setTimeout(function() {
-                        formMessages.style.display = 'none';
-                    }, 5000);
-                    
-                }, function(error) {
-                    console.log('FAILED...', error);
-                    
-                    // Show error message
-                    formMessages.style.display = 'block';
-                    formMessages.style.background = '#FEE2E2';
-                    formMessages.style.color = '#991B1B';
-                    formMessages.style.border = '1px solid #EF4444';
-                    formMessages.innerHTML = '<i class="fas fa-exclamation-circle"></i> Oops! Something went wrong. Please try again.';
-                    
-                    // Re-enable button
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = originalText;
-                    
-                    // Hide error message after 7 seconds
-                    setTimeout(function() {
-                        formMessages.style.display = 'none';
-                    }, 7000);
+                    // Send email using EmailJS - pass form selector string
+                    emailjs.sendForm(serviceID, templateID, '#index-contact-form')
+                        .then(function(response) {
+                            
+                            // Show success message
+                            formMessages.style.display = 'block';
+                            formMessages.style.background = '#D1FAE5';
+                            formMessages.style.color = '#065F46';
+                            formMessages.style.border = '1px solid #10B981';
+                            formMessages.innerHTML = '<i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully.';
+                            
+                            // Reset form
+                            form.reset();
+                            
+                            // Re-enable button
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = originalText;
+                            
+                            // Hide success message after 5 seconds
+                            setTimeout(function() {
+                                formMessages.style.display = 'none';
+                            }, 5000);
+                            
+                        }, function(error) {
+                            
+                            // Show detailed error message
+                            formMessages.style.display = 'block';
+                            formMessages.style.background = '#FEE2E2';
+                            formMessages.style.color = '#991B1B';
+                            formMessages.style.border = '1px solid #EF4444';
+                            
+                            let errorMsg = 'Oops! Something went wrong.';
+                            if (error.text) {
+                                errorMsg += ' Error: ' + error.text;
+                            }
+                            if (error.status) {
+                                errorMsg += ' (Status: ' + error.status + ')';
+                            }
+                            
+                            formMessages.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + errorMsg + '<br><small>Check browser console for details.</small>';
+                            
+                            // Re-enable button
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = originalText;
+                            
+                            // Hide error message after 10 seconds
+                            setTimeout(function() {
+                                formMessages.style.display = 'none';
+                            }, 10000);
+                        });
                 });
+            }
         });
     </script>
 

@@ -100,40 +100,14 @@ document.addEventListener('click', (event) => {
 // ========================
 // CONTACT FORM VALIDATION
 // ========================
+// NOTE: Contact forms are now handled by EmailJS integration
+// in contact.html and index.html. This section is disabled to avoid conflicts.
 
-const contactForm = document.querySelector('.contact-form');
-
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form values
-        const name = this.querySelector('input[placeholder="Your Name"]');
-        const email = this.querySelector('input[placeholder="Your Email"]');
-        const subject = this.querySelector('input[placeholder="Subject"]');
-        const message = this.querySelector('textarea');
-        
-        // Simple validation
-        if (!name.value.trim()) {
-            alert('Please enter your name');
-            return;
-        }
-        
-        if (!email.value.trim() || !isValidEmail(email.value)) {
-            alert('Please enter a valid email');
-            return;
-        }
-        
-        if (!message.value.trim()) {
-            alert('Please enter your message');
-            return;
-        }
-        
-        // Show success message
-        alert('Thank you! We will get back to you soon.');
-        this.reset();
-    });
-}
+// const contactForm = document.querySelector('.contact-form');
+// 
+// if (contactForm && !contactForm.id.includes('contact-form')) {
+//     // Legacy form handler - disabled
+// }
 
 function isValidEmail(email) {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
