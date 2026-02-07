@@ -353,11 +353,14 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
         // Initialize EmailJS with your Public Key
-        // Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key
         (function(){
-            emailjs.init({
-                publicKey: 'iqrr5-zo1Ntx6wlS_', // Replace this with your actual public key from EmailJS
-            });
+            try {
+                emailjs.init({
+                    publicKey: 'iqrr5-zo1Ntx6wlS_'
+                });
+            } catch (error) {
+                // EmailJS initialization error
+            }
         })();
     </script>
     
@@ -502,8 +505,8 @@
                     const serviceID = 'service_uemnwak';
                     const templateID = 'template_hfhn1za';
                     
-                    // Send email using EmailJS - pass form selector string
-                    emailjs.sendForm(serviceID, templateID, '#contact-form')
+                    // Send email using EmailJS - pass form element
+                    emailjs.sendForm(serviceID, templateID, form)
                         .then(function(response) {
                             
                             // Show success message
@@ -527,7 +530,6 @@
                             }, 5000);
                             
                         }, function(error) {
-                            
                             // Show detailed error message
                             formMessages.style.display = 'block';
                             formMessages.style.background = '#FEE2E2';
@@ -555,8 +557,6 @@
                             }, 10000);
                         });
                 });
-            } else {
-                console.error('Contact form with ID "contact-form" not found in this page');
             }
         });
     </script>
