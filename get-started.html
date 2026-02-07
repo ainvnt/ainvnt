@@ -220,54 +220,44 @@
             </div>
 
             <div style="max-width: 700px; margin: 0 auto; background: white; padding: 50px; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.2);">
-                <form class="contact-form">
-                    <div class="form-group">
-                        <label style="display: block; margin-bottom: 8px; color: #1F2937; font-weight: 600;">Full Name *</label>
-                        <input type="text" placeholder="John Doe" required style="width: 100%; border: 2px solid #E5E7EB; padding: 12px; border-radius: 8px; font-size: 1rem; box-sizing: border-box;">
+                <form id="contact-form" class="contact-form" style="display: flex; flex-direction: column; gap: 20px;">
+                    <div id="form-messages" style="display: none; padding: 15px; border-radius: 8px; margin-bottom: 10px;"></div>
+                    <div>
+                        <label style="display: block; color: #374151; font-weight: 500; margin-bottom: 8px;">Full Name *</label>
+                        <input type="text" name="from_name" id="from_name" placeholder="John Doe" required style="width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; transition: all 0.3s; box-sizing: border-box;" onfocus="this.style.borderColor='#1E88E5'" onblur="this.style.borderColor='#E5E7EB'">
                     </div>
-                    <div class="form-group">
-                        <label style="display: block; margin-bottom: 8px; color: #1F2937; font-weight: 600;">Email Address *</label>
-                        <input type="email" placeholder="john@example.com" required style="width: 100%; border: 2px solid #E5E7EB; padding: 12px; border-radius: 8px; font-size: 1rem; box-sizing: border-box;">
+                    <div>
+                        <label style="display: block; color: #374151; font-weight: 500; margin-bottom: 8px;">Email Address *</label>
+                        <input type="email" name="reply_to" id="reply_to" placeholder="john@example.com" required style="width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; transition: all 0.3s; box-sizing: border-box;" onfocus="this.style.borderColor='#1E88E5'" onblur="this.style.borderColor='#E5E7EB'">
                     </div>
-                    <div class="form-group">
-                        <label style="display: block; margin-bottom: 8px; color: #1F2937; font-weight: 600;">Phone Number</label>
-                        <input type="tel" placeholder="+1 (555) 000-0000" style="width: 100%; border: 2px solid #E5E7EB; padding: 12px; border-radius: 8px; font-size: 1rem; box-sizing: border-box;">
+                    <div>
+                        <label style="display: block; color: #374151; font-weight: 500; margin-bottom: 8px;">Phone Number</label>
+                        <input type="tel" name="phone_number" id="phone_number" placeholder="+91 XXXXX XXXXX" style="width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; transition: all 0.3s; box-sizing: border-box;" onfocus="this.style.borderColor='#1E88E5'" onblur="this.style.borderColor='#E5E7EB'">
                     </div>
-                    <div class="form-group">
-                        <label style="display: block; margin-bottom: 8px; color: #1F2937; font-weight: 600;">Company Name</label>
-                        <input type="text" placeholder="Your Company" style="width: 100%; border: 2px solid #E5E7EB; padding: 12px; border-radius: 8px; font-size: 1rem; box-sizing: border-box;">
-                    </div>
-                    <div class="form-group">
-                        <label style="display: block; margin-bottom: 8px; color: #1F2937; font-weight: 600;">Service Type *</label>
-                        <select required style="width: 100%; border: 2px solid #E5E7EB; padding: 12px; border-radius: 8px; font-size: 1rem; box-sizing: border-box;">
-                            <option value="">Select the service you need...</option>
-                            <option value="web">Web Applications</option>
-                            <option value="mobile">Mobile Apps</option>
-                            <option value="cloud">Cloud Solutions</option>
-                            <option value="ai">AI & ML Solutions</option>
-                            <option value="bi">BI & Analytics</option>
-                            <option value="qa">Quality Assurance</option>
-                            <option value="custom">Custom Development</option>
-                            <option value="salesforce">Salesforce Solutions</option>
-                            <option value="sap">SAP Solutions</option>
+                    <div>
+                        <label style="display: block; color: #374151; font-weight: 500; margin-bottom: 8px;">Service Interest</label>
+                        <select name="service_interest" id="service_interest" style="width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; transition: all 0.3s; background: white; box-sizing: border-box;" onfocus="this.style.borderColor='#1E88E5'" onblur="this.style.borderColor='#E5E7EB'">
+                            <option>Select a service</option>
+                            <option>Web Applications</option>
+                            <option>Mobile Apps</option>
+                            <option>Cloud Solutions</option>
+                            <option>AI & ML Solutions</option>
+                            <option>BI & Analytics</option>
+                            <option>Quality Assurance</option>
+                            <option>Custom Development</option>
+                            <option>IT Consulting</option>
+                            <option>Other</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label style="display: block; margin-bottom: 8px; color: #1F2937; font-weight: 600;">Project Details *</label>
-                        <textarea placeholder="Tell us about your project, current challenges, goals, and timeline..." rows="5" required style="width: 100%; border: 2px solid #E5E7EB; padding: 12px; border-radius: 8px; font-size: 1rem; font-family: inherit; box-sizing: border-box;"></textarea>
+                    <div>
+                        <label style="display: block; color: #374151; font-weight: 500; margin-bottom: 8px;">Message *</label>
+                        <textarea name="message" id="message" placeholder="Tell us about your project or inquiry..." rows="5" required style="width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; resize: vertical; transition: all 0.3s; box-sizing: border-box;" onfocus="this.style.borderColor='#1E88E5'" onblur="this.style.borderColor='#E5E7EB'"></textarea>
                     </div>
-                    <div class="form-group">
-                        <label style="display: block; margin-bottom: 8px; color: #1F2937; font-weight: 600;">Budget Range</label>
-                        <select style="width: 100%; border: 2px solid #E5E7EB; padding: 12px; border-radius: 8px; font-size: 1rem; box-sizing: border-box;">
-                            <option value="">Select budget range...</option>
-                            <option value="5k">$5,000 - $10,000</option>
-                            <option value="10k">$10,000 - $25,000</option>
-                            <option value="25k">$25,000 - $50,000</option>
-                            <option value="50k">$50,000 - $100,000</option>
-                            <option value="100k">$100,000+</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 1.1rem; background: linear-gradient(135deg, #1E88E5 0%, #0D47A1 100%); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">🚀 Start Your Project</button>
+                    <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                        <span id="btn-text">Send Message</span>
+                        <i id="btn-icon" class="fas fa-paper-plane"></i>
+                    </button>
+                    <p style="font-size: 0.9rem; color: #6B7280; text-align: center; margin-top: 10px;">We respect your privacy. Your information is safe with us.</p>
                 </form>
             </div>
         </div>
@@ -288,5 +278,101 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/footer-loader.js"></script>
     <script src="assets/js/pwa-init.js"></script>
+
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        // Initialize EmailJS with your Public Key
+        // Replace 'YOUR_PUBLIC_KEY' with your actual EmailJS public key
+        (function(){
+            emailjs.init({
+                publicKey: 'iqrr5-zo1Ntx6wlS_', // Replace this with your actual public key from EmailJS
+            });
+        })();
+    </script>
+    
+    <!-- Contact Form Handler -->
+    <script>
+        // Wait for DOM to be ready before attaching event listener
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contact-form');
+            
+            if (form) {
+                form.addEventListener('submit', function(event) {
+                    event.preventDefault();
+                    
+                    // Get form elements
+                    const submitBtn = document.getElementById('submit-btn');
+                    const btnText = document.getElementById('btn-text');
+                    const btnIcon = document.getElementById('btn-icon');
+                    const formMessages = document.getElementById('form-messages');
+                    
+                    // Disable submit button and show loading state
+                    submitBtn.disabled = true;
+                    btnText.textContent = 'Sending...';
+                    btnIcon.className = 'fas fa-spinner fa-spin';
+                    
+                    // EmailJS credentials
+                    const serviceID = 'service_uemnwak';
+                    const templateID = 'template_hfhn1za';
+                    
+                    // Send email using EmailJS - pass form selector string
+                    emailjs.sendForm(serviceID, templateID, '#contact-form')
+                        .then(function(response) {
+                            
+                            // Show success message
+                            formMessages.style.display = 'block';
+                            formMessages.style.background = '#D1FAE5';
+                            formMessages.style.color = '#065F46';
+                            formMessages.style.border = '1px solid #10B981';
+                            formMessages.innerHTML = '<i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully. We\'ll get back to you soon.';
+                            
+                            // Reset form
+                            form.reset();
+                            
+                            // Re-enable button
+                            submitBtn.disabled = false;
+                            btnText.textContent = 'Send Message';
+                            btnIcon.className = 'fas fa-paper-plane';
+                            
+                            // Hide success message after 5 seconds
+                            setTimeout(function() {
+                                formMessages.style.display = 'none';
+                            }, 5000);
+                            
+                        }, function(error) {
+                            
+                            // Show detailed error message
+                            formMessages.style.display = 'block';
+                            formMessages.style.background = '#FEE2E2';
+                            formMessages.style.color = '#991B1B';
+                            formMessages.style.border = '1px solid #EF4444';
+                            
+                            let errorMsg = 'Oops! Something went wrong.';
+                            if (error.text) {
+                                errorMsg += ' Error: ' + error.text;
+                            }
+                            if (error.status) {
+                                errorMsg += ' (Status: ' + error.status + ')';
+                            }
+                            
+                            formMessages.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + errorMsg + '<br><small>Check browser console for details.</small>';
+                            
+                            // Re-enable button
+                            submitBtn.disabled = false;
+                            btnText.textContent = 'Send Message';
+                            btnIcon.className = 'fas fa-paper-plane';
+                            
+                            // Hide error message after 10 seconds
+                            setTimeout(function() {
+                                formMessages.style.display = 'none';
+                            }, 10000);
+                        });
+                });
+            } else {
+                console.error('Contact form with ID "contact-form" not found in this page');
+            }
+        });
+    </script>
 </body>
 </html>
