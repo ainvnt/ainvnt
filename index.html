@@ -37,8 +37,9 @@
     <title>Ainvnt - Digital Transformation & IT Consulting Services</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Source+Serif+4:wght@400;600;700&display=swap">
 </head>
-<body>
+<body class="home-page">
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -81,449 +82,382 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Your Trusted Partner in Digital Transformation</h1>
-            <p class="hero-subtitle">Expert consulting, development, and staffing solutions to accelerate your business growth</p>
-            <div class="hero-buttons">
-                <a href="get-started.html" class="btn btn-primary">Get Started</a>
-                <a href="about-us.html" class="btn btn-secondary">Learn About Us</a>
-            </div>
-        </div>
-        <div class="hero-shape"></div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="stats-container">
-            <div class="stat-card">
-                <div class="stat-number">200+</div>
-                <div class="stat-label">Projects Delivered</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">3+</div>
-                <div class="stat-label">Years of Excellence</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">50+</div>
-                <div class="stat-label">Expert Team Members</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">100%</div>
-                <div class="stat-label">Client Satisfaction</div>
+    <!-- Home Hero -->
+    <section class="home-hero">
+        <div class="home-hero__glow home-hero__glow--1"></div>
+        <div class="home-hero__glow home-hero__glow--2"></div>
+        <div class="container">
+            <div class="home-hero__content">
+                <span class="home-badge">Trusted Since 2021</span>
+                <h1>Your Partner in<br><span class="home-hero__highlight">Digital Transformation</span></h1>
+                <p class="home-hero__lead">Expert consulting, development, and staffing solutions to accelerate your business growth. From cloud architecture to strategic hiring, we deliver comprehensive excellence.</p>
+                <div class="home-hero__buttons">
+                    <a href="get-started.html" class="home-btn home-btn--primary">Get Started <i class="fas fa-arrow-right"></i></a>
+                    <a href="about-us.html" class="home-btn home-btn--secondary">Learn About Us</a>
+                </div>
+                <div class="home-hero__stats">
+                    <div class="home-hero__stat">
+                        <div class="home-hero__stat-number">200+</div>
+                        <div class="home-hero__stat-label">Projects Delivered</div>
+                    </div>
+                    <div class="home-hero__stat">
+                        <div class="home-hero__stat-number">3+</div>
+                        <div class="home-hero__stat-label">Years Excellence</div>
+                    </div>
+                    <div class="home-hero__stat">
+                        <div class="home-hero__stat-number">50+</div>
+                        <div class="home-hero__stat-label">Expert Team</div>
+                    </div>
+                    <div class="home-hero__stat">
+                        <div class="home-hero__stat-number">100%</div>
+                        <div class="home-hero__stat-label">Client Satisfaction</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="services">
+    <section id="services" class="home-section">
         <div class="container">
-            <div class="section-header">
-                <h2>What We Do @ Ainvnt</h2>
-                <p>Comprehensive one-stop solutions for all your digital transformation needs</p>
+            <div class="home-section__header">
+                <span class="home-label">What We Do</span>
+                <h2>Comprehensive Solutions<br>Under One Roof</h2>
+                <p class="home-section__intro">From strategic staffing to cutting-edge technology, we deliver the full spectrum of services your business needs to thrive.</p>
             </div>
 
-            <div class="services-grid">
-                <div class="service-card" id="recruitment">
-                    <div class="service-card-visual">
-                        <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Person 1 -->
-                            <circle cx="25" cy="20" r="6" fill="#1E88E5"/>
-                            <path d="M18 30 Q25 32 32 30 L30 40 Q25 42 20 40 Z" fill="#1E88E5"/>
-                            <!-- Person 2 -->
-                            <circle cx="50" cy="18" r="6" fill="#00BFA5"/>
-                            <path d="M43 28 Q50 30 57 28 L55 38 Q50 40 45 38 Z" fill="#00BFA5"/>
-                            <!-- Person 3 -->
-                            <circle cx="75" cy="20" r="6" fill="#42A5F5"/>
-                            <path d="M68 30 Q75 32 82 30 L80 40 Q75 42 70 40 Z" fill="#42A5F5"/>
-                            <!-- Connection lines -->
-                            <line x1="25" y1="40" x2="25" y2="55" stroke="#1E88E5" stroke-width="1.5"/>
-                            <line x1="50" y1="38" x2="50" y2="55" stroke="#00BFA5" stroke-width="1.5"/>
-                            <line x1="75" y1="40" x2="75" y2="55" stroke="#42A5F5" stroke-width="1.5"/>
-                            <path d="M25 55 L75 55" stroke="#1E88E5" stroke-width="2" opacity="0.5"/>
-                        </svg>
+            <div class="home-services">
+                <div class="home-service">
+                    <div class="home-service__icon">
+                        <i class="fas fa-users"></i>
                     </div>
                     <h3>Recruitment & Staffing</h3>
-                    <div class="service-badge">3+ Years | 5000+ Placements</div>
-                    <p>Strategic staffing solutions from junior positions to executive search. Build your team with vetted, top-tier talent across all domains.</p>
-                    <div class="service-features">
-                        <span>✓ Executive Search</span>
-                        <span>✓ Contract Staffing</span>
-                        <span>✓ Permanent Placement</span>
-                    </div>
-                    <a href="staffing-solutions.html" class="service-link">Learn More →</a>
+                    <p>Strategic placement from entry-level to C-suite executives with comprehensive market research and perfect role matching.</p>
+                    <a href="staffing-solutions.html" class="home-service__link">Explore Service <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <div class="service-card" id="web-cloud">
-                    <div class="service-card-visual">
-                        <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Cloud -->
-                            <path d="M30 50 Q20 50 20 40 Q20 30 30 30 Q35 20 45 20 Q55 20 60 30 Q70 30 70 40 Q70 50 60 50 Z" 
-                                  fill="none" stroke="#1E88E5" stroke-width="2"/>
-                            <!-- Database/Server -->
-                            <rect x="15" y="60" width="12" height="15" rx="2" fill="none" stroke="#00BFA5" stroke-width="1.5"/>
-                            <line x1="15" y1="65" x2="27" y2="65" stroke="#00BFA5" stroke-width="1.5"/>
-                            <line x1="15" y1="70" x2="27" y2="70" stroke="#00BFA5" stroke-width="1.5"/>
-                            <!-- Server -->
-                            <rect x="35" y="60" width="12" height="15" rx="2" fill="none" stroke="#42A5F5" stroke-width="1.5"/>
-                            <line x1="35" y1="65" x2="47" y2="65" stroke="#42A5F5" stroke-width="1.5"/>
-                            <line x1="35" y1="70" x2="47" y2="70" stroke="#42A5F5" stroke-width="1.5"/>
-                            <!-- Server -->
-                            <rect x="55" y="60" width="12" height="15" rx="2" fill="none" stroke="#1E88E5" stroke-width="1.5"/>
-                            <line x1="55" y1="65" x2="67" y2="65" stroke="#1E88E5" stroke-width="1.5"/>
-                            <line x1="55" y1="70" x2="67" y2="70" stroke="#1E88E5" stroke-width="1.5"/>
-                        </svg>
+                <div class="home-service">
+                    <div class="home-service__icon">
+                        <i class="fas fa-cloud"></i>
                     </div>
                     <h3>Cloud & IT Services</h3>
-                    <div class="service-badge">AWS | Azure | GCP | On-Premise</div>
-                    <p>End-to-end cloud solutions, web design, mobile app development, and modern IT infrastructure for your digital success.</p>
-                    <div class="service-features">
-                        <span>✓ Cloud Migration</span>
-                        <span>✓ App Development</span>
-                        <span>✓ Infrastructure Design</span>
-                    </div>
-                    <a href="cloud-solutions.html" class="service-link">Learn More →</a>
+                    <p>End-to-end cloud solutions, web design, mobile app development, and modern IT infrastructure for digital success.</p>
+                    <a href="cloud-solutions.html" class="home-service__link">Explore Service <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <div class="service-card" id="devops">
-                    <div class="service-card-visual">
-                        <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="20" cy="40" r="8" fill="none" stroke="#1E88E5" stroke-width="2"/>
-                            <circle cx="50" cy="20" r="8" fill="none" stroke="#00BFA5" stroke-width="2"/>
-                            <circle cx="80" cy="40" r="8" fill="none" stroke="#42A5F5" stroke-width="2"/>
-                            <line x1="28" y1="36" x2="42" y2="24" stroke="#1E88E5" stroke-width="2"/>
-                            <line x1="58" y1="24" x2="72" y2="36" stroke="#42A5F5" stroke-width="2"/>
-                            <path d="M20 50 Q50 70 80 50" fill="none" stroke="#00BFA5" stroke-width="2"/>
-                        </svg>
+                <div class="home-service">
+                    <div class="home-service__icon">
+                        <i class="fas fa-code-branch"></i>
                     </div>
                     <h3>DevOps & Reliability</h3>
-                    <div class="service-badge">CI/CD | IaC | SRE</div>
-                    <p>Automate delivery with modern pipelines, infrastructure as code, and observability to keep releases fast, safe, and reliable.</p>
-                    <div class="service-features">
-                        <span>✓ CI/CD Pipelines</span>
-                        <span>✓ Infrastructure as Code</span>
-                        <span>✓ Monitoring & Alerts</span>
-                    </div>
-                    <a href="devops.html" class="service-link">Learn More →</a>
+                    <p>Automate delivery with modern CI/CD pipelines, infrastructure as code, and observability for fast, safe releases.</p>
+                    <a href="devops.html" class="home-service__link">Explore Service <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <div class="service-card" id="email-solutions">
-                    <div class="service-card-visual">
-                        <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Envelope -->
-                            <rect x="20" y="20" width="60" height="40" rx="3" fill="none" stroke="#1E88E5" stroke-width="2"/>
-                            <path d="M20 20 L50 40 L80 20" fill="none" stroke="#00BFA5" stroke-width="2" stroke-linejoin="round"/>
-                            <!-- Lock symbol -->
-                            <rect x="43" y="52" width="14" height="10" rx="2" fill="none" stroke="#42A5F5" stroke-width="1.5"/>
-                            <path d="M47 52 V48 Q47 44 50 44 Q53 44 53 48 V52" fill="none" stroke="#42A5F5" stroke-width="1.5" stroke-linecap="round"/>
-                            <circle cx="50" cy="57" r="1.5" fill="#42A5F5"/>
-                        </svg>
+                <div class="home-service">
+                    <div class="home-service__icon">
+                        <i class="fas fa-envelope"></i>
                     </div>
-                    <h3>Business Email Solutions</h3>
-                    <div class="service-badge">99.9% Uptime | Enterprise Grade</div>
-                    <p>Google Workspace, Microsoft 365, and Zimbra integration. Seamless, secure, and collaborative communication infrastructure.</p>
-                    <div class="service-features">
-                        <span>✓ Email Migration</span>
-                        <span>✓ Security Setup</span>
-                        <span>✓ User Training</span>
-                    </div>
-                    <a href="custom-apps.html" class="service-link">Learn More →</a>
+                    <h3>Business Communications</h3>
+                    <p>Google Workspace, Microsoft 365, and Zimbra integration. Secure and collaborative communication platforms.</p>
+                    <a href="custom-apps.html" class="home-service__link">Explore Service <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <div class="service-card" id="hr-consulting">
-                    <div class="service-card-visual">
-                        <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
-                            <!-- HR symbol: People with settings -->
-                            <!-- Person 1 -->
-                            <circle cx="30" cy="25" r="6" fill="#1E88E5"/>
-                            <path d="M23 35 Q30 37 37 35 L35 45 Q30 47 25 45 Z" fill="#1E88E5"/>
-                            <!-- Person 2 -->
-                            <circle cx="70" cy="25" r="6" fill="#42A5F5"/>
-                            <path d="M63 35 Q70 37 77 35 L75 45 Q70 47 65 45 Z" fill="#42A5F5"/>
-                            <!-- Gear/Cog -->
-                            <circle cx="50" cy="50" r="8" fill="none" stroke="#00BFA5" stroke-width="1.5"/>
-                            <circle cx="50" cy="50" r="4" fill="none" stroke="#00BFA5" stroke-width="1.5"/>
-                            <line x1="50" y1="38" x2="50" y2="32" stroke="#00BFA5" stroke-width="1.5"/>
-                            <line x1="50" y1="62" x2="50" y2="68" stroke="#00BFA5" stroke-width="1.5"/>
-                            <line x1="62" y1="50" x2="68" y2="50" stroke="#00BFA5" stroke-width="1.5"/>
-                            <line x1="38" y1="50" x2="32" y2="50" stroke="#00BFA5" stroke-width="1.5"/>
-                        </svg>
+                <div class="home-service">
+                    <div class="home-service__icon">
+                        <i class="fas fa-user-tie"></i>
                     </div>
-                    <h3>HR Consulting & Solutions</h3>
-                    <div class="service-badge">HR Tech | Compliance | Strategy</div>
-                    <p>Strategic HR planning, talent management, organizational development, payroll, and comprehensive employee management solutions.</p>
-                    <div class="service-features">
-                        <span>✓ HR Systems</span>
-                        <span>✓ Payroll Integration</span>
-                        <span>✓ Compliance</span>
-                    </div>
-                    <a href="quality-assurance.html" class="service-link">Learn More →</a>
+                    <h3>HR Consulting</h3>
+                    <p>Strategic HR planning, talent management, organizational development, and comprehensive employee lifecycle management.</p>
+                    <a href="quality-assurance.html" class="home-service__link">Explore Service <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <div class="service-card" id="ai-analytics">
-                    <div class="service-card-visual">
-                        <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Chart bars -->
-                            <rect x="15" y="55" width="8" height="15" fill="#1E88E5"/>
-                            <rect x="28" y="45" width="8" height="25" fill="#00BFA5"/>
-                            <rect x="41" y="35" width="8" height="35" fill="#42A5F5"/>
-                            <rect x="54" y="40" width="8" height="30" fill="#1E88E5"/>
-                            <rect x="67" y="28" width="8" height="42" fill="#00BFA5"/>
-                            <!-- Trend line -->
-                            <polyline points="19,55 32,45 45,35 58,40 71,28" fill="none" stroke="#42A5F5" stroke-width="2" stroke-linejoin="round"/>
-                            <!-- Data points -->
-                            <circle cx="19" cy="55" r="2" fill="#42A5F5"/>
-                            <circle cx="32" cy="45" r="2" fill="#42A5F5"/>
-                            <circle cx="45" cy="35" r="2" fill="#42A5F5"/>
-                            <circle cx="58" cy="40" r="2" fill="#42A5F5"/>
-                            <circle cx="71" cy="28" r="2" fill="#42A5F5"/>
-                        </svg>
+                <div class="home-service">
+                    <div class="home-service__icon">
+                        <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3>AI & Business Analytics</h3>
-                    <div class="service-badge">BI Tools | ML Models | Insights</div>
-                    <p>Data-driven insights, BI solutions, AI/ML implementations. Transform raw data into strategic competitive advantages and actionable intelligence.</p>
-                    <div class="service-features">
-                        <span>✓ BI Dashboards</span>
-                        <span>✓ Predictive Analytics</span>
-                        <span>✓ ML Modeling</span>
-                    </div>
-                    <a href="bi-tools.html" class="service-link">Learn More →</a>
+                    <h3>AI & Analytics</h3>
+                    <p>BI solutions, AI/ML implementations, and data-driven insights transforming raw data into competitive advantages.</p>
+                    <a href="bi-tools.html" class="home-service__link">Explore Service <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <div class="service-card" id="big-data">
-                    <div class="service-card-visual">
-                        <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Database cylinders -->
-                            <ellipse cx="30" cy="25" rx="10" ry="4" fill="none" stroke="#1E88E5" stroke-width="2"/>
-                            <line x1="20" y1="25" x2="20" y2="38" stroke="#1E88E5" stroke-width="2"/>
-                            <line x1="40" y1="25" x2="40" y2="38" stroke="#1E88E5" stroke-width="2"/>
-                            <ellipse cx="30" cy="38" rx="10" ry="4" fill="none" stroke="#1E88E5" stroke-width="2"/>
-                            
-                            <ellipse cx="70" cy="30" rx="10" ry="4" fill="none" stroke="#42A5F5" stroke-width="2"/>
-                            <line x1="60" y1="30" x2="60" y2="43" stroke="#42A5F5" stroke-width="2"/>
-                            <line x1="80" y1="30" x2="80" y2="43" stroke="#42A5F5" stroke-width="2"/>
-                            <ellipse cx="70" cy="43" rx="10" ry="4" fill="none" stroke="#42A5F5" stroke-width="2"/>
-                            
-                            <!-- Data flow streams -->
-                            <path d="M30 42 Q45 48 50 55" fill="none" stroke="#00BFA5" stroke-width="2" stroke-dasharray="3,3"/>
-                            <path d="M70 47 Q60 52 50 55" fill="none" stroke="#00BFA5" stroke-width="2" stroke-dasharray="3,3"/>
-                            
-                            <!-- Processing node -->
-                            <circle cx="50" cy="58" r="8" fill="none" stroke="#00BFA5" stroke-width="2"/>
-                            <circle cx="50" cy="58" r="3" fill="#00BFA5"/>
-                        </svg>
+                <div class="home-service">
+                    <div class="home-service__icon">
+                        <i class="fas fa-database"></i>
                     </div>
-                    <h3>Big Data & Data Engineering</h3>
-                    <div class="service-badge">Lakehouse | Spark | Kafka</div>
-                    <p>Scalable data platforms, streaming pipelines, and lakehouse architectures. Transform massive datasets into real-time insights with modern data engineering.</p>
-                    <div class="service-features">
-                        <span>✓ Data Lakes & Lakehouses</span>
-                        <span>✓ ETL/ELT Pipelines</span>
-                        <span>✓ Real-time Streaming</span>
-                    </div>
-                    <a href="big-data.html" class="service-link">Learn More →</a>
+                    <h3>Big Data Engineering</h3>
+                    <p>Scalable data platforms, streaming pipelines, and lakehouse architectures for massive datasets and real-time insights.</p>
+                    <a href="big-data.html" class="home-service__link">Explore Service <i class="fas fa-arrow-right"></i></a>
                 </div>
 
-                <div class="service-card" id="digital-transform">
-                    <div class="service-card-visual">
-                        <svg viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Rocket body -->
-                            <path d="M50 10 L58 25 L50 35 L42 25 Z" fill="#1E88E5"/>
-                            <!-- Rocket window -->
-                            <circle cx="50" cy="22" r="3" fill="#00BFA5"/>
-                            <!-- Rocket flames -->
-                            <path d="M45 35 Q42 50 45 65" fill="none" stroke="#42A5F5" stroke-width="3" stroke-linecap="round"/>
-                            <path d="M50 37 Q50 55 50 70" fill="none" stroke="#1E88E5" stroke-width="3" stroke-linecap="round"/>
-                            <path d="M55 35 Q58 50 55 65" fill="none" stroke="#00BFA5" stroke-width="3" stroke-linecap="round"/>
-                            <!-- Glow effect -->
-                            <circle cx="50" cy="58" r="12" fill="none" stroke="#42A5F5" stroke-width="1" opacity="0.3"/>
-                        </svg>
+                <div class="home-service">
+                    <div class="home-service__icon">
+                        <i class="fas fa-rocket"></i>
                     </div>
                     <h3>Digital Transformation</h3>
-                    <div class="service-badge">ERP | CRM | Automation</div>
-                    <p>Complete business modernization including SAP, Salesforce, and custom platforms. We guide you through every step of your digital journey with proven expertise.</p>
-                    <div class="service-features">
-                        <span>✓ Process Automation</span>
-                        <span>✓ Legacy Modernization</span>
-                        <span>✓ Change Management</span>
-                    </div>
-                    <a href="ai-ml-solutions.html" class="service-link">Learn More →</a>
+                    <p>Complete business modernization with SAP, Salesforce, and custom platforms guiding your digital journey.</p>
+                    <a href="ai-ml-solutions.html" class="home-service__link">Explore Service <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
+    <!-- Why Ainvnt Section -->
+    <section id="about" class="home-section home-section--alt">
         <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>Why Choose Ainvnt</h2>
-                    <p>With over 3+ years of proven expertise and a team of 50+ passionate professionals, Ainvnt is your one-stop partner for comprehensive digital transformation. From strategic staffing to cutting-edge cloud solutions, we deliver results that matter.</p>
-                    <div class="about-features">
-                        <div class="feature">
-                            <i class="fas fa-check"></i>
-                            <span>3+ years of trusted expertise</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check"></i>
-                            <span>One-stop solution provider</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check"></i>
-                            <span>Expert team across domains</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check"></i>
-                            <span>Proven track record of success</span>
-                        </div>
+            <div class="home-why">
+                <div class="home-why__visual">
+                    <div class="home-why__box home-why__box--primary">
+                        <i class="fas fa-award"></i>
+                        <h4>Expert Quality</h4>
+                        <p>Premium solutions from dedicated professionals</p>
+                    </div>
+                    <div class="home-why__box home-why__box--secondary">
+                        <i class="fas fa-handshake"></i>
+                        <h4>One-Stop Partner</h4>
+                        <p>Comprehensive services, single source</p>
                     </div>
                 </div>
-                <div class="about-image">
-                    <img src="assets/img/about-us.png" alt="Why Choose Ainvnt - Team and Solutions" class="about-image-img">
+                <div class="home-why__content">
+                    <span class="home-label">Why Ainvnt</span>
+                    <h2>Your Trusted Digital Transformation Partner</h2>
+                    <p>With over 3+ years of proven expertise and a team of 50+ passionate professionals, Ainvnt is your one-stop partner for comprehensive digital transformation. From strategic staffing to cutting-edge cloud solutions, we deliver results that matter.</p>
+                    <div class="home-why__features">
+                        <div class="home-why__feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>3+ years of trusted expertise</span>
+                        </div>
+                        <div class="home-why__feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>One-stop solution provider</span>
+                        </div>
+                        <div class="home-why__feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Expert team across domains</span>
+                        </div>
+                        <div class="home-why__feature">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Proven track record</span>
+                        </div>
+                    </div>
+                    <a href="about-us.html" class="home-btn home-btn--primary">Learn More About Us <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Process Section -->
-    <section class="process">
+    <section class="home-section">
         <div class="container">
-            <div class="section-header">
-                <h2>Our Process</h2>
-                <p>A proven methodology for delivering successful projects</p>
+            <div class="home-section__header">
+                <span class="home-label">Our Process</span>
+                <h2>Your Journey to Success</h2>
+                <p class="home-section__intro">A proven four-phase methodology designed to transform your vision into reality with precision and excellence.</p>
             </div>
 
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-number">01</div>
-                    <h3>Discovery</h3>
-                    <p>We understand your business goals and requirements</p>
+            <div class="home-process-timeline">
+                <div class="home-process-timeline__line"></div>
+                
+                <div class="home-process-timeline__item home-process-timeline__item--left">
+                    <div class="home-process-timeline__content">
+                        <div class="home-process-timeline__icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <div class="home-process-timeline__badge">Phase 01</div>
+                        <h3>Discovery</h3>
+                        <p>We dive deep into understanding your business goals, challenges, and requirements through collaborative discovery sessions and stakeholder interviews.</p>
+                        <ul class="home-process-timeline__features">
+                            <li><i class="fas fa-check"></i> Requirements Gathering</li>
+                            <li><i class="fas fa-check"></i> Stakeholder Interviews</li>
+                            <li><i class="fas fa-check"></i> Technical Assessment</li>
+                        </ul>
+                    </div>
+                    <div class="home-process-timeline__marker">1</div>
                 </div>
-                <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
-                <div class="process-step">
-                    <div class="step-number">02</div>
-                    <h3>Planning</h3>
-                    <p>Develop a comprehensive strategy and roadmap</p>
+
+                <div class="home-process-timeline__item home-process-timeline__item--right">
+                    <div class="home-process-timeline__content">
+                        <div class="home-process-timeline__icon">
+                            <i class="fas fa-pencil-ruler"></i>
+                        </div>
+                        <div class="home-process-timeline__badge">Phase 02</div>
+                        <h3>Planning</h3>
+                        <p>Develop comprehensive strategy and roadmap with clear milestones, deliverables, and success metrics aligned with your business objectives.</p>
+                        <ul class="home-process-timeline__features">
+                            <li><i class="fas fa-check"></i> Strategic Roadmap</li>
+                            <li><i class="fas fa-check"></i> Resource Planning</li>
+                            <li><i class="fas fa-check"></i> Risk Assessment</li>
+                        </ul>
+                    </div>
+                    <div class="home-process-timeline__marker">2</div>
                 </div>
-                <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
-                <div class="process-step">
-                    <div class="step-number">03</div>
-                    <h3>Execution</h3>
-                    <p>Build and implement your solution</p>
+
+                <div class="home-process-timeline__item home-process-timeline__item--left">
+                    <div class="home-process-timeline__content">
+                        <div class="home-process-timeline__icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="home-process-timeline__badge">Phase 03</div>
+                        <h3>Execution</h3>
+                        <p>Build and implement your solution with agile methodology, continuous feedback loops, and rigorous quality assurance throughout the development cycle.</p>
+                        <ul class="home-process-timeline__features">
+                            <li><i class="fas fa-check"></i> Agile Development</li>
+                            <li><i class="fas fa-check"></i> Quality Assurance</li>
+                            <li><i class="fas fa-check"></i> Progress Tracking</li>
+                        </ul>
+                    </div>
+                    <div class="home-process-timeline__marker">3</div>
                 </div>
-                <div class="process-arrow"><i class="fas fa-arrow-right"></i></div>
-                <div class="process-step">
-                    <div class="step-number">04</div>
-                    <h3>Support</h3>
-                    <p>Ongoing maintenance and optimization</p>
+
+                <div class="home-process-timeline__item home-process-timeline__item--right">
+                    <div class="home-process-timeline__content">
+                        <div class="home-process-timeline__icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div class="home-process-timeline__badge">Phase 04</div>
+                        <h3>Support</h3>
+                        <p>Ongoing maintenance, optimization, and enhancement to ensure sustained success with proactive monitoring and continuous improvement initiatives.</p>
+                        <ul class="home-process-timeline__features">
+                            <li><i class="fas fa-check"></i> 24/7 Monitoring</li>
+                            <li><i class="fas fa-check"></i> Performance Optimization</li>
+                            <li><i class="fas fa-check"></i> Continuous Enhancement</li>
+                        </ul>
+                    </div>
+                    <div class="home-process-timeline__marker">4</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
+    <!-- Portfolio Highlights -->
+    <section id="portfolio" class="home-section home-section--alt">
         <div class="container">
-            <div class="section-header">
-                <h2>Recent Projects</h2>
-                <p>Showcasing our successful engagements and solutions</p>
+            <div class="home-section__header">
+                <span class="home-label">Our Work</span>
+                <h2>Recent Success Stories</h2>
+                <p class="home-section__intro">Showcasing our successful engagements and transformative solutions.</p>
             </div>
 
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <div class="portfolio-image">
+            <div class="home-portfolio">
+                <div class="home-portfolio__item">
+                    <div class="home-portfolio__icon">
                         <i class="fas fa-shopping-cart"></i>
                     </div>
                     <h3>E-Commerce Platform</h3>
-                    <p>Modern online store with advanced features</p>
+                    <p>Modern online store with advanced features and seamless checkout experience</p>
                 </div>
 
-                <div class="portfolio-item">
-                    <div class="portfolio-image">
+                <div class="home-portfolio__item">
+                    <div class="home-portfolio__icon">
                         <i class="fas fa-chart-bar"></i>
                     </div>
                     <h3>Analytics Dashboard</h3>
-                    <p>Real-time business intelligence system</p>
+                    <p>Real-time business intelligence system with predictive insights</p>
                 </div>
 
-                <div class="portfolio-item">
-                    <div class="portfolio-image">
+                <div class="home-portfolio__item">
+                    <div class="home-portfolio__icon">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
                     <h3>Mobile Banking App</h3>
-                    <p>Secure financial mobile application</p>
+                    <p>Secure financial mobile application with biometric authentication</p>
                 </div>
 
-                <div class="portfolio-item">
-                    <div class="portfolio-image">
+                <div class="home-portfolio__item">
+                    <div class="home-portfolio__icon">
                         <i class="fas fa-cloud"></i>
                     </div>
                     <h3>Cloud Migration</h3>
-                    <p>Enterprise infrastructure transformation</p>
+                    <p>Enterprise infrastructure transformation to multi-cloud architecture</p>
                 </div>
+            </div>
+
+            <div class="home-portfolio__cta">
+                <a href="portfolio.html" class="home-btn home-btn--secondary">View Full Portfolio <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="cta">
+    <section class="home-cta">
+        <div class="home-cta__glow"></div>
         <div class="container">
-            <h2>Ready to Start Your Project?</h2>
-            <p>Talk with our team about your goals, timeline, and the best path forward.</p>
-            <a href="contact.html" class="btn btn-primary">Contact Us Today</a>
+            <div class="home-cta__content">
+                <h2>Ready to Start Your Digital Transformation?</h2>
+                <p>Talk with our team about your goals, timeline, and the best path forward. Let's build something remarkable together.</p>
+                <div class="home-cta__buttons">
+                    <a href="contact.html" class="home-btn home-btn--white">Contact Us Today <i class="fas fa-arrow-right"></i></a>
+                    <a href="get-started.html" class="home-btn home-btn--outline">Get Started</a>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section id="contact" class="home-section">
         <div class="container">
-            <div class="section-header">
-                <h2>Get In Touch</h2>
-                <p>We'd love to hear from you. Let's work together</p>
+            <div class="home-section__header">
+                <span class="home-label">Get In Touch</span>
+                <h2>Let's Work Together</h2>
             </div>
 
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt"></i>
+            <div class="home-contact">
+                <div class="home-contact__info">
+                    <div class="home-contact__item">
+                        <div class="home-contact__item-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
                         <div>
-                            <h3>Address</h3>
-                            <p>Ramachandrapuram, Murikipudi, Andhra Pradesh 522626</p>
+                            <h4>Address</h4>
+                            <p>Ramachandrapuram, Murikipudi<br>Andhra Pradesh 522626</p>
                         </div>
                     </div>
-                    <div class="info-item">
-                        <i class="fas fa-phone"></i>
+
+                    <div class="home-contact__item">
+                        <div class="home-contact__item-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
                         <div>
-                            <h3>Phone</h3>
+                            <h4>Phone</h4>
                             <p>+91 9490364940</p>
                         </div>
                     </div>
-                    <div class="info-item">
-                        <i class="fas fa-envelope"></i>
+
+                    <div class="home-contact__item">
+                        <div class="home-contact__item-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
                         <div>
-                            <h3>Email</h3>
+                            <h4>Email</h4>
                             <p>ainvnt@outlook.com</p>
                         </div>
                     </div>
                 </div>
 
-                <form id="index-contact-form" class="contact-form">
-                    <div id="index-form-messages" style="display: none; padding: 15px; border-radius: 8px; margin-bottom: 15px; font-weight: 500;"></div>
-                    <div class="form-group">
-                        <input type="text" name="from_name" id="index_from_name" placeholder="Your Name" required>
+                <form id="index-contact-form" class="home-contact__form">
+                    <div id="index-form-messages" class="home-form-messages"></div>
+                    
+                    <div class="home-form-group">
+                        <label for="index_from_name">Full Name</label>
+                        <input type="text" name="from_name" id="index_from_name" required>
                     </div>
-                    <div class="form-group">
-                        <input type="email" name="reply_to" id="index_reply_to" placeholder="Your Email" required>
+
+                    <div class="home-form-group">
+                        <label for="index_reply_to">Email Address</label>
+                        <input type="email" name="reply_to" id="index_reply_to" required>
                     </div>
-                    <div class="form-group">
-                        <input type="text" name="subject" id="index_subject" placeholder="Subject">
+
+                    <div class="home-form-group">
+                        <label for="index_subject">Subject</label>
+                        <input type="text" name="subject" id="index_subject">
                     </div>
-                    <div class="form-group">
-                        <textarea name="message" id="index_message" placeholder="Your Message" rows="5" required></textarea>
+
+                    <div class="home-form-group">
+                        <label for="index_message">Message</label>
+                        <textarea name="message" id="index_message" rows="5" required></textarea>
                     </div>
-                    <button type="submit" id="index-submit-btn" class="btn btn-primary">Send Message</button>
+
+                    <button type="submit" id="index-submit-btn" class="home-btn home-btn--primary">Send Message <i class="fas fa-paper-plane"></i></button>
                 </form>
             </div>
         </div>
