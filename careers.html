@@ -34,9 +34,10 @@
     
     <title>Careers at Ainvnt - Build Your Future With Us</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Sora:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body class="careers-page">
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -72,211 +73,480 @@
                         <a href="sales-force.html">Salesforce</a>
                     </div>
                 </li>
+                <li><a href="careers.html" class="nav-link active">Careers</a></li>
                 <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
                 <li><a href="contact.html" class="nav-link">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Page Hero with KPI Panel -->
-    <section class="bi-hero">
-        <div style="position: absolute; top: -50%; right: -10%; width: 500px; height: 500px; background: rgba(30, 136, 229, 0.1); border-radius: 50%; animation: float 6s ease-in-out infinite;"></div>
-        <div style="position: absolute; bottom: -30%; left: -5%; width: 400px; height: 400px; background: rgba(30, 136, 229, 0.08); border-radius: 50%; animation: float 8s ease-in-out infinite reverse;"></div>
-        
-        <div class="bi-hero-grid" style="position: relative; z-index: 2;">
-            <div>
-                <h1 style="font-size: 3.2rem; color: white; margin-bottom: 20px;">Join Our Team</h1>
-                <p style="font-size: 1.2rem; color: rgba(255,255,255,0.9); margin-bottom: 30px; line-height: 1.8;">Build your career with Ainvnt—a company where your skills, innovation, and dedication drive meaningful impact. We're looking for passionate professionals ready to grow with us.</p>
-                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                    <span class="bi-pill" style="background: rgba(66, 165, 245, 0.2); border: 1px solid rgba(255,255,255,0.3); color: white;">🚀 Career Growth</span>
-                    <span class="bi-pill" style="background: rgba(0, 191, 165, 0.2); border: 1px solid rgba(255,255,255,0.3); color: white;">🌍 Global Opportunities</span>
-                </div>
-            </div>
-            
-            <div class="bi-hero-panel">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; height: 100%;">
-                    <div class="bi-kpi">
-                        <div style="font-size: 2.8rem; font-weight: 700; color: #00BFA5; margin-bottom: 8px;">50+</div>
-                        <div style="font-size: 0.95rem; color: rgba(255,255,255,0.8); font-weight: 500;">Team Members</div>
+    <main class="careers-main">
+        <section class="careers-hero">
+            <div class="careers-hero__glow"></div>
+            <div class="container careers-hero__grid">
+                <div class="careers-hero__copy">
+                    <p class="careers-kicker">Careers at Ainvnt</p>
+                    <h1>Build the teams that power modern business</h1>
+                    <p class="careers-lede">Ainvnt brings together strategists, engineers, and creators to deliver transformative technology. Join us to shape digital products, grow your skills, and work with clients who trust you with the big bets.</p>
+                    <div class="careers-hero__actions">
+                        <a href="#open-roles" class="btn btn-primary">View open roles</a>
+                        <a href="#culture" class="btn btn-secondary">Life at Ainvnt</a>
                     </div>
-                    <div class="bi-kpi">
-                        <div style="font-size: 2.8rem; font-weight: 700; color: #42A5F5; margin-bottom: 8px;">10+</div>
-                        <div style="font-size: 0.95rem; color: rgba(255,255,255,0.8); font-weight: 500;">Specializations</div>
-                    </div>
-                    <div class="bi-kpi">
-                        <div style="font-size: 2.8rem; font-weight: 700; color: #00BFA5; margin-bottom: 8px;">3+</div>
-                        <div style="font-size: 0.95rem; color: rgba(255,255,255,0.8); font-weight: 500;">Years Experience</div>
-                    </div>
-                    <div class="bi-kpi">
-                        <div style="font-size: 2.8rem; font-weight: 700; color: #42A5F5; margin-bottom: 8px;">100%</div>
-                        <div style="font-size: 0.95rem; color: rgba(255,255,255,0.8); font-weight: 500;">Invested in Growth</div>
+                    <div class="careers-hero__tags">
+                        <span class="careers-tag">Remote-friendly</span>
+                        <span class="careers-tag">Growth focus</span>
+                        <span class="careers-tag">Client impact</span>
                     </div>
                 </div>
+                <div class="careers-hero__visual">
+                    <div class="careers-hero__card">
+                        <img src="assets/img/careers-illustration-growth.svg" alt="Team growth" class="careers-hero__image">
+                        <div class="careers-hero__stats">
+                            <div>
+                                <span class="stat-value">50+</span>
+                                <span class="stat-label">Specialists</span>
+                            </div>
+                            <div>
+                                <span class="stat-value">10+</span>
+                                <span class="stat-label">Industries served</span>
+                            </div>
+                            <div>
+                                <span class="stat-value">3</span>
+                                <span class="stat-label">Global hubs</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Why Join Ainvnt Section -->
-    <section class="bi-section" style="padding: 80px 20px; background: linear-gradient(180deg, #F9FAFB 0%, #FFFFFF 100%);">
-        <div class="container">
-            <div class="section-header">
-                <h2>Why Join Ainvnt</h2>
-                <p>We're more than just a company—we're a community of innovators, problem-solvers, and industry leaders</p>
+        <section class="careers-section">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Why people choose Ainvnt</h2>
+                    <p>We combine the pace of a modern studio with the mentorship and stability of a long-term partner.</p>
+                </div>
+                <div class="value-grid">
+                    <article class="value-card">
+                        <img src="assets/img/emoji-rocket.svg" alt="Growth" class="value-icon">
+                        <h3>Career growth</h3>
+                        <p>Structured pathways, skill tracks, and leadership coaching designed around your goals.</p>
+                    </article>
+                    <article class="value-card">
+                        <img src="assets/img/emoji-target.svg" alt="Impact" class="value-icon">
+                        <h3>Meaningful impact</h3>
+                        <p>Build solutions that help teams ship faster, work smarter, and serve customers better.</p>
+                    </article>
+                    <article class="value-card">
+                        <img src="assets/img/emoji-users.svg" alt="Teams" class="value-icon">
+                        <h3>Collaborative teams</h3>
+                        <p>Work alongside product thinkers, cloud engineers, and data leaders who share knowledge.</p>
+                    </article>
+                    <article class="value-card">
+                        <img src="assets/img/emoji-shield.svg" alt="Support" class="value-icon">
+                        <h3>Well-being first</h3>
+                        <p>Flexible schedules, balanced workloads, and benefits that support life outside work.</p>
+                    </article>
+                    <article class="value-card">
+                        <img src="assets/img/emoji-globe.svg" alt="Global" class="value-icon">
+                        <h3>Global reach</h3>
+                        <p>Collaborate with clients across North America, Europe, and Asia-Pacific.</p>
+                    </article>
+                    <article class="value-card">
+                        <img src="assets/img/emoji-sparkle.svg" alt="Innovation" class="value-icon">
+                        <h3>Innovation rhythm</h3>
+                        <p>Dedicated time for research, prototypes, and internal accelerators.</p>
+                    </article>
+                </div>
             </div>
+        </section>
 
-            <div class="bi-card-grid">
-                <div class="bi-card">
-                    <div style="font-size: 2.5rem; margin-bottom: 15px; color: #1E88E5;">📈</div>
-                    <h3>Career Growth</h3>
-                    <p>Clear career paths, mentorship programs, and continuous learning opportunities. We invest in your professional development and help you reach your full potential.</p>
+        <section id="open-roles" class="careers-section careers-section--alternate">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Open roles</h2>
+                    <p>Find a role that matches your strengths and the future you want to build.</p>
                 </div>
-                <div class="bi-card">
-                    <div style="font-size: 2.5rem; margin-bottom: 15px; color: #00BFA5;">🎯</div>
-                    <h3>Meaningful Work</h3>
-                    <p>Work on impactful projects that transform businesses and industries. Your contributions matter and directly influence our clients' success and growth.</p>
+                <div class="role-grid">
+                    <article class="role-card">
+                        <div class="role-header">
+                            <h3>Senior Software Developer</h3>
+                            <span class="role-type">Full-time</span>
+                        </div>
+                        <p>Own end-to-end delivery for cloud-native apps and mentor junior engineers.</p>
+                        <div class="role-tags">
+                            <span>Remote</span>
+                            <span>React</span>
+                            <span>Node.js</span>
+                        </div>
+                    </article>
+                    <article class="role-card">
+                        <div class="role-header">
+                            <h3>Cloud Solutions Architect</h3>
+                            <span class="role-type">Full-time</span>
+                        </div>
+                        <p>Design secure multi-cloud architectures and lead migration strategy.</p>
+                        <div class="role-tags">
+                            <span>Hybrid</span>
+                            <span>AWS</span>
+                            <span>Azure</span>
+                        </div>
+                    </article>
+                    <article class="role-card">
+                        <div class="role-header">
+                            <h3>Data Engineering Lead</h3>
+                            <span class="role-type">Full-time</span>
+                        </div>
+                        <p>Build data platforms that enable real-time analytics and ML workflows.</p>
+                        <div class="role-tags">
+                            <span>Remote</span>
+                            <span>Python</span>
+                            <span>Snowflake</span>
+                        </div>
+                    </article>
+                    <article class="role-card">
+                        <div class="role-header">
+                            <h3>QA Automation Engineer</h3>
+                            <span class="role-type">Full-time</span>
+                        </div>
+                        <p>Scale automated test suites and improve delivery reliability.</p>
+                        <div class="role-tags">
+                            <span>Hybrid</span>
+                            <span>Cypress</span>
+                            <span>Playwright</span>
+                        </div>
+                    </article>
                 </div>
-                <div class="bi-card">
-                    <div style="font-size: 2.5rem; margin-bottom: 15px; color: #42A5F5;">🤝</div>
-                    <h3>Inclusive Culture</h3>
-                    <p>Collaborate with diverse, talented teams in a supportive environment. We believe in equal opportunity, respect, and celebrating different perspectives and backgrounds.</p>
-                </div>
-                <div class="bi-card">
-                    <div style="font-size: 2.5rem; margin-bottom: 15px; color: #1E88E5;">💼</div>
-                    <h3>Competitive Benefits</h3>
-                    <p>Competitive compensation, health insurance, retirement plans, performance bonuses, and flexible work arrangements to support your well-being and work-life balance.</p>
-                </div>
-                <div class="bi-card">
-                    <div style="font-size: 2.5rem; margin-bottom: 15px; color: #00BFA5;">🌍</div>
-                    <h3>Global Reach</h3>
-                    <p>Work with international teams and clients. Gain exposure to global markets, diverse technologies, and expand your network across multiple continents and industries.</p>
-                </div>
-                <div class="bi-card">
-                    <div style="font-size: 2.5rem; margin-bottom: 15px; color: #42A5F5;">🏆</div>
-                    <h3>Industry Recognition</h3>
-                    <p>Be part of an award-winning team with proven expertise. Work alongside industry leaders and build credentials that advance your entire career trajectory.</p>
+                <div class="roles-cta">
+                    <a href="contact.html" class="btn btn-primary">Send your resume</a>
+                    <span class="roles-note">Do not see your role? We are always looking for great talent.</span>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Open Positions Section -->
-    <section class="bi-section" style="padding: 80px 20px; background: white;">
-        <div class="container">
-            <div class="section-header">
-                <h2>Open Positions</h2>
-                <p>Explore exciting career opportunities across our organization</p>
-            </div>
-
-            <div class="bi-card-grid">
-                <div class="bi-card" style="border-top: 4px solid #1E88E5;">
-                    <h3>Senior Software Developer</h3>
-                    <p>Lead development of enterprise-scale applications. 5+ years experience with web frameworks, cloud platforms, and software architecture patterns required.</p>
-                    <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
-                        <span style="background: rgba(30, 136, 229, 0.1); color: #1E88E5; padding: 6px 12px; border-radius: 20px; font-size: 0.9rem;">Full-Time</span>
-                        <span style="background: rgba(0, 191, 165, 0.1); color: #00BFA5; padding: 6px 12px; border-radius: 20px; font-size: 0.9rem;">Remote/Hybrid</span>
+        <section class="careers-section">
+            <div class="container">
+                <div class="growth-grid">
+                    <div>
+                        <p class="careers-kicker">Your growth plan</p>
+                        <h2>Tools, coaching, and a clear path forward</h2>
+                        <p>We blend coaching, curated learning, and real-world projects so you can grow faster and with purpose.</p>
+                        <ol class="growth-steps">
+                            <li>Career assessment and personalized roadmap</li>
+                            <li>Mentorship with senior specialists</li>
+                            <li>Certification support and learning stipends</li>
+                            <li>Visible progression into leadership roles</li>
+                        </ol>
+                    </div>
+                    <div class="growth-visual">
+                        <img src="assets/img/careers-illustration-support.svg" alt="Career support" class="growth-image">
                     </div>
                 </div>
-                <div class="bi-card" style="border-top: 4px solid #00BFA5;">
-                    <h3>Cloud Solutions Architect</h3>
-                    <p>Design scalable cloud infrastructure for global clients. Design AWS/Azure/GCP solutions with focus on security, performance, and cost optimization.</p>
-                    <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
-                        <span style="background: rgba(0, 191, 165, 0.1); color: #00BFA5; padding: 6px 12px; border-radius: 20px; font-size: 0.9rem;">Full-Time</span>
-                        <span style="background: rgba(0, 191, 165, 0.1); color: #00BFA5; padding: 6px 12px; border-radius: 20px; font-size: 0.9rem;">Remote/Hybrid</span>
+            </div>
+        </section>
+
+        <section class="careers-section careers-section--alternate">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Career tools you will use</h2>
+                    <p>Practical resources that help you build clarity, confidence, and momentum.</p>
+                </div>
+                <div class="tool-grid">
+                    <article class="tool-card">
+                        <img src="assets/img/careers-illustration-management.svg" alt="Assessment" class="tool-image">
+                        <h3>Career assessment</h3>
+                        <p>Pinpoint strengths, growth areas, and the roles that fit your energy and ambition.</p>
+                    </article>
+                    <article class="tool-card">
+                        <img src="assets/img/careers-illustration-jobsearch.svg" alt="Interview prep" class="tool-image">
+                        <h3>Interview prep</h3>
+                        <p>Practice real scenarios with feedback and coaching before client conversations.</p>
+                    </article>
+                    <article class="tool-card">
+                        <img src="assets/img/careers-illustration-coaching.svg" alt="Coaching" class="tool-image">
+                        <h3>Leadership coaching</h3>
+                        <p>Develop leadership habits and communication skills that scale with your career.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="careers-section careers-section--alternate">
+            <div class="container">
+                <div class="performance-hero">
+                    <div>
+                        <p class="careers-kicker">Your journey</p>
+                        <h2>Career management your way</h2>
+                        <p>Developing skills and talents can take you further in your job. But true career fulfillment may not come from salary bumps or title changes. What moves the needle for you? Let's find out.</p>
+                        <p class="performance-lede">Career management helps you discover and prioritize things like:</p>
+                        <ul class="performance-list">
+                            <li>Work / life balance</li>
+                            <li>Culture focused leaders</li>
+                            <li>Flexible schedules</li>
+                            <li>Optimal coworker relationships</li>
+                        </ul>
+                    </div>
+                    <div class="performance-hero__visual">
+                        <img src="assets/img/careers-illustration-management.svg" alt="Career management" class="performance-image">
                     </div>
                 </div>
-                <div class="bi-card" style="border-top: 4px solid #42A5F5;">
-                    <h3>Mobile App Developer</h3>
-                    <p>Build iOS and Android applications using React Native or Flutter. 3+ years experience developing production mobile apps required.</p>
-                    <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
-                        <span style="background: rgba(66, 165, 245, 0.1); color: #42A5F5; padding: 6px 12px; border-radius: 20px; font-size: 0.9rem;">Full-Time</span>
-                        <span style="background: rgba(66, 165, 245, 0.1); color: #42A5F5; padding: 6px 12px; border-radius: 20px; font-size: 0.9rem;">Remote</span>
+
+                <div class="performance-grid">
+                    <div class="performance-card">
+                        <h3>What does advancement mean to you?</h3>
+                        <p>You have decided. Demanding more of your life and career is a priority. Where do you begin?</p>
+                        <ul>
+                            <li>Create goals</li>
+                            <li>Identify action steps</li>
+                            <li>Have a supportive sounding board</li>
+                            <li>Progress to a place of happiness and success</li>
+                        </ul>
+                    </div>
+                    <div class="performance-card performance-card--accent">
+                        <h3>Own your career growth</h3>
+                        <p>The first great step on the road to fulfillment is taking ownership of your career goals.</p>
+                        <ul>
+                            <li>Traits assessment test</li>
+                            <li>Personalized career coaching</li>
+                            <li>Learn strengths and values</li>
+                            <li>Identify goals and actions</li>
+                            <li>Know workplace trends</li>
+                            <li>Skills development</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="bi-card" style="border-top: 4px solid #1E88E5;">
-                    <h3>QA Engineer</h3>
-                    <p>Ensure product quality through comprehensive testing strategies. Experience with automation testing, QA frameworks, and performance testing required.</p>
-                    <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
-                        <span style="background: rgba(30, 136, 229, 0.1); color: #1E88E5; padding: 6px 12px; border-radius: 20px; font-size: 0.9rem;">Full-Time</span>
-                        <span style="background: rgba(30, 136, 229, 0.1); color: #1E88E5; padding: 6px 12px; border-radius: 20px; font-size: 0.9rem;">Remote/Hybrid</span>
+
+                <div class="performance-coaching">
+                    <div>
+                        <h3>Exceed your potential</h3>
+                        <p>After three coaching sessions, 94% of our users report feeling supported in their career journey. Imagine knowing you are backed by your own career expert at every step.</p>
                     </div>
+                    <a href="contact.html" class="btn btn-primary">Meet our coaches</a>
                 </div>
-                <div class="bi-card" style="border-top: 4px solid #00BFA5;">
-                    <h3>HR Consultant</h3>
-                    <p>Provide strategic HR solutions for enterprise clients. 5+ years HR consulting experience with focus on talent management and organizational development.</p>
-                    <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
-                        <span style="background: rgba(0, 191, 165, 0.1); color: #00BFA5; padding: 6px 12px; border-radius: 20px; font-size: 0.9rem;">Full-Time</span>
-                        <span style="background: rgba(0, 191, 165, 0.1); color: #00BFA5; padding: 6px 12px; border-radius: 20px; font-size: 0.9rem;">Hybrid</span>
+
+                <div class="performance-cta">
+                    <div>
+                        <h3>Start advancing</h3>
+                        <p>Register for free to get personalized insights, or explore premium support for deeper guidance.</p>
                     </div>
+                    <a href="get-started.html" class="btn btn-secondary">Start Advancing</a>
                 </div>
-                <div class="bi-card" style="border-top: 4px solid #42A5F5;">
-                    <h3>Staffing Specialist</h3>
-                    <p>Source and place top talent for client organizations. Experience in recruitment, candidate sourcing, and client relationship management required.</p>
-                    <div style="margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap;">
-                        <span style="background: rgba(66, 165, 245, 0.1); color: #42A5F5; padding: 6px 12px; border-radius: 20px; font-size: 0.9rem;">Full-Time</span>
-                        <span style="background: rgba(66, 165, 245, 0.1); color: #42A5F5; padding: 6px 12px; border-radius: 20px; font-size: 0.9rem;">Remote/Hybrid</span>
+
+                <div class="performance-articles">
+                    <div class="section-heading">
+                        <h2>Take charge of your career</h2>
+                        <p>From work-life balance to communicating with your boss, explore tips and best practices to get closer to your goals.</p>
+                    </div>
+                    <div class="tool-grid">
+                        <article class="tool-card">
+                            <img src="assets/img/emoji-shield.svg" alt="Work balance" class="tool-image">
+                            <h3>Whom Do You Answer To?</h3>
+                            <p>Strengthen alignment and clarity in your reporting relationships.</p>
+                        </article>
+                        <article class="tool-card">
+                            <img src="assets/img/emoji-health.svg" alt="Wellness" class="tool-image">
+                            <h3>The Wellness Factor</h3>
+                            <p>Bring practical self-care habits into your everyday work routines.</p>
+                        </article>
+                        <article class="tool-card">
+                            <img src="assets/img/emoji-users.svg" alt="Team dynamics" class="tool-image">
+                            <h3>When You and Your Boss Clash</h3>
+                            <p>Navigate challenging dynamics with confidence and communication.</p>
+                        </article>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Company Culture Section -->
-    <section class="bi-section" style="padding: 80px 20px; background: linear-gradient(180deg, #F9FAFB 0%, #FFFFFF 100%);">
-        <div class="container">
-            <div class="section-header">
-                <h2>Our Culture & Values</h2>
-                <p>We're committed to building an environment where excellence, innovation, and collaboration thrive</p>
-            </div>
-
-            <div style="max-width: 900px; margin: 0 auto; font-size: 1.1rem; line-height: 1.8; color: #1F2937; margin-bottom: 60px; text-align: center;">
-                <p>At Ainvnt, our people are our greatest asset. We foster a culture rooted in excellence, integrity, and continuous innovation. We believe in creating an inclusive, supportive environment where every team member can thrive, grow, and make meaningful contributions to our clients' success and the technology industry.</p>
-            </div>
-
-            <div class="bi-card-grid">
-                <div class="bi-card">
-                    <div style="font-size: 2.5rem; margin-bottom: 15px; color: #1E88E5;">💡</div>
-                    <h3>Innovation First</h3>
-                    <p>We encourage creative thinking, experimentation, and new ideas. Your suggestions are valued and can shape the direction of our technology and services.</p>
-                </div>
-                <div class="bi-card">
-                    <div style="font-size: 2.5rem; margin-bottom: 15px; color: #00BFA5;">🎓</div>
-                    <h3>Continuous Learning</h3>
-                    <p>Access to training programs, certifications, conferences, and educational resources. We invest in keeping your skills current and helping you master new technologies.</p>
-                </div>
-                <div class="bi-card">
-                    <div style="font-size: 2.5rem; margin-bottom: 15px; color: #42A5F5;">🏥</div>
-                    <h3>Health & Wellness</h3>
-                    <p>Comprehensive health insurance, mental health support, fitness programs, and wellness initiatives. We care about your physical and mental well-being.</p>
-                </div>
-                <div class="bi-card">
-                    <div style="font-size: 2.5rem; margin-bottom: 15px; color: #1E88E5;">⚖️</div>
-                    <h3>Work-Life Balance</h3>
-                    <p>Flexible schedules, remote work options, and generous PTO. We believe balanced team members are engaged, productive, and creative team members.</p>
-                </div>
-                <div class="bi-card">
-                    <div style="font-size: 2.5rem; margin-bottom: 15px; color: #00BFA5;">🌱</div>
-                    <h3>Career Development</h3>
-                    <p>Personalized career paths, mentorship from senior leaders, and clear advancement opportunities. We're invested in YOUR long-term growth and success.</p>
-                </div>
-                <div class="bi-card">
-                    <div style="font-size: 2.5rem; margin-bottom: 15px; color: #42A5F5;">🤝</div>
-                    <h3>Diversity & Inclusion</h3>
-                    <p>Equal opportunity employer committed to building diverse teams. We celebrate different backgrounds, perspectives, and experiences as our strength.</p>
+        <section id="culture" class="careers-section">
+            <div class="container">
+                <div class="culture-grid">
+                    <div class="culture-copy">
+                        <p class="careers-kicker">Life at Ainvnt</p>
+                        <h2>People-first culture with real autonomy</h2>
+                        <p>We trust our teams to own their outcomes, collaborate openly, and take time to recharge. You will have the support to experiment, learn, and share wins.</p>
+                        <div class="culture-stats">
+                            <div>
+                                <span class="stat-value">96%</span>
+                                <span class="stat-label">Would recommend Ainvnt</span>
+                            </div>
+                            <div>
+                                <span class="stat-value">4.8/5</span>
+                                <span class="stat-label">Team satisfaction</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="culture-panel">
+                        <div class="culture-tile">
+                            <span>Flexible schedules</span>
+                        </div>
+                        <div class="culture-tile">
+                            <span>Learning budget</span>
+                        </div>
+                        <div class="culture-tile">
+                            <span>Wellness support</span>
+                        </div>
+                        <div class="culture-tile">
+                            <span>Global retreats</span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- CTA Section -->
-    <section style="padding: 60px 20px; background: linear-gradient(135deg, #0D47A1 0%, #1E88E5 50%, #00BFA5 100%); position: relative; overflow: hidden;">
-        <div style="position: absolute; top: -50%; left: -10%; width: 400px; height: 400px; background: rgba(30, 136, 229, 0.1); border-radius: 50%; animation: float 8s ease-in-out infinite;"></div>
-        <div style="position: absolute; bottom: -30%; right: -5%; width: 300px; height: 300px; background: rgba(30, 136, 229, 0.08); border-radius: 50%; animation: float 6s ease-in-out infinite reverse;"></div>
-        <div class="container" style="position: relative; z-index: 2; text-align: center;">
-            <h2 style="font-size: 2.5rem; color: white; margin-bottom: 15px;">Ready to Launch Your Career<span class="emoji-icon emoji-check emoji-solo" aria-hidden="true"></span></h2>
-            <p style="color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">Apply to any of our open positions or send us your resume. We'd love to learn about your skills, experience, and career goals. Join us in building the future of digital transformation.</p>
-            <a href="contact.html" class="btn btn-primary" style="display: inline-block; padding: 15px 40px; background: white; color: #1E88E5; text-decoration: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600;">Send Your Resume</a>
-        </div>
-    </section>
+        <section class="careers-section careers-section--alternate">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Team stories</h2>
+                    <p>Hear from the people building the future at Ainvnt.</p>
+                </div>
+                <div class="testimonial-grid">
+                    <article class="testimonial-card">
+                        <img src="assets/img/testimonial-avatar-1.svg" alt="Team member" class="testimonial-avatar">
+                        <p>"I joined for the projects, but stayed for the growth. My manager built a clear path to become a tech lead in 12 months."</p>
+                        <span class="testimonial-name">Ayesha R. - Engineering</span>
+                    </article>
+                    <article class="testimonial-card">
+                        <img src="assets/img/testimonial-avatar-2.svg" alt="Team member" class="testimonial-avatar">
+                        <p>"The culture here is the perfect balance of autonomy and support. I have space to experiment without feeling alone."</p>
+                        <span class="testimonial-name">Luis M. - Data</span>
+                    </article>
+                    <article class="testimonial-card">
+                        <img src="assets/img/testimonial-avatar-3.svg" alt="Team member" class="testimonial-avatar">
+                        <p>"We collaborate across disciplines, so you learn fast. It feels like a modern studio, not a rigid consultancy."</p>
+                        <span class="testimonial-name">Priya K. - Product</span>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="careers-section performance-section">
+            <div class="container">
+                <div class="performance-hero">
+                    <div>
+                        <p class="careers-kicker">Your journey</p>
+                        <h2>Drive your career performance</h2>
+                        <p>Having a plan and goals is important, but reaching your true potential requires learning the lessons of great leaders.</p>
+                        <p class="performance-lede">Career performance helps you build on things like:</p>
+                        <ul class="performance-list">
+                            <li>Improving communication skills</li>
+                            <li>Building effective teams</li>
+                            <li>Holding others accountable</li>
+                            <li>Aligning with your organization's goals</li>
+                        </ul>
+                    </div>
+                    <div class="performance-hero__visual">
+                        <img src="assets/img/careers-illustration-launch.svg" alt="Career performance" class="performance-image">
+                    </div>
+                </div>
+
+                <div class="performance-grid">
+                    <div class="performance-card">
+                        <h3>What does career performance look like to you?</h3>
+                        <p>You have goals and aspirations. Performing better in your career is a priority. Where do you begin?</p>
+                        <ul>
+                            <li>Focus on leadership skills</li>
+                            <li>Develop stronger teams</li>
+                            <li>Learn best practice-sharing</li>
+                            <li>Identify your action steps</li>
+                        </ul>
+                    </div>
+                    <div class="performance-card performance-card--accent">
+                        <h3>Realize your full potential</h3>
+                        <p>Driving performance is not just about a raise or promotion. It is having a clear vision of your path and the skills to get there.</p>
+                        <ul>
+                            <li>Identify your strengths</li>
+                            <li>Target development areas</li>
+                            <li>Form an action plan</li>
+                            <li>Develop soft skills</li>
+                            <li>Practice hard conversations</li>
+                            <li>Know workplace trends</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="performance-coaching">
+                    <div>
+                        <h3>Accelerate your career performance</h3>
+                        <p>Whether you are a first-time manager or want to make the most of your team, we go further with someone on our side. After three coaching sessions, our senior professionals report stronger confidence and momentum.</p>
+                    </div>
+                    <a href="contact.html" class="btn btn-primary">Meet our coaches</a>
+                </div>
+
+                <div class="performance-cta">
+                    <div>
+                        <h3>Start advancing</h3>
+                        <p>Our coaches, tools, and articles help you advance your career. Register for free or explore premium support for deeper guidance.</p>
+                    </div>
+                    <a href="get-started.html" class="btn btn-secondary">Get started today</a>
+                </div>
+
+                <div class="performance-articles">
+                    <div class="section-heading">
+                        <h2>Career performance insights</h2>
+                        <p>From promotions to team dynamics, explore advice that keeps you moving forward.</p>
+                    </div>
+                    <div class="tool-grid">
+                        <article class="tool-card">
+                            <img src="assets/img/emoji-bulb.svg" alt="EQ" class="tool-image">
+                            <h3>The essentials: your EQ</h3>
+                            <p>Grow emotional intelligence to lead with clarity and empathy.</p>
+                        </article>
+                        <article class="tool-card">
+                            <img src="assets/img/emoji-users.svg" alt="Manager" class="tool-image">
+                            <h3>Directing employees older than you</h3>
+                            <p>Build trust and credibility when leading experienced teams.</p>
+                        </article>
+                        <article class="tool-card">
+                            <img src="assets/img/emoji-target.svg" alt="Decisions" class="tool-image">
+                            <h3>Four tough calls for managers</h3>
+                            <p>Navigate high-stakes decisions with confidence.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="careers-section">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Frequently asked questions</h2>
+                    <p>Quick answers to help you decide if Ainvnt is the right fit.</p>
+                </div>
+                <div class="faq-grid">
+                    <details class="faq-item" open>
+                        <summary>How does the hiring process work?</summary>
+                        <p>We start with a short intro call, followed by a role-focused interview and a collaborative case or technical session.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Do you support remote work?</summary>
+                        <p>Yes. We are remote-friendly with optional hub days in major cities for team collaboration.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>What learning opportunities are available?</summary>
+                        <p>Each team member receives a learning budget, certification support, and access to internal masterclasses.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Can I apply for future roles?</summary>
+                        <p>Absolutely. Send your resume and we will keep you in mind for upcoming openings.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="careers-cta">
+            <div class="container careers-cta__content">
+                <div>
+                    <h2>Ready to build what is next?</h2>
+                    <p>Tell us about your skills, your goals, and the kind of work you want to do. We will take it from there.</p>
+                </div>
+                <div class="careers-cta__actions">
+                    <a href="contact.html" class="btn btn-primary">Start the conversation</a>
+                    <a href="get-started.html" class="btn btn-secondary">Explore our work</a>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer Container -->
     <div id="footer-container"></div>
