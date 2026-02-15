@@ -148,14 +148,16 @@ button.btn-secondary:active {
    ======================== */
 
 .navbar {
-    background-color: var(--bg-white);
-    border-bottom: 1px solid var(--border-color);
+    background-color: rgba(255, 255, 255, 0.92);
+    border-bottom: 1px solid rgba(30, 136, 229, 0.12);
     position: sticky;
     top: 0;
     z-index: 1000;
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
     will-change: transform;
+    backdrop-filter: blur(10px);
+    overflow: visible;
 }
 
 .navbar.is-hidden {
@@ -169,8 +171,9 @@ button.btn-secondary:active {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 70px;
-    min-height: 56px;
+    height: 76px;
+    min-height: 60px;
+    overflow: visible;
 }
 
 .logo {
@@ -186,35 +189,33 @@ button.btn-secondary:active {
 
 .nav-menu {
     display: flex;
-    gap: 0;
+    gap: 6px;
     align-items: center;
     list-style: none;
+    overflow: visible;
 }
 
 .nav-link {
     color: var(--text-dark);
-    font-weight: 500;
+    font-weight: 600;
     position: relative;
-    padding: 8px 16px;
-    min-height: 48px;
+    padding: 10px 16px;
+    min-height: 44px;
     display: flex;
     align-items: center;
+    border-radius: 999px;
+    border: 1px solid transparent;
     transition: var(--transition);
 }
 
 .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 3px;
-    background: var(--primary-color);
-    transition: width 0.3s ease;
+    display: none;
 }
 
 .nav-link:hover {
     color: var(--primary-color);
+    background: rgba(30, 136, 229, 0.08);
+    border-color: rgba(30, 136, 229, 0.18);
 }
 
 .nav-link:hover::after {
@@ -222,7 +223,10 @@ button.btn-secondary:active {
 }
 
 .nav-link.active {
-    color: var(--primary-color);
+    color: #ffffff;
+    background: linear-gradient(135deg, #1E88E5 0%, #00BFA5 100%);
+    border-color: transparent;
+    box-shadow: 0 8px 18px rgba(30, 136, 229, 0.22);
 }
 
 .nav-link.active::after {
@@ -235,48 +239,58 @@ button.btn-secondary:active {
 
 .dropdown-menu {
     position: absolute;
-    top: 100%;
+    top: calc(100% + 8px);
     left: 0;
     background-color: var(--bg-white);
-    border-radius: 8px;
-    box-shadow: var(--shadow-lg);
-    min-width: 200px;
+    border-radius: 12px;
+    box-shadow: 0 16px 35px rgba(15, 23, 42, 0.12);
+    border: 1px solid rgba(30, 136, 229, 0.12);
+    min-width: 220px;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-10px);
-    transition: var(--transition);
-    margin-top: 20px;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    padding: 8px;
+    z-index: 1100;
+    max-height: min(70vh, 560px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
 }
 
-.dropdown:hover .dropdown-menu {
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu,
+.dropdown.is-open .dropdown-menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+    pointer-events: auto;
 }
 
 .dropdown-menu a {
     display: block;
-    padding: 12px 20px;
+    padding: 10px 14px;
     color: var(--text-dark);
     font-weight: 500;
-    min-height: 48px;
+    min-height: 44px;
     display: flex;
     align-items: center;
     transition: var(--transition);
+    border-radius: 10px;
 }
 
 .dropdown-menu a:first-child {
-    border-radius: 8px 8px 0 0;
+    border-radius: 10px;
 }
 
 .dropdown-menu a:last-child {
-    border-radius: 0 0 8px 8px;
+    border-radius: 10px;
 }
 
 .dropdown-menu a:hover {
-    background-color: var(--bg-light);
+    background-color: rgba(30, 136, 229, 0.1);
     color: var(--primary-color);
-    padding-left: 24px;
+    padding-left: 18px;
 }
 
 /* ========================
@@ -834,13 +848,16 @@ button.btn-secondary:active {
     align-items: center;
     -webkit-user-select: none;
     user-select: none;
+    background: rgba(30, 136, 229, 0.08);
+    border: 1px solid rgba(30, 136, 229, 0.18);
+    border-radius: 12px;
 }
 
 .nav-toggle-label span {
-    width: 25px;
+    width: 24px;
     height: 3px;
     background-color: var(--text-dark);
-    margin: 5px 0;
+    margin: 4px 0;
     transition: var(--transition);
     border-radius: 2px;
     display: block;
@@ -1807,7 +1824,7 @@ button.btn-secondary:active {
 
     /* Navigation */
     .navbar {
-        padding: 15px 16px;
+        padding: 12px 16px;
         height: auto;
     }
 
@@ -1822,15 +1839,17 @@ button.btn-secondary:active {
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 55px;
+        top: 64px;
         flex-direction: column;
-        background-color: var(--bg-white);
+        background-color: rgba(255, 255, 255, 0.98);
         width: 100%;
+        height: calc(100vh - 64px);
         text-align: left;
         transition: 0.3s;
         box-shadow: var(--shadow-lg);
-        padding: 20px 0;
+        padding: 18px 16px 24px;
         z-index: 999;
+        overflow-y: auto;
     }
 
     .nav-toggle:checked ~ .nav-menu {
@@ -1850,8 +1869,9 @@ button.btn-secondary:active {
 
     .nav-link {
         display: block;
-        padding: 12px 20px;
+        padding: 12px 16px;
         font-size: 0.95rem;
+        border-radius: 12px;
     }
 
     .nav-link::after {
@@ -1868,18 +1888,19 @@ button.btn-secondary:active {
         box-shadow: none;
         margin: 0;
         padding: 0;
-        background-color: #f5f5f5;
+        background-color: rgba(30, 136, 229, 0.06);
+        border: 1px solid rgba(30, 136, 229, 0.08);
+        border-radius: 12px;
     }
 
-    .dropdown:hover .dropdown-menu,
-    .nav-toggle:checked ~ .dropdown .dropdown-menu {
+    .dropdown.is-open .dropdown-menu {
         opacity: 1;
         visibility: visible;
         max-height: 500px;
     }
 
     .dropdown-menu a {
-        padding: 10px 30px;
+        padding: 10px 14px 10px 20px;
         font-size: 0.9rem;
     }
 
@@ -6546,6 +6567,10 @@ table {
 }
 
 @media (max-width: 1024px) {
+    body.nav-open {
+        overflow: hidden;
+    }
+
     .nav-toggle-label {
         display: flex;
         order: 2;
@@ -6554,15 +6579,15 @@ table {
     .nav-menu {
         position: fixed;
         left: -100%;
-        top: 70px;
+        top: 76px;
         width: 100%;
-        height: calc(100vh - 70px);
+        height: calc(100vh - 76px);
         flex-direction: column;
         align-items: flex-start;
-        gap: 0;
-        background-color: var(--bg-white);
+        gap: 8px;
+        background-color: rgba(255, 255, 255, 0.98);
         text-align: left;
-        padding: 16px 0 24px;
+        padding: 18px 16px 24px;
         overflow-y: auto;
         box-shadow: var(--shadow-lg);
         transition: left 0.3s ease;
@@ -6575,7 +6600,8 @@ table {
 
     .nav-link {
         width: 100%;
-        padding: 12px 20px;
+        padding: 12px 16px;
+        border-radius: 12px;
     }
 
     .nav-link::after {
@@ -6588,20 +6614,33 @@ table {
 
     .dropdown-menu {
         position: static;
-        opacity: 1;
-        visibility: visible;
+        opacity: 0;
+        visibility: hidden;
         transform: none;
+        max-height: 0;
+        overflow: hidden;
         box-shadow: none;
         margin: 0;
-        padding: 4px 0 10px 20px;
+        padding: 0;
         min-width: 0;
-        background: transparent;
-        border-radius: 0;
+        background: rgba(30, 136, 229, 0.06);
+        border-radius: 12px;
+        border: 1px solid rgba(30, 136, 229, 0.08);
+        transition: all 0.3s ease;
+    }
+
+    .dropdown.is-open .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        max-height: min(58vh, 560px);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding: 6px 0 10px 16px;
     }
 
     .dropdown-menu a {
         padding: 10px 12px;
-        border-radius: 8px;
+        border-radius: 10px;
     }
 }
 
