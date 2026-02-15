@@ -89,7 +89,7 @@
                     <h1>Tell us what you are building</h1>
                     <p class="contact-lede">From cloud transformations to product launches, our team is ready to help you plan the next move. Share your goals and we will respond within one business day.</p>
                     <div class="contact-hero__actions">
-                        <a href="#contact-form" class="btn btn-primary">Start a project</a>
+                        <a href="#contact-form-section" class="btn btn-primary">Start a project</a>
                         <a href="portfolio.html" class="btn btn-secondary">View Our Work</a>
                     </div>
                     <div class="contact-hero__highlights">
@@ -144,7 +144,7 @@
                         <i class="fas fa-briefcase"></i>
                         <h3>New project</h3>
                         <p>Share scope, timelines, and the outcomes you want to achieve.</p>
-                        <a href="#contact-form" class="btn btn-secondary">Start a Project</a>
+                        <a href="#contact-form-section" class="btn btn-secondary">Start a Project</a>
                     </article>
                     <article>
                         <i class="fas fa-users"></i>
@@ -162,7 +162,7 @@
             </div>
         </section>
 
-        <section id="contact-form" class="contact-section contact-section--alt">
+        <section id="contact-form-section" class="contact-section contact-section--alt">
             <div class="container contact-form-grid">
                 <div class="contact-info">
                     <p class="contact-kicker">Contact details</p>
@@ -292,7 +292,7 @@
                     <p>Tell us about your timeline and goals. We will map out the fastest path to impact.</p>
                 </div>
                 <div class="contact-cta__actions">
-                    <a href="#contact-form" class="btn btn-primary">Start a project</a>
+                    <a href="#contact-form-section" class="btn btn-primary">Start a project</a>
                     <a href="portfolio.html" class="btn btn-secondary">View Our Work</a>
                 </div>
             </div>
@@ -320,205 +320,186 @@
     
     <!-- Contact Form Handler -->
     <script>
-        // Form validation functions
         function validateEmail(email) {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return emailRegex.test(email);
         }
-        
+
         function validatePhone(phone) {
-            if (!phone) return true; // Optional field
+            if (!phone) return true;
             const phoneRegex = /^[+]?[(]?[0-9]{1,4}[)]?[-\s.]?[(]?[0-9]{1,4}[)]?[-\s.]?[0-9]{1,9}$/;
             return phoneRegex.test(phone.replace(/\s+/g, ''));
         }
-        
+
         function validateForm(formData) {
             const errors = {};
-            
-            // Validate Full Name
-            if (!formData.name || formData.name.trim().length < 2) {
+
+            if (!formData.name || formData.name.length < 2) {
                 errors.name = 'Please enter a valid name (at least 2 characters)';
             }
-            
-            // Validate Email
+
             if (!formData.email) {
                 errors.email = 'Email is required';
             } else if (!validateEmail(formData.email)) {
                 errors.email = 'Please enter a valid email address';
             }
-            
-            // Validate Phone (optional but if provided, must be valid)
+
             if (formData.phone && !validatePhone(formData.phone)) {
                 errors.phone = 'Please enter a valid phone number';
             }
-            
-            // Service Interest is optional - no validation needed
-            
-            // Validate Message
-            if (!formData.message || formData.message.trim().length < 10) {
+
+            if (!formData.message || formData.message.length < 10) {
                 errors.message = 'Message must be at least 10 characters long';
             }
-            
+
             return errors;
         }
-        
-        function showValidationErrors(errors) {
-            // Field mapping from form data keys to element IDs
-            const fieldMap = {
-                'name': 'from_name',
-                'email': 'reply_to',
-                'phone': 'phone_number',
-                'service': 'service_interest',
-                'message': 'message'
-            };
-            
-            // Clear previous error styles
-            document.querySelectorAll('.form-field-error').forEach(el => {
+
+        function clearValidationErrors() {
+            document.querySelectorAll('.form-field-error').forEach(function(el) {
                 el.classList.remove('form-field-error');
+                el.style.borderColor = '';
                 const errorMsg = el.parentElement.querySelector('.field-error-msg');
-                if (errorMsg) errorMsg.remove();
-            });
-            
-            // Show new errors
-            Object.keys(errors).forEach(fieldName => {
-                const elementId = fieldMap[fieldName] || fieldName;
-                const field = document.getElementById(elementId);
-                if (field) {
-                    field.classList.add('form-field-error');
-                    field.style.borderColor = '#EF4444';
-                    const errorMsg = document.createElement('div');
-                    errorMsg.className = 'field-error-msg';
-                    errorMsg.style.cssText = 'color: #DC2626; font-size: 0.875rem; margin-top: 4px; display: block;';
-                    errorMsg.textContent = errors[fieldName];
-                    field.parentElement.appendChild(errorMsg);
+                if (errorMsg) {
+                    errorMsg.remove();
                 }
             });
         }
-        
-        // Wait for DOM to be ready before attaching event listener
+
+        function showValidationErrors(errors) {
+            const fieldMap = {
+                name: 'from_name',
+                email: 'reply_to',
+                phone: 'phone_number',
+                service: 'service_interest',
+                message: 'message'
+            };
+
+            clearValidationErrors();
+
+            Object.keys(errors).forEach(function(fieldName) {
+                const elementId = fieldMap[fieldName] || fieldName;
+                const field = document.getElementById(elementId);
+                if (!field) return;
+
+                field.classList.add('form-field-error');
+                field.style.borderColor = '#EF4444';
+
+                const errorMsg = document.createElement('div');
+                errorMsg.className = 'field-error-msg';
+                errorMsg.style.cssText = 'color: #DC2626; font-size: 0.875rem; margin-top: 4px; display: block;';
+                errorMsg.textContent = errors[fieldName];
+                field.parentElement.appendChild(errorMsg);
+            });
+        }
+
+        function showFormMessage(formMessages, type, html) {
+            formMessages.style.display = 'block';
+            formMessages.style.padding = '16px';
+            formMessages.style.borderRadius = '8px';
+            formMessages.style.marginBottom = '20px';
+            formMessages.style.border = type === 'success' ? '1px solid #10B981' : '1px solid #EF4444';
+            formMessages.style.background = type === 'success' ? '#D1FAE5' : '#FEE2E2';
+            formMessages.style.color = type === 'success' ? '#065F46' : '#991B1B';
+            formMessages.innerHTML = html;
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('contact-form');
-            
-            if (form) {
-                form.addEventListener('submit', function(event) {
-                    event.preventDefault();
-                    
-                    // Collect form data
-                    const formData = {
-                        name: document.getElementById('from_name').value,
-                        email: document.getElementById('reply_to').value,
-                        phone: document.getElementById('phone_number').value,
-                        service: document.getElementById('service_interest').value,
-                        message: document.getElementById('message').value
-                    };
-                    
-                    // Validate form
-                    const errors = validateForm(formData);
-                    if (Object.keys(errors).length > 0) {
-                        showValidationErrors(errors);
-                        document.getElementById('form-messages').style.display = 'none';
-                        return;
-                    }
-                    
-                    // Get form elements
-                    const submitBtn = document.getElementById('submit-btn');
-                    const btnText = document.getElementById('btn-text');
-                    const btnIcon = document.getElementById('btn-icon');
-                    const formMessages = document.getElementById('form-messages');
-                    const timeField = document.getElementById('time');
-                    
-                    // Clear previous errors
-                    document.querySelectorAll('.form-field-error').forEach(el => {
-                        el.classList.remove('form-field-error');
-                        el.style.borderColor = '';
-                        const errorMsg = el.parentElement.querySelector('.field-error-msg');
-                        if (errorMsg) errorMsg.remove();
-                    });
-                    
-                    // Set current timestamp in readable format
-                    const now = new Date();
-                    timeField.value = now.toLocaleString('en-US', { 
-                        year: 'numeric', 
-                        month: 'long', 
-                        day: 'numeric', 
-                        hour: '2-digit', 
-                        minute: '2-digit', 
-                        second: '2-digit',
-                        hour12: true
-                    });
-                    
-                    // Disable submit button and show loading state
-                    submitBtn.disabled = true;
-                    btnText.textContent = 'Sending...';
-                    btnIcon.className = 'fas fa-spinner fa-spin';
-                    
-                    // EmailJS credentials
-                    const serviceID = 'service_uemnwak';
-                    const templateID = 'template_hfhn1za';
-                    
-                    // Send email using EmailJS - pass form element
-                    emailjs.sendForm(serviceID, templateID, form)
-                        .then(function(response) {
-                            
-                            // Show success message
-                            formMessages.style.display = 'block';
-                            console.log('Email sent successfully!', response.status, response.text);
-                            
-                            // Show success message
-                            formMessages.style.display = 'block';
-                            formMessages.style.background = '#D1FAE5';
-                            formMessages.style.color = '#065F46';
-                            formMessages.style.border = '1px solid #10B981';
-                            formMessages.style.padding = '16px';
-                            formMessages.style.borderRadius = '8px';
-                            formMessages.style.marginBottom = '20px
-                            form.reset();
-                            
-                            // Re-enable button
-                            submitBtn.disabled = false;
-                            btnText.textContent = 'Send Message';
-                            btnIcon.className = 'fas fa-paper-plane';
-                            
-                            // Hide success message after 5 seconds
-                            setTimeout(function() {
-                               Log detailed error to console
-                            console.error('EmailJS Error:', error);
-                            
-                            // Show detailed error message
-                            formMessages.style.display = 'block';
-                            formMessages.style.background = '#FEE2E2';
-                            formMessages.style.color = '#991B1B';
-                            formMessages.style.border = '1px solid #EF4444';
-                            formMessages.style.padding = '16px';
-                            formMessages.style.borderRadius = '8px';
-                            formMessages.style.marginBottom = '20px';
-                            
-                            let errorMsg = 'Oops! Something went wrong while sending your message.';
-                            if (error.text) {
-                                errorMsg += '<br><small>Error: ' + error.text + '</small>';
-                            }
-                            if (error.status) {
-                                errorMsg += '<br><small>Status: ' + error.status + '</small>';
-                            }
-                            
-                            formMessages.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + errorMsg + '<br><small style="display:block; margin-top:8px;">Please try again or contact us directly at info@ainvnt.com
-                                errorMsg += ' (Status: ' + error.status + ')';
-                            }
-                            
-                            formMessages.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + errorMsg + '<br><small>Check browser console for details.</small>';
-                            
-                            // Re-enable button
-                            submitBtn.disabled = false;
-                            btnText.textContent = 'Send Message';
-                            btnIcon.className = 'fas fa-paper-plane';
-                            
-                            // Hide error message after 10 seconds
-                            setTimeout(function() {
-                                formMessages.style.display = 'none';
-                            }, 10000);
-                        });
+            if (!form) return;
+
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const formData = {
+                    name: document.getElementById('from_name').value.trim(),
+                    email: document.getElementById('reply_to').value.trim(),
+                    phone: document.getElementById('phone_number').value.trim(),
+                    service: document.getElementById('service_interest').value,
+                    message: document.getElementById('message').value.trim()
+                };
+
+                const errors = validateForm(formData);
+                const formMessages = document.getElementById('form-messages');
+                if (Object.keys(errors).length > 0) {
+                    showValidationErrors(errors);
+                    formMessages.style.display = 'none';
+                    return;
+                }
+
+                clearValidationErrors();
+
+                const submitBtn = document.getElementById('submit-btn');
+                const btnText = document.getElementById('btn-text');
+                const btnIcon = document.getElementById('btn-icon');
+                const formattedTime = new Date().toLocaleString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit',
+                    hour12: true
                 });
-            }
+
+                document.getElementById('time').value = formattedTime;
+
+                const templateParams = {
+                    name: formData.name,
+                    email: formData.email,
+                    phone: formData.phone || 'Not provided',
+                    service: formData.service || 'Not specified',
+                    message: formData.message,
+                    time: formattedTime
+                };
+
+                submitBtn.disabled = true;
+                btnText.textContent = 'Sending...';
+                btnIcon.className = 'fas fa-spinner fa-spin';
+
+                const serviceID = 'service_uemnwak';
+                const templateID = 'template_hfhn1za';
+
+                emailjs.send(serviceID, templateID, templateParams)
+                    .then(function() {
+                        showFormMessage(
+                            formMessages,
+                            'success',
+                            '<i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully.'
+                        );
+                        form.reset();
+                        setTimeout(function() {
+                            formMessages.style.display = 'none';
+                        }, 5000);
+                    })
+                    .catch(function(error) {
+                        console.error('EmailJS Error:', error);
+
+                        let errorDetails = '';
+                        if (error && error.text) {
+                            errorDetails += ' Error: ' + error.text;
+                        }
+                        if (error && error.status) {
+                            errorDetails += ' (Status: ' + error.status + ')';
+                        }
+
+                        showFormMessage(
+                            formMessages,
+                            'error',
+                            '<i class="fas fa-exclamation-circle"></i> Oops! Something went wrong while sending your message.' +
+                                errorDetails +
+                                '<br><small style="display:block; margin-top:8px;">Please try again or contact us directly at ainvnt@outlook.com.</small>'
+                        );
+                        setTimeout(function() {
+                            formMessages.style.display = 'none';
+                        }, 10000);
+                    })
+                    .finally(function() {
+                        submitBtn.disabled = false;
+                        btnText.textContent = 'Send Message';
+                        btnIcon.className = 'fas fa-paper-plane';
+                    });
+            });
         });
     </script>
 
