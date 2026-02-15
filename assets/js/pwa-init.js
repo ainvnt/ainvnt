@@ -19,17 +19,16 @@ let deferredPrompt;
 const installButton = document.getElementById('pwa-install-btn');
 
 window.addEventListener('beforeinstallprompt', (e) => {
-  // Only prevent the mini-infobar if we have an install button to show
+  // Prevent the mini-infobar from appearing on mobile
+  e.preventDefault();
+  // Stash the edvent so it can be triggered later
+  deferredPrompt = e;
+  // Show install button if it exists
   if (installButton) {
-    // Prevent the mini-infobar from appearing on mobile
-    e.preventDefault();
-    // Stash the event so it can be triggered later
-    deferredPrompt = e;
-    // Show install button
     installButton.style.display = 'block';
+    console.log('PWA install button ready');
   } else {
-    // If no install button, allow the default banner to show
-    deferredPrompt = e;
+    console.log('PWA install button not found on page');
   }
 });
 
@@ -44,6 +43,8 @@ if (installButton) {
       installButton.style.display = 'none';
     }
   });
+} else {
+  console.log('PWA install button element not found');
 }
 
 // Track if app is installed

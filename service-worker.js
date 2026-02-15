@@ -13,10 +13,10 @@ const urlsToCache = [
   '/bi-tools.html',
   '/quality-assurance.html',
   '/assets/css/style.css',
-  '/assets/css/bootstrap.min.css',
-  '/assets/css/responsive.css',
   '/assets/js/main.js',
-  '/assets/js/jquery.min.js',
+  '/assets/js/footer-loader.js',
+  '/assets/js/security.js',
+  '/assets/js/pwa-init.js',
   '/assets/img/ainvnt_logo.jpg',
   '/assets/img/favicon.png',
   '/assets/img/logo.png'
