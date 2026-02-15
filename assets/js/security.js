@@ -170,10 +170,12 @@
         // Page is being closed or reloaded
     });
 
-    // startActivity detection for performance/timing attacks
-    if (window.performance && window.performance.timing) {
-        window.performance.timing.navigationStart = Date.now();
-    }
+    // Read-only timing APIs: do not write to performance.timing/navigationStart.
+    // Keep a local timestamp instead for any internal checks.
+    const securityNavigationStart =
+        (window.performance && (window.performance.timeOrigin || window.performance.now()))
+            ? (window.performance.timeOrigin || window.performance.now())
+            : Date.now();
 
     console.log('%cProtected by Ainvnt Security', 'color: #1E88E5; font-size: 12px;');
 

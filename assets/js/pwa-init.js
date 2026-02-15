@@ -17,19 +17,21 @@ if ('serviceWorker' in navigator && (location.protocol === 'http:' || location.p
 // PWA Install prompt
 let deferredPrompt;
 const installButton = document.getElementById('pwa-install-btn');
+const hasCustomInstallButton = Boolean(installButton);
 
 window.addEventListener('beforeinstallprompt', (e) => {
+  // Intercept only when we actually have a custom install button.
+  // If no custom button exists, allow the browser's default install UI.
+  if (!hasCustomInstallButton) {
+    return;
+  }
+
   // Prevent the mini-infobar from appearing on mobile
   e.preventDefault();
-  // Stash the edvent so it can be triggered later
+  // Stash the event so it can be triggered later
   deferredPrompt = e;
-  // Show install button if it exists
-  if (installButton) {
-    installButton.style.display = 'block';
-    console.log('PWA install button ready');
-  } else {
-    console.log('PWA install button not found on page');
-  }
+  installButton.style.display = 'block';
+  console.log('PWA install button ready');
 });
 
 // Handle install button click
@@ -43,8 +45,6 @@ if (installButton) {
       installButton.style.display = 'none';
     }
   });
-} else {
-  console.log('PWA install button element not found');
 }
 
 // Track if app is installed
