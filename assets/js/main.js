@@ -4,6 +4,14 @@
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
+        const isMobileNav = window.innerWidth <= 1024;
+        const isDropdownToggle = this.classList.contains('nav-link') && this.closest('.dropdown');
+
+        // On mobile/tablet, top-level dropdown links should open their menu first.
+        if (isMobileNav && isDropdownToggle) {
+            return;
+        }
+
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
@@ -22,6 +30,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const navLinks = document.querySelectorAll('.nav-link');
 const navToggle = document.getElementById('nav-toggle');
 const navbar = document.querySelector('.navbar');
+const dropdowns = document.querySelectorAll('.dropdown');
 
 function getScrollTopButton() {
     return document.querySelector('.scroll-top');
@@ -34,12 +43,60 @@ function removeActiveClass() {
     navLinks.forEach(link => link.classList.remove('active'));
 }
 
+function closeDropdowns(except) {
+    dropdowns.forEach(dropdown => {
+        if (dropdown !== except) {
+            dropdown.classList.remove('is-open');
+        }
+    });
+}
+
+function syncNavBodyState() {
+    document.body.classList.toggle('nav-open', Boolean(navToggle && navToggle.checked));
+}
+
+if (navToggle) {
+    navToggle.addEventListener('change', () => {
+        syncNavBodyState();
+        if (!navToggle.checked) {
+            closeDropdowns();
+        }
+    });
+}
+
 navLinks.forEach(link => {
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (event) => {
+        const dropdownParent = link.closest('.dropdown');
+
+        if (dropdownParent) {
+            const isMobileNav = window.innerWidth <= 1024;
+            if (isMobileNav) {
+                event.preventDefault();
+                const willOpen = !dropdownParent.classList.contains('is-open');
+                closeDropdowns(dropdownParent);
+                if (willOpen) {
+                    dropdownParent.classList.add('is-open');
+                }
+            } else {
+                closeDropdowns();
+            }
+            return;
+        }
+
         removeActiveClass();
         link.classList.add('active');
-        navToggle.checked = false;
+        if (navToggle) {
+            navToggle.checked = false;
+            syncNavBodyState();
+        }
+        closeDropdowns();
     });
+});
+
+document.addEventListener('click', (event) => {
+    if (!event.target.closest('.dropdown') && !event.target.closest('.nav-toggle-label')) {
+        closeDropdowns();
+    }
 });
 
 window.addEventListener('scroll', () => {
@@ -66,12 +123,15 @@ window.addEventListener('scroll', () => {
         }
     });
 
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').slice(1) === current) {
-            link.classList.add('active');
-        }
-    });
+    const sectionNavLinks = Array.from(navLinks).filter(link => link.getAttribute('href').startsWith('#'));
+    if (sectionNavLinks.length > 0) {
+        sectionNavLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').slice(1) === current) {
+                link.classList.add('active');
+            }
+        });
+    }
 
     const scrollTopButton = getScrollTopButton();
     if (scrollTopButton) {
@@ -177,10 +237,24 @@ document.querySelectorAll('.service-card, .stat-card, .portfolio-item, .process-
 // MOBILE MENU CLOSE ON LINK CLICK
 // ========================
 
-document.querySelectorAll('.dropdown a').forEach(link => {
+document.querySelectorAll('.dropdown-menu a').forEach(link => {
     link.addEventListener('click', () => {
-        navToggle.checked = false;
+        if (navToggle) {
+            navToggle.checked = false;
+            syncNavBodyState();
+        }
+        closeDropdowns();
     });
+});
+
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 1024) {
+        closeDropdowns();
+        if (navToggle && navToggle.checked) {
+            navToggle.checked = false;
+        }
+    }
+    syncNavBodyState();
 });
 
 // ========================
