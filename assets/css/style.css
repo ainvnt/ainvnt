@@ -4238,6 +4238,31 @@ button.btn-secondary:active {
     gap: 18px;
 }
 
+#form-messages {
+    display: none;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+#form-messages i {
+    margin-right: 8px;
+}
+
+.form-field-error {
+    border-color: #EF4444 !important;
+    background-color: #FEF2F2;
+}
+
+.field-error-msg {
+    color: #DC2626;
+    font-size: 0.875rem;
+    margin-top: 4px;
+    display: block;
+}
+
 .contact-field label {
     display: block;
     font-weight: 600;
