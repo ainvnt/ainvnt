@@ -218,18 +218,18 @@
                             <input type="tel" name="phone" id="phone_number" placeholder="+91 XXXXX XXXXX">
                         </div>
                         <div class="contact-field">
-                            <label for="service_interest">Service interest</label>
+                            <label for="service_interest">Service interest (optional)</label>
                             <select name="service" id="service_interest">
-                                <option value="">Select a service</option>
-                                <option>Web Applications</option>
-                                <option>Mobile Apps</option>
-                                <option>Cloud Solutions</option>
-                                <option>AI & ML Solutions</option>
-                                <option>BI & Analytics</option>
-                                <option>Quality Assurance</option>
-                                <option>Custom Development</option>
-                                <option>IT Consulting</option>
-                                <option>Other</option>
+                                <option value="">Select a service (optional)</option>
+                                <option value="Web Applications">Web Applications</option>
+                                <option value="Mobile Apps">Mobile Apps</option>
+                                <option value="Cloud Solutions">Cloud Solutions</option>
+                                <option value="AI & ML Solutions">AI & ML Solutions</option>
+                                <option value="BI & Analytics">BI & Analytics</option>
+                                <option value="Quality Assurance">Quality Assurance</option>
+                                <option value="Custom Development">Custom Development</option>
+                                <option value="IT Consulting">IT Consulting</option>
+                                <option value="Other">Other</option>
                             </select>
                         </div>
                         <div class="contact-field">
@@ -311,8 +311,9 @@
                 emailjs.init({
                     publicKey: 'iqrr5-zo1Ntx6wlS_'
                 });
+                console.log('EmailJS initialized successfully');
             } catch (error) {
-                // EmailJS initialization error
+                console.error('EmailJS initialization error:', error);
             }
         })();
     </script>
@@ -351,10 +352,7 @@
                 errors.phone = 'Please enter a valid phone number';
             }
             
-            // Validate Service Interest
-            if (!formData.service || formData.service === 'Select a service') {
-                errors.service = 'Please select a service';
-            }
+            // Service Interest is optional - no validation needed
             
             // Validate Message
             if (!formData.message || formData.message.trim().length < 10) {
@@ -464,12 +462,16 @@
                             
                             // Show success message
                             formMessages.style.display = 'block';
+                            console.log('Email sent successfully!', response.status, response.text);
+                            
+                            // Show success message
+                            formMessages.style.display = 'block';
                             formMessages.style.background = '#D1FAE5';
                             formMessages.style.color = '#065F46';
                             formMessages.style.border = '1px solid #10B981';
-                            formMessages.innerHTML = '<i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully. We\'ll get back to you soon.';
-                            
-                            // Reset form
+                            formMessages.style.padding = '16px';
+                            formMessages.style.borderRadius = '8px';
+                            formMessages.style.marginBottom = '20px
                             form.reset();
                             
                             // Re-enable button
@@ -479,21 +481,27 @@
                             
                             // Hide success message after 5 seconds
                             setTimeout(function() {
-                                formMessages.style.display = 'none';
-                            }, 5000);
+                               Log detailed error to console
+                            console.error('EmailJS Error:', error);
                             
-                        }, function(error) {
                             // Show detailed error message
                             formMessages.style.display = 'block';
                             formMessages.style.background = '#FEE2E2';
                             formMessages.style.color = '#991B1B';
                             formMessages.style.border = '1px solid #EF4444';
+                            formMessages.style.padding = '16px';
+                            formMessages.style.borderRadius = '8px';
+                            formMessages.style.marginBottom = '20px';
                             
-                            let errorMsg = 'Oops! Something went wrong.';
+                            let errorMsg = 'Oops! Something went wrong while sending your message.';
                             if (error.text) {
-                                errorMsg += ' Error: ' + error.text;
+                                errorMsg += '<br><small>Error: ' + error.text + '</small>';
                             }
                             if (error.status) {
+                                errorMsg += '<br><small>Status: ' + error.status + '</small>';
+                            }
+                            
+                            formMessages.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + errorMsg + '<br><small style="display:block; margin-top:8px;">Please try again or contact us directly at info@ainvnt.com
                                 errorMsg += ' (Status: ' + error.status + ')';
                             }
                             
