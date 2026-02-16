@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Sora:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="careers-page">
+<body class="careers-page job-details-page">
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
@@ -79,16 +79,25 @@
     </nav>
 
     <main class="careers-main">
-        <section class="careers-section careers-section--alternate">
+        <section class="job-page-hero">
+            <div class="job-page-hero__glow job-page-hero__glow--one"></div>
+            <div class="job-page-hero__glow job-page-hero__glow--two"></div>
+            <div class="container job-page-hero__content">
+                <a href="careers.html#open-roles" class="job-page-back">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to open roles
+                </a>
+                <p class="careers-kicker">Career opportunity</p>
+                <h1 data-job-page-title>Job details</h1>
+                <p class="job-page-subtitle" data-job-page-subtitle>Review responsibilities, required skills, and work setup before you apply.</p>
+            </div>
+        </section>
+
+        <section class="careers-section job-page-section">
             <div class="container job-detail-shell">
-                <div class="section-heading job-detail-heading">
-                    <p class="careers-kicker">Open role</p>
-                    <h1 data-job-page-title>Job details</h1>
-                    <p>Review the role expectations and responsibilities, then apply when you are ready.</p>
-                </div>
-                <article class="role-card job-detail-card" data-job-detail aria-live="polite">
+                <div class="job-detail-layout" data-job-detail aria-live="polite">
                     <p class="role-status">Loading job details...</p>
-                </article>
+                </div>
             </div>
         </section>
     </main>

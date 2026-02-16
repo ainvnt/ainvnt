@@ -215,41 +215,6 @@
         }
     }
 
-    function createMetaChip(label, value) {
-        if (typeof value !== 'string' || !value.trim()) {
-            return null;
-        }
-
-        const chip = document.createElement('span');
-        chip.textContent = `${label}: ${value.trim()}`;
-        return chip;
-    }
-
-    function createList(items) {
-        const list = document.createElement('ul');
-        list.className = 'job-detail-list';
-
-        items.forEach(item => {
-            const listItem = document.createElement('li');
-            listItem.textContent = item;
-            list.appendChild(listItem);
-        });
-
-        return list;
-    }
-
-    function createSection(title, contentNode) {
-        const section = document.createElement('section');
-        section.className = 'job-detail-section';
-
-        const heading = document.createElement('h3');
-        heading.textContent = title;
-
-        section.appendChild(heading);
-        section.appendChild(contentNode);
-        return section;
-    }
-
     function createBackButton() {
         const backButton = document.createElement('a');
         backButton.className = 'btn btn-secondary';
@@ -258,87 +223,197 @@
         return backButton;
     }
 
+    function createDetailBlock(title, contentNode) {
+        const block = document.createElement('section');
+        block.className = 'job-detail-block';
+
+        const heading = document.createElement('h3');
+        heading.textContent = title;
+
+        block.appendChild(heading);
+        block.appendChild(contentNode);
+        return block;
+    }
+
+    function createPillCloud(items, className) {
+        const cloud = document.createElement('div');
+        cloud.className = className;
+
+        items.forEach(item => {
+            const chip = document.createElement('span');
+            chip.textContent = item;
+            cloud.appendChild(chip);
+        });
+
+        return cloud;
+    }
+
+    function createFactRow(label, value) {
+        if (typeof value !== 'string' || !value.trim()) {
+            return null;
+        }
+
+        const row = document.createElement('div');
+        row.className = 'job-detail-fact';
+
+        const term = document.createElement('dt');
+        term.textContent = label;
+
+        const detail = document.createElement('dd');
+        detail.textContent = value.trim();
+
+        row.appendChild(term);
+        row.appendChild(detail);
+        return row;
+    }
+
+    function updateJobPageContext(titleText, subtitleText, companyName) {
+        const pageHeading = document.querySelector('[data-job-page-title]');
+        if (pageHeading) {
+            pageHeading.textContent = titleText;
+        }
+
+        const pageSubtitle = document.querySelector('[data-job-page-subtitle]');
+        if (pageSubtitle) {
+            pageSubtitle.textContent = subtitleText;
+        }
+
+        document.title = `${titleText} | Careers at ${companyName}`;
+    }
+
     function renderJobDetailError(container, message) {
         container.textContent = '';
-        container.appendChild(createStatusMessage(message));
+
+        const errorCard = document.createElement('div');
+        errorCard.className = 'job-detail-error-card';
+        errorCard.appendChild(createStatusMessage(message));
 
         const actions = document.createElement('div');
         actions.className = 'job-detail-actions';
         actions.appendChild(createBackButton());
-        container.appendChild(actions);
+        errorCard.appendChild(actions);
+
+        container.appendChild(errorCard);
+        updateJobPageContext('Job details', 'This role could not be loaded right now. Please try another opening.', 'Ainvnt');
     }
 
     function renderJobDetail(container, job, data) {
         container.textContent = '';
-
-        const header = document.createElement('div');
-        header.className = 'job-detail-header';
-
-        const title = document.createElement('h2');
-        title.textContent = typeof job.title === 'string' && job.title.trim() ? job.title.trim() : 'Job details';
-
-        const type = document.createElement('span');
-        type.className = 'role-type';
-        type.textContent = typeof job.type === 'string' && job.type.trim() ? job.type.trim() : 'Role';
-
-        header.appendChild(title);
-        header.appendChild(type);
-        container.appendChild(header);
-
-        const meta = document.createElement('div');
-        meta.className = 'job-detail-meta';
-
-        const metaChips = [
-            createMetaChip('Job ID', job.id),
-            createMetaChip('Department', job.department),
-            createMetaChip('Experience', job.experienceLevel),
-            createMetaChip('Duration', job.duration),
-            createMetaChip('Company', data.company)
-        ].filter(Boolean);
-
-        metaChips.forEach(chip => meta.appendChild(chip));
-        if (meta.childElementCount > 0) {
-            container.appendChild(meta);
-        }
-
-        const description = document.createElement('p');
-        description.textContent = typeof job.description === 'string' && job.description.trim()
+        const titleText = typeof job.title === 'string' && job.title.trim() ? job.title.trim() : 'Job details';
+        const jobType = typeof job.type === 'string' && job.type.trim() ? job.type.trim() : 'Role';
+        const companyName = typeof data.company === 'string' && data.company.trim() ? data.company.trim() : 'Ainvnt';
+        const descriptionText = typeof job.description === 'string' && job.description.trim()
             ? job.description.trim()
             : 'No description available for this role yet.';
-        container.appendChild(createSection('Role overview', description));
+        const descriptionLead = truncateText(descriptionText, 180);
 
-        const skills = cleanArray(job.requiredSkills);
-        if (skills.length) {
-            container.appendChild(createSection('Required skills', createList(skills)));
-        }
+        const jobId = typeof job.id === 'string' && job.id.trim() ? job.id.trim() : 'N/A';
+        const department = typeof job.department === 'string' && job.department.trim() ? job.department.trim() : 'General';
+        const experience = typeof job.experienceLevel === 'string' && job.experienceLevel.trim() ? job.experienceLevel.trim() : 'Not specified';
+        const duration = typeof job.duration === 'string' && job.duration.trim() ? job.duration.trim() : 'Not specified';
 
         const workModes = cleanArray(job.mode);
         const globalLocations = cleanArray(data.location);
         const locationTags = workModes.length ? workModes : globalLocations;
+        const locationLabel = locationTags.length ? locationTags.join(' / ') : 'Not specified';
+
+        const skills = cleanArray(job.requiredSkills);
+
+        const layout = document.createElement('div');
+        layout.className = 'job-detail-layout-inner';
+
+        const mainCard = document.createElement('article');
+        mainCard.className = 'job-detail-main-card';
+
+        const mainHeader = document.createElement('div');
+        mainHeader.className = 'job-detail-main-head';
+
+        const mainHeading = document.createElement('div');
+        mainHeading.className = 'job-detail-main-heading';
+
+        const mainId = document.createElement('p');
+        mainId.className = 'job-detail-main-id';
+        mainId.textContent = `${jobId} | ${department}`;
+
+        const mainTitle = document.createElement('h2');
+        mainTitle.className = 'job-detail-main-title';
+        mainTitle.textContent = titleText;
+
+        const mainLead = document.createElement('p');
+        mainLead.className = 'job-detail-main-lead';
+        mainLead.textContent = descriptionLead;
+
+        const typeBadge = document.createElement('span');
+        typeBadge.className = 'role-type';
+        typeBadge.textContent = jobType;
+
+        mainHeading.appendChild(mainId);
+        mainHeading.appendChild(mainTitle);
+        mainHeading.appendChild(mainLead);
+        mainHeader.appendChild(mainHeading);
+        mainHeader.appendChild(typeBadge);
+        mainCard.appendChild(mainHeader);
+
+        const chipValues = [experience, duration, `Mode: ${locationLabel}`];
+        mainCard.appendChild(createPillCloud(chipValues, 'job-detail-chip-row'));
+
+        const overview = document.createElement('p');
+        overview.textContent = descriptionText;
+        mainCard.appendChild(createDetailBlock('Role overview', overview));
+
+        if (skills.length) {
+            mainCard.appendChild(createDetailBlock('Required skills', createPillCloud(skills, 'job-detail-skill-cloud')));
+        }
 
         if (locationTags.length) {
-            container.appendChild(createSection('Work mode', createTagContainer(locationTags)));
+            mainCard.appendChild(createDetailBlock('Work setup', createPillCloud(locationTags, 'job-detail-mode-cloud')));
         }
+
+        layout.appendChild(mainCard);
+
+        const sideCard = document.createElement('aside');
+        sideCard.className = 'job-detail-side-card';
+
+        const sideTitle = document.createElement('h3');
+        sideTitle.className = 'job-detail-side-title';
+        sideTitle.textContent = 'Quick snapshot';
+        sideCard.appendChild(sideTitle);
+
+        const facts = document.createElement('dl');
+        facts.className = 'job-detail-facts';
+
+        [
+            createFactRow('Company', companyName),
+            createFactRow('Job ID', jobId),
+            createFactRow('Department', department),
+            createFactRow('Experience', experience),
+            createFactRow('Duration', duration),
+            createFactRow('Work mode', locationLabel)
+        ].filter(Boolean).forEach(row => facts.appendChild(row));
+
+        sideCard.appendChild(facts);
 
         const actions = document.createElement('div');
         actions.className = 'job-detail-actions';
 
         const applyButton = document.createElement('a');
         applyButton.className = 'btn btn-primary';
-        applyButton.href = `contact.html?job=${encodeURIComponent(title.textContent)}`;
-        applyButton.textContent = 'Apply now';
+        applyButton.href = `contact.html?job=${encodeURIComponent(titleText)}&jobId=${encodeURIComponent(jobId)}`;
+        applyButton.textContent = 'Apply for this role';
 
         actions.appendChild(applyButton);
         actions.appendChild(createBackButton());
-        container.appendChild(actions);
+        sideCard.appendChild(actions);
 
-        const pageHeading = document.querySelector('[data-job-page-title]');
-        if (pageHeading) {
-            pageHeading.textContent = title.textContent;
-        }
+        const sideNote = document.createElement('p');
+        sideNote.className = 'job-detail-note';
+        sideNote.textContent = 'Need help deciding? Reach out and our team can guide you through the fit and interview process.';
+        sideCard.appendChild(sideNote);
 
-        const companyName = typeof data.company === 'string' && data.company.trim() ? data.company.trim() : 'Ainvnt';
-        document.title = `${title.textContent} | Careers at ${companyName}`;
+        layout.appendChild(sideCard);
+        container.appendChild(layout);
+
+        updateJobPageContext(titleText, descriptionLead, companyName);
     }
 
     async function initJobDetailsPage() {
