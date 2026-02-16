@@ -822,7 +822,13 @@
                     // Send email using EmailJS - pass form selector string
                     emailjs.sendForm(serviceID, templateID, '#index-contact-form')
                         .then(function(response) {
-                            
+                            if (typeof window.trackAnalyticsEvent === 'function') {
+                                window.trackAnalyticsEvent('generate_lead', {
+                                    form_id: 'index-contact-form',
+                                    lead_source: 'home_page'
+                                });
+                            }
+                             
                             // Show success message
                             formMessages.style.display = 'block';
                             formMessages.style.background = '#D1FAE5';

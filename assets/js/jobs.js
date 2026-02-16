@@ -3,6 +3,12 @@
     const MAX_SKILLS_ON_CARD = 3;
     let jobsDataPromise = null;
 
+    function sendAnalyticsEvent(eventName, eventParams = {}) {
+        if (typeof window.trackAnalyticsEvent === 'function') {
+            window.trackAnalyticsEvent(eventName, eventParams);
+        }
+    }
+
     function cleanArray(value) {
         if (!Array.isArray(value)) {
             return [];
@@ -82,6 +88,15 @@
         const detailsHref = jobId
             ? `job-details.html?id=${encodeURIComponent(jobId)}`
             : 'careers.html#open-roles';
+        const analyticsPayload = {
+            content_type: 'job_opening',
+            item_id: jobId || 'unknown_job',
+            item_name: title
+        };
+
+        function trackRoleSelection() {
+            sendAnalyticsEvent('select_content', analyticsPayload);
+        }
 
         const card = document.createElement('article');
         card.className = 'role-card role-card--interactive';
@@ -145,18 +160,23 @@
         learnMoreLink.className = 'btn btn-secondary role-learn-more';
         learnMoreLink.href = detailsHref;
         learnMoreLink.textContent = 'View details';
+        learnMoreLink.addEventListener('click', () => {
+            trackRoleSelection();
+        });
         actions.appendChild(learnMoreLink);
 
         card.addEventListener('click', event => {
             if (event.target.closest('a')) {
                 return;
             }
+            trackRoleSelection();
             window.location.href = detailsHref;
         });
 
         card.addEventListener('keydown', event => {
             if (event.key === 'Enter' || event.key === ' ') {
                 event.preventDefault();
+                trackRoleSelection();
                 window.location.href = detailsHref;
             }
         });
@@ -400,6 +420,13 @@
         applyButton.className = 'btn btn-primary';
         applyButton.href = `contact.html?job=${encodeURIComponent(titleText)}&jobId=${encodeURIComponent(jobId)}`;
         applyButton.textContent = 'Apply for this role';
+        applyButton.addEventListener('click', () => {
+            sendAnalyticsEvent('select_content', {
+                content_type: 'job_apply_cta',
+                item_id: jobId,
+                item_name: titleText
+            });
+        });
 
         actions.appendChild(applyButton);
         actions.appendChild(createBackButton());
@@ -412,6 +439,12 @@
 
         layout.appendChild(sideCard);
         container.appendChild(layout);
+
+        sendAnalyticsEvent('view_item', {
+            item_category: 'job_opening',
+            item_id: jobId,
+            item_name: titleText
+        });
 
         updateJobPageContext(titleText, descriptionLead, companyName);
     }

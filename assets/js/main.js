@@ -24,10 +24,68 @@
         });
     }
 
+    function trackAnalyticsEvent(eventName, eventParams = {}) {
+        if (typeof eventName !== 'string' || !eventName.trim()) {
+            return;
+        }
+
+        const pagePath = `${window.location.pathname}${window.location.search || ''}`;
+        gtag('event', eventName, {
+            page_path: pagePath,
+            ...eventParams
+        });
+    }
+
     window.trackPageView = trackPageView;
+    window.trackAnalyticsEvent = trackAnalyticsEvent;
     gtag('js', new Date());
     gtag('config', measurementId, { send_page_view: false });
     trackPageView();
+
+    // Track outbound and contact link interactions for GA4 engagement reporting.
+    document.addEventListener('click', event => {
+        const link = event.target.closest('a[href]');
+        if (!link) {
+            return;
+        }
+
+        const rawHref = (link.getAttribute('href') || '').trim();
+        if (!rawHref || rawHref.startsWith('#')) {
+            return;
+        }
+
+        if (rawHref.startsWith('mailto:')) {
+            trackAnalyticsEvent('contact_click', {
+                contact_type: 'email',
+                link_url: rawHref
+            });
+            return;
+        }
+
+        if (rawHref.startsWith('tel:')) {
+            trackAnalyticsEvent('contact_click', {
+                contact_type: 'phone',
+                link_url: rawHref
+            });
+            return;
+        }
+
+        let parsedUrl;
+        try {
+            parsedUrl = new URL(link.href, window.location.href);
+        } catch (error) {
+            return;
+        }
+
+        if (parsedUrl.origin !== window.location.origin) {
+            trackAnalyticsEvent('click', {
+                outbound: true,
+                link_url: parsedUrl.href,
+                link_domain: parsedUrl.hostname,
+                link_text: (link.textContent || '').trim().slice(0, 120)
+            });
+        }
+    });
 
     const gaScript = document.createElement('script');
     gaScript.async = true;

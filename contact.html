@@ -498,6 +498,13 @@
                             'success',
                             '<i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully.'
                         );
+                        if (typeof window.trackAnalyticsEvent === 'function') {
+                            window.trackAnalyticsEvent('generate_lead', {
+                                form_id: 'contact-form',
+                                lead_source: 'contact_page',
+                                service_interest: formData.service || 'Not specified'
+                            });
+                        }
                         form.reset();
                         setTimeout(function() {
                             formMessages.style.display = 'none';

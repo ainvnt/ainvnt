@@ -439,7 +439,14 @@
                     // Send email using EmailJS - pass form selector string
                     emailjs.sendForm(serviceID, templateID, '#contact-form')
                         .then(function(response) {
-                            
+                            if (typeof window.trackAnalyticsEvent === 'function') {
+                                window.trackAnalyticsEvent('generate_lead', {
+                                    form_id: 'contact-form',
+                                    lead_source: 'get_started_page',
+                                    service_interest: formData.service || 'Not specified'
+                                });
+                            }
+                             
                             // Show success message
                             formMessages.style.display = 'block';
                             formMessages.style.background = '#D1FAE5';
