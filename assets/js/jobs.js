@@ -1,6 +1,6 @@
 (() => {
     const JOBS_API_URL = 'https://jsonkeeper.com/b/OZCGU';
-    const MAX_SKILLS_ON_CARD = 4;
+    const MAX_SKILLS_ON_CARD = 3;
     let jobsDataPromise = null;
 
     function cleanArray(value) {
@@ -47,21 +47,16 @@
         return `${text.slice(0, maxLength).trimEnd()}...`;
     }
 
-    function buildCardTags(job, fallbackModes) {
-        const modeTags = cleanArray(job.mode);
+    function buildCardTags(job) {
         const skillTags = cleanArray(job.requiredSkills);
-        const tags = [...new Set([...modeTags, ...skillTags.slice(0, MAX_SKILLS_ON_CARD)])];
+        const visibleSkills = skillTags.slice(0, MAX_SKILLS_ON_CARD);
         const hiddenSkills = Math.max(0, skillTags.length - MAX_SKILLS_ON_CARD);
 
-        if (!tags.length) {
-            return cleanArray(fallbackModes);
-        }
-
         if (hiddenSkills > 0) {
-            tags.push(`+${hiddenSkills} more skills`);
+            visibleSkills.push(`+${hiddenSkills} more skills`);
         }
 
-        return tags;
+        return visibleSkills;
     }
 
     function createTagContainer(tags) {
@@ -81,6 +76,9 @@
         const title = typeof job.title === 'string' && job.title.trim() ? job.title.trim() : 'Open role';
         const type = typeof job.type === 'string' && job.type.trim() ? job.type.trim() : 'Role';
         const jobId = typeof job.id === 'string' && job.id.trim() ? job.id.trim() : '';
+        const department = typeof job.department === 'string' && job.department.trim() ? job.department.trim() : '';
+        const modes = cleanArray(job.mode);
+        const fallbackModeTags = cleanArray(fallbackModes);
         const detailsHref = jobId
             ? `job-details.html?id=${encodeURIComponent(jobId)}`
             : 'careers.html#open-roles';
@@ -94,36 +92,59 @@
         const header = document.createElement('div');
         header.className = 'role-header';
 
+        const titleWrap = document.createElement('div');
+        titleWrap.className = 'role-title-wrap';
+
         const heading = document.createElement('h3');
+        heading.className = 'role-title';
         heading.textContent = title;
+
+        const identity = [jobId, department].filter(Boolean).join(' | ');
+        if (identity) {
+            const subhead = document.createElement('p');
+            subhead.className = 'role-subhead';
+            subhead.textContent = identity;
+            titleWrap.appendChild(subhead);
+        }
+        titleWrap.appendChild(heading);
 
         const badge = document.createElement('span');
         badge.className = 'role-type';
         badge.textContent = type;
 
-        header.appendChild(heading);
+        header.appendChild(titleWrap);
         header.appendChild(badge);
 
         const description = document.createElement('p');
-        description.textContent = truncateText(job.description, 180) || 'View this role for complete responsibilities and expectations.';
+        description.className = 'role-description';
+        description.textContent = truncateText(job.description, 140) || 'View this role for complete responsibilities and expectations.';
 
-        const metaItems = [job.department, job.experienceLevel, job.duration]
+        const activeModes = modes.length ? modes : fallbackModeTags;
+        const metaItems = [job.experienceLevel, job.duration]
             .filter(item => typeof item === 'string' && item.trim())
-            .map(item => item.trim());
+            .map(item => item.trim())
+            .concat(activeModes.length ? [`Mode: ${activeModes.join(' / ')}`] : []);
 
-        const meta = document.createElement('p');
+        const meta = document.createElement('div');
         meta.className = 'role-meta';
-        meta.textContent = metaItems.join(' | ');
+        metaItems.forEach(item => {
+            const chip = document.createElement('span');
+            chip.textContent = item;
+            meta.appendChild(chip);
+        });
 
-        const tags = createTagContainer(buildCardTags(job, fallbackModes));
+        const tags = createTagContainer(buildCardTags(job));
+        const skillsLabel = document.createElement('p');
+        skillsLabel.className = 'role-skill-label';
+        skillsLabel.textContent = 'Key skills';
 
         const actions = document.createElement('div');
         actions.className = 'role-card-actions';
 
         const learnMoreLink = document.createElement('a');
-        learnMoreLink.className = 'btn btn-secondary';
+        learnMoreLink.className = 'btn btn-secondary role-learn-more';
         learnMoreLink.href = detailsHref;
-        learnMoreLink.textContent = 'Learn more';
+        learnMoreLink.textContent = 'View details';
         actions.appendChild(learnMoreLink);
 
         card.addEventListener('click', event => {
@@ -142,10 +163,11 @@
 
         card.appendChild(header);
         card.appendChild(description);
-        if (meta.textContent) {
+        if (meta.childElementCount > 0) {
             card.appendChild(meta);
         }
         if (tags.childElementCount > 0) {
+            card.appendChild(skillsLabel);
             card.appendChild(tags);
         }
         card.appendChild(actions);
