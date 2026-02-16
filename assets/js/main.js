@@ -1,4 +1,29 @@
 // ========================
+// GOOGLE ANALYTICS (GA4)
+// ========================
+
+(function initGoogleAnalytics() {
+    const measurementId = 'G-7E3KFT044H';
+
+    if (!measurementId || window.gtag) {
+        return;
+    }
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        window.dataLayer.push(arguments);
+    }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', measurementId);
+
+    const gaScript = document.createElement('script');
+    gaScript.async = true;
+    gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+    document.head.appendChild(gaScript);
+})();
+
+// ========================
 // SMOOTH SCROLL BEHAVIOR
 // ========================
 
