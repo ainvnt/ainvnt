@@ -14,8 +14,20 @@
         window.dataLayer.push(arguments);
     }
     window.gtag = gtag;
+
+    function trackPageView() {
+        const pagePath = `${window.location.pathname}${window.location.search || ''}`;
+        gtag('event', 'page_view', {
+            page_title: document.title,
+            page_path: pagePath,
+            page_location: window.location.href
+        });
+    }
+
+    window.trackPageView = trackPageView;
     gtag('js', new Date());
-    gtag('config', measurementId);
+    gtag('config', measurementId, { send_page_view: false });
+    trackPageView();
 
     const gaScript = document.createElement('script');
     gaScript.async = true;
