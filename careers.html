@@ -195,59 +195,12 @@
                     <h2>Open roles</h2>
                     <p>Find a role that matches your strengths and the future you want to build.</p>
                 </div>
-                <div class="role-grid">
-                    <article class="role-card">
-                        <div class="role-header">
-                            <h3>Senior Software Developer</h3>
-                            <span class="role-type">Full-time</span>
-                        </div>
-                        <p>Own end-to-end delivery for cloud-native apps and mentor junior engineers.</p>
-                        <div class="role-tags">
-                            <span>Remote</span>
-                            <span>React</span>
-                            <span>Node.js</span>
-                        </div>
-                    </article>
-                    <article class="role-card">
-                        <div class="role-header">
-                            <h3>Cloud Solutions Architect</h3>
-                            <span class="role-type">Full-time</span>
-                        </div>
-                        <p>Design secure multi-cloud architectures and lead migration strategy.</p>
-                        <div class="role-tags">
-                            <span>Hybrid</span>
-                            <span>AWS</span>
-                            <span>Azure</span>
-                        </div>
-                    </article>
-                    <article class="role-card">
-                        <div class="role-header">
-                            <h3>Data Engineering Lead</h3>
-                            <span class="role-type">Full-time</span>
-                        </div>
-                        <p>Build data platforms that enable real-time analytics and ML workflows.</p>
-                        <div class="role-tags">
-                            <span>Remote</span>
-                            <span>Python</span>
-                            <span>Snowflake</span>
-                        </div>
-                    </article>
-                    <article class="role-card">
-                        <div class="role-header">
-                            <h3>QA Automation Engineer</h3>
-                            <span class="role-type">Full-time</span>
-                        </div>
-                        <p>Scale automated test suites and improve delivery reliability.</p>
-                        <div class="role-tags">
-                            <span>Hybrid</span>
-                            <span>Cypress</span>
-                            <span>Playwright</span>
-                        </div>
-                    </article>
+                <div class="role-grid" data-role-grid aria-live="polite">
+                    <p class="role-status">Loading open roles...</p>
                 </div>
                 <div class="roles-cta">
                     <a href="contact.html" class="btn btn-primary">Send your resume</a>
-                    <span class="roles-note">Do not see your role? We are always looking for great talent.</span>
+                    <span class="roles-note" data-roles-note>Do not see your role? We are always looking for great talent.</span>
                 </div>
             </div>
         </section>
@@ -580,6 +533,7 @@
     <div id="footer-container"></div>
 
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/jobs.js"></script>
     <script src="assets/js/footer-loader.js"></script>
     <script src="assets/js/pwa-init.js"></script>
 </body>
