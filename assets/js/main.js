@@ -3,7 +3,7 @@
 // ========================
 
 (function initGoogleAnalytics() {
-    const measurementId = 'G-7E3KFT044H';
+    const measurementId = 'G-CC1NYMXXF8';
 
     if (!measurementId || window.gtag) {
         return;
