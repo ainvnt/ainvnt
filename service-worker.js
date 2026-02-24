@@ -1,4 +1,22 @@
 const CACHE_NAME = 'ainvnt-v3';
+const CACHE_TTL = 60 * 60 * 24 * 7; // TTL in seconds (7 days)
+// Helper: store timestamp for each cache entry
+function setCacheTimestamp(requestUrl) {
+  return caches.open(CACHE_NAME).then(cache => {
+    const key = 'timestamp:' + requestUrl;
+    const now = Math.floor(Date.now() / 1000);
+    return cache.put(key, new Response(now.toString()));
+  });
+}
+function getCacheTimestamp(requestUrl) {
+  return caches.open(CACHE_NAME).then(cache => {
+    const key = 'timestamp:' + requestUrl;
+    return cache.match(key).then(res => {
+      if (res) return res.text().then(Number);
+      return null;
+    });
+  });
+}
 const urlsToCache = [
   '/',
   '/index.html',
@@ -38,36 +56,43 @@ self.addEventListener('install', event => {
 // Fetch event - serve from cache, fallback to network
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // Cache hit - return response
-        if (response) {
-          return response;
-        }
-        
-        return fetch(event.request).then(
-          response => {
-            // Check if valid response
+    caches.match(event.request).then(async cachedResponse => {
+      // Check TTL if cache exists
+      if (cachedResponse) {
+        const ts = await getCacheTimestamp(event.request.url);
+        const now = Math.floor(Date.now() / 1000);
+        if (ts && now - ts < CACHE_TTL) {
+          // Cache valid
+          return cachedResponse;
+        } else {
+          // Cache expired, fetch fresh
+          return fetch(event.request).then(response => {
             if (!response || response.status !== 200 || response.type !== 'basic') {
-              return response;
+              return cachedResponse;
             }
-
-            // Clone the response
             const responseToCache = response.clone();
-
-            caches.open(CACHE_NAME)
-              .then(cache => {
-                cache.put(event.request, responseToCache);
-              });
-
+            caches.open(CACHE_NAME).then(cache => {
+              cache.put(event.request, responseToCache);
+              setCacheTimestamp(event.request.url);
+            });
+            return response;
+          }).catch(() => cachedResponse);
+        }
+      } else {
+        // No cache, fetch and cache
+        return fetch(event.request).then(response => {
+          if (!response || response.status !== 200 || response.type !== 'basic') {
             return response;
           }
-        );
-      })
-      .catch(() => {
-        // Return offline page if available
-        return caches.match('/index.html');
-      })
+          const responseToCache = response.clone();
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, responseToCache);
+            setCacheTimestamp(event.request.url);
+          });
+          return response;
+        }).catch(() => caches.match('/index.html'));
+      }
+    })
   );
 });
 
