@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ainvnt-v2';
+const CACHE_NAME = 'ainvnt-v3';
 const urlsToCache = [
   '/',
   '/index.html',
