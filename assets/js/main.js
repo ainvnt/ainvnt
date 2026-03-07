@@ -4,6 +4,19 @@
 
 (function initGoogleAnalytics() {
     const measurementId = 'G-CC1NYMXXF8';
+    const attributionStorageKey = 'ainvnt_attribution_v1';
+    const attributionQueryKeys = [
+        'utm_source',
+        'utm_medium',
+        'utm_campaign',
+        'utm_term',
+        'utm_content',
+        'gclid',
+        'fbclid',
+        'msclkid',
+        'ttclid',
+        'twclid'
+    ];
 
     if (!measurementId || window.gtag) {
         return;
@@ -15,12 +28,171 @@
     }
     window.gtag = gtag;
 
+    function safeParseJson(value) {
+        if (!value) {
+            return null;
+        }
+        try {
+            return JSON.parse(value);
+        } catch (error) {
+            return null;
+        }
+    }
+
+    function getStoredAttribution() {
+        try {
+            return safeParseJson(window.localStorage.getItem(attributionStorageKey));
+        } catch (error) {
+            return null;
+        }
+    }
+
+    function saveStoredAttribution(value) {
+        try {
+            window.localStorage.setItem(attributionStorageKey, JSON.stringify(value));
+        } catch (error) {
+            // Ignore storage errors (private mode, restricted storage, etc.)
+        }
+    }
+
+    function normalizeAttributionValue(key, value) {
+        if (typeof value !== 'string') {
+            return '';
+        }
+
+        const trimmedValue = value.trim();
+        if (!trimmedValue) {
+            return '';
+        }
+
+        if (key.startsWith('utm_')) {
+            return trimmedValue.toLowerCase();
+        }
+
+        return trimmedValue;
+    }
+
+    function getAttributionFromUrl() {
+        const searchParams = new URLSearchParams(window.location.search || '');
+        const result = {};
+
+        attributionQueryKeys.forEach((key) => {
+            if (!searchParams.has(key)) {
+                return;
+            }
+            const normalizedValue = normalizeAttributionValue(key, searchParams.get(key));
+            if (normalizedValue) {
+                result[key] = normalizedValue;
+            }
+        });
+
+        return result;
+    }
+
+    function buildAttributionTouch(data, timestamp) {
+        return {
+            ...data,
+            timestamp,
+            landing_page: `${window.location.pathname}${window.location.search || ''}`,
+            referrer: document.referrer || ''
+        };
+    }
+
+    function resolveAttributionState() {
+        const storedAttribution = getStoredAttribution() || {};
+        const urlAttribution = getAttributionFromUrl();
+        const hasUrlAttribution = Object.keys(urlAttribution).length > 0;
+
+        if (!hasUrlAttribution) {
+            return storedAttribution;
+        }
+
+        const timestamp = new Date().toISOString();
+        const firstTouch = storedAttribution.first_touch || buildAttributionTouch(urlAttribution, timestamp);
+        const lastTouch = buildAttributionTouch(urlAttribution, timestamp);
+        const nextState = {
+            first_touch: firstTouch,
+            last_touch: lastTouch
+        };
+
+        saveStoredAttribution(nextState);
+        return nextState;
+    }
+
+    function getAttributionContext() {
+        const attributionState = resolveAttributionState();
+        const lastTouch = attributionState.last_touch || {};
+        const firstTouch = attributionState.first_touch || {};
+        const clickId = lastTouch.gclid || lastTouch.fbclid || lastTouch.msclkid || lastTouch.ttclid || lastTouch.twclid || '';
+
+        return {
+            traffic_source: lastTouch.utm_source || firstTouch.utm_source || '(direct)',
+            traffic_medium: lastTouch.utm_medium || firstTouch.utm_medium || '(none)',
+            traffic_campaign: lastTouch.utm_campaign || firstTouch.utm_campaign || '(not set)',
+            traffic_term: lastTouch.utm_term || firstTouch.utm_term || '',
+            traffic_content: lastTouch.utm_content || firstTouch.utm_content || '',
+            click_id: clickId,
+            landing_page: firstTouch.landing_page || `${window.location.pathname}${window.location.search || ''}`,
+            initial_referrer: firstTouch.referrer || document.referrer || ''
+        };
+    }
+
+    function upsertHiddenInput(form, fieldName, value) {
+        if (!form || !fieldName) {
+            return;
+        }
+
+        let hiddenInput = form.querySelector(`input[name="${fieldName}"]`);
+        if (!hiddenInput) {
+            hiddenInput = document.createElement('input');
+            hiddenInput.type = 'hidden';
+            hiddenInput.name = fieldName;
+            form.appendChild(hiddenInput);
+        }
+
+        hiddenInput.value = value || '';
+    }
+
+    function applyAttributionToForm(form) {
+        const attributionContext = getAttributionContext();
+        const fieldMap = {
+            utm_source: attributionContext.traffic_source,
+            utm_medium: attributionContext.traffic_medium,
+            utm_campaign: attributionContext.traffic_campaign,
+            utm_term: attributionContext.traffic_term,
+            utm_content: attributionContext.traffic_content,
+            click_id: attributionContext.click_id,
+            landing_page: attributionContext.landing_page,
+            initial_referrer: attributionContext.initial_referrer
+        };
+
+        Object.entries(fieldMap).forEach(([fieldName, fieldValue]) => {
+            upsertHiddenInput(form, fieldName, fieldValue);
+        });
+    }
+
+    function hydrateFormsWithAttribution() {
+        document.querySelectorAll('form').forEach((form) => {
+            applyAttributionToForm(form);
+            form.addEventListener('submit', () => {
+                applyAttributionToForm(form);
+            });
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', hydrateFormsWithAttribution, { once: true });
+    } else {
+        hydrateFormsWithAttribution();
+    }
+
     function trackPageView() {
         const pagePath = `${window.location.pathname}${window.location.search || ''}`;
         gtag('event', 'page_view', {
             page_title: document.title,
             page_path: pagePath,
-            page_location: window.location.href
+            page_location: window.location.href,
+            ...getAttributionContext()
         });
     }
 
@@ -32,6 +204,7 @@
         const pagePath = `${window.location.pathname}${window.location.search || ''}`;
         gtag('event', eventName, {
             page_path: pagePath,
+            ...getAttributionContext(),
             ...eventParams
         });
     }

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Get Started - Ainvnt">
-    <meta name="keywords" content="Get Started, Begin Project, Consultation">
+    <meta name="description" content="Start your next software project with Ainvnt through structured onboarding, clear milestones, and delivery-focused execution.">
+    <meta name="keywords" content="Get Started, Project Onboarding, Software Development, Consultation, Ainvnt">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="author" content="Ainvnt">
@@ -14,13 +14,13 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ainvnt.com/get-started.html">
     <meta property="og:title" content="Get Started - Ainvnt">
-    <meta property="og:description" content="Get Started - Ainvnt">
+    <meta property="og:description" content="Share your project goals and get a clear onboarding and execution plan with Ainvnt.">
     <meta property="og:image" content="https://ainvnt.com/assets/img/ainvnt_logo.jpg">
     <meta property="og:site_name" content="Ainvnt">
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Get Started - Ainvnt">
-    <meta name="twitter:description" content="Get Started - Ainvnt">
+    <meta name="twitter:description" content="Share your project goals and get a clear onboarding and execution plan with Ainvnt.">
     <meta name="twitter:image" content="https://ainvnt.com/assets/img/ainvnt_logo.jpg">
     
     <!-- PWA Meta Tags -->
@@ -35,8 +35,422 @@
     <title>Get Started - Ainvnt</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .get-started-page {
+            background: linear-gradient(180deg, #f4f8ff 0%, #ffffff 22%);
+        }
+
+        .get-started-page .section-header {
+            max-width: 780px;
+            margin: 0 auto 44px;
+        }
+
+        .get-started-page .section-header p {
+            font-size: 1.05rem;
+        }
+
+        .gs-hero-shell {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 34px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .gs-kpi-row {
+            margin-top: 26px;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 12px;
+        }
+
+        .gs-kpi-item {
+            background: rgba(255, 255, 255, 0.14);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 12px;
+            padding: 12px;
+        }
+
+        .gs-kpi-item strong {
+            color: #ffffff;
+            display: block;
+            margin-bottom: 2px;
+            font-size: 1.05rem;
+        }
+
+        .gs-kpi-item span {
+            color: rgba(255, 255, 255, 0.86);
+            font-size: 0.9rem;
+            line-height: 1.35;
+        }
+
+        .gs-panel {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 20px 48px rgba(3, 32, 77, 0.22);
+            border: 1px solid rgba(30, 136, 229, 0.2);
+        }
+
+        .gs-panel h3 {
+            color: #0d47a1;
+            margin-bottom: 8px;
+        }
+
+        .gs-roadmap {
+            margin-top: 16px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .gs-roadmap-item {
+            border: 1px solid #dbe7f7;
+            background: #f8fbff;
+            border-radius: 11px;
+            padding: 12px;
+        }
+
+        .gs-roadmap-item strong {
+            color: #0d47a1;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .gs-section-alt {
+            background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+        }
+
+        .gs-icon-box {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            margin-bottom: 14px;
+            color: #0d47a1;
+            background: linear-gradient(135deg, rgba(30, 136, 229, 0.15), rgba(0, 191, 165, 0.15));
+        }
+
+        .gs-split {
+            display: grid;
+            grid-template-columns: 1fr 0.95fr;
+            gap: 26px;
+            align-items: start;
+        }
+
+        .gs-model-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .gs-model-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .gs-model-card h3 {
+            color: #0d47a1;
+            font-size: 1.08rem;
+            margin-bottom: 8px;
+        }
+
+        .gs-model-card ul {
+            margin: 12px 0 0;
+            list-style: none;
+            display: grid;
+            gap: 8px;
+            padding: 0;
+        }
+
+        .gs-model-card li {
+            color: #4b5563;
+            font-size: 0.92rem;
+            line-height: 1.42;
+            display: flex;
+            gap: 8px;
+        }
+
+        .gs-model-card li i {
+            color: #00bfa5;
+            margin-top: 3px;
+            font-size: 0.8rem;
+        }
+
+        .gs-deliverables {
+            background: #ffffff;
+            border: 1px solid #dbe7f7;
+            border-radius: 14px;
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .gs-deliverables h3 {
+            color: #0d47a1;
+            margin-bottom: 10px;
+        }
+
+        .gs-deliverables ul {
+            margin-top: 12px;
+            list-style: none;
+            padding: 0;
+            display: grid;
+            gap: 10px;
+        }
+
+        .gs-deliverables li {
+            display: flex;
+            gap: 8px;
+            color: #4b5563;
+            font-size: 0.95rem;
+        }
+
+        .gs-deliverables i {
+            color: #00bfa5;
+            margin-top: 3px;
+            font-size: 0.82rem;
+        }
+
+        .gs-faq {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            gap: 12px;
+        }
+
+        .gs-faq details {
+            background: #ffffff;
+            border: 1px solid #dbe7f7;
+            border-radius: 12px;
+            padding: 16px 18px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .gs-faq summary {
+            list-style: none;
+            cursor: pointer;
+            font-weight: 700;
+            color: #0f172a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .gs-faq summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .gs-faq summary::after {
+            content: "+";
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #0d47a1;
+            background: rgba(30, 136, 229, 0.14);
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .gs-faq details[open] summary::after {
+            content: "-";
+        }
+
+        .gs-faq p {
+            margin-top: 10px;
+            color: #4b5563;
+        }
+
+        .gs-contact-wrap {
+            background: linear-gradient(135deg, #0d47a1 0%, #1e88e5 50%, #00bfa5 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gs-contact-grid {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 26px;
+            align-items: start;
+        }
+
+        .gs-contact-card {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            border-radius: 16px;
+            padding: 28px;
+            color: #ffffff;
+        }
+
+        .gs-contact-card h2 {
+            color: #ffffff;
+            margin: 14px 0;
+            line-height: 1.2;
+            font-size: 2.2rem;
+        }
+
+        .gs-contact-card p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .gs-contact-card ul {
+            margin: 18px 0;
+            list-style: none;
+            display: grid;
+            gap: 9px;
+            padding: 0;
+        }
+
+        .gs-contact-card li {
+            display: flex;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.96);
+            font-weight: 500;
+        }
+
+        .gs-contact-card li i {
+            margin-top: 4px;
+            color: #d1fae5;
+            font-size: 0.85rem;
+        }
+
+        .gs-direct-links {
+            display: grid;
+            gap: 10px;
+        }
+
+        .gs-direct-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .gs-form-card {
+            max-width: none;
+            margin: 0;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 16px 45px rgba(0, 0, 0, 0.2);
+            padding: 34px;
+        }
+
+        .gs-form-card h3 {
+            color: #0d47a1;
+            margin-bottom: 6px;
+        }
+
+        .gs-form-card > p {
+            margin-bottom: 16px;
+        }
+
+        .gs-form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .gs-form-full {
+            grid-column: 1 / -1;
+        }
+
+        .gs-form-field label {
+            display: block;
+            color: #374151;
+            font-weight: 600;
+            margin-bottom: 7px;
+            font-size: 0.92rem;
+        }
+
+        .gs-form-field input,
+        .gs-form-field select,
+        .gs-form-field textarea {
+            width: 100%;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 11px 14px;
+            font-size: 0.98rem;
+            transition: all 0.3s;
+            box-sizing: border-box;
+        }
+
+        .gs-form-field input:focus,
+        .gs-form-field select:focus,
+        .gs-form-field textarea:focus {
+            outline: none;
+            border-color: #1e88e5;
+            box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.15);
+        }
+
+        .gs-form-field textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .gs-form-note {
+            font-size: 0.88rem;
+            color: #6b7280;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .gs-mini-cta {
+            padding: 62px 20px;
+            background: linear-gradient(180deg, #ffffff 0%, #f6f9ff 100%);
+            text-align: center;
+        }
+
+        .gs-mini-cta h2 {
+            color: #0d47a1;
+            margin-bottom: 14px;
+        }
+
+        .gs-mini-cta p {
+            max-width: 700px;
+            margin: 0 auto 26px;
+            font-size: 1.05rem;
+        }
+
+        .bi-hero-actions .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        @media (max-width: 1080px) {
+            .gs-hero-shell,
+            .gs-split,
+            .gs-contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gs-kpi-row,
+            .gs-model-grid,
+            .gs-form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gs-form-card {
+                padding: 24px;
+            }
+        }
+    </style>
 </head>
-<body>
+<body class="get-started-page">
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -79,55 +493,96 @@
         </div>
     </nav>
 
-    <!-- Page Hero with KPI Panel -->
+        <!-- Hero -->
     <section class="bi-hero">
         <div style="position: absolute; top: -50%; right: -10%; width: 500px; height: 500px; background: rgba(30, 136, 229, 0.1); border-radius: 50%; animation: float 6s ease-in-out infinite;"></div>
         <div style="position: absolute; bottom: -30%; left: -5%; width: 400px; height: 400px; background: rgba(30, 136, 229, 0.08); border-radius: 50%; animation: float 8s ease-in-out infinite reverse;"></div>
-        
-        <div class="bi-hero-grid" style="position: relative; z-index: 2;">
+
+        <div class="bi-hero-grid gs-hero-shell">
             <div>
-                <h1 style="font-size: 3.2rem; color: white; margin-bottom: 20px;">Launch Your Project</h1>
-                <p style="font-size: 1.2rem; color: rgba(255,255,255,0.9); margin-bottom: 30px; line-height: 1.8;">Turn your vision into reality with our streamlined onboarding process. From initial consultation to successful delivery, we guide you every step of the way.</p>
-                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                    <span class="bi-pill" style="background: rgba(66, 165, 245, 0.2); border: 1px solid rgba(255,255,255,0.3); color: white;">⚡ 5-Day Onboarding</span>
-                    <span class="bi-pill" style="background: rgba(0, 191, 165, 0.2); border: 1px solid rgba(255,255,255,0.3); color: white;">🎯 End-to-End Support</span>
+                <span class="bi-pill" style="background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.34); color: #fff;">
+                    <i class="fas fa-rocket"></i> Get Started
+                </span>
+                <h1 style="font-size: 3rem; color: #fff; margin-bottom: 20px;">Turn Your Idea Into a Delivery-Ready Plan</h1>
+                <p style="font-size: 1.16rem; color: rgba(255,255,255,0.9); margin-bottom: 20px; line-height: 1.75;">
+                    Start with clear objectives, a realistic roadmap, and the right execution model.
+                    We help you move from concept to launch with structured onboarding and practical delivery guidance.
+                </p>
+                <div class="bi-hero-actions">
+                    <a href="#project-brief" class="btn btn-primary"><i class="fas fa-file-lines"></i> Share Project Brief</a>
+                    <a href="contact.html" class="btn btn-secondary" style="border-color: rgba(255,255,255,0.8); color: #fff; background: rgba(255,255,255,0.08);">
+                        <i class="fas fa-comments"></i> Talk to Team
+                    </a>
+                </div>
+                <div class="gs-kpi-row">
+                    <div class="gs-kpi-item">
+                        <strong>5-Day Start</strong>
+                        <span>Fast onboarding and clear kickoff planning</span>
+                    </div>
+                    <div class="gs-kpi-item">
+                        <strong>Cross-Functional</strong>
+                        <span>Product, engineering, cloud, and QA support</span>
+                    </div>
+                    <div class="gs-kpi-item">
+                        <strong>Outcome Focused</strong>
+                        <span>Delivery mapped to business impact</span>
+                    </div>
                 </div>
             </div>
-            
-            <div class="bi-hero-panel">
-                <img src="assets/img/Firefly.png" alt="Big Data & Data Engineering" style="width: 100%; max-width: 600px; height: auto; border-radius: 16px; display: block; margin: 0 auto;">
+
+            <div class="gs-panel">
+                <h3>Your First 14 Days</h3>
+                <p>We structure the early phase to remove ambiguity and create momentum before full-scale delivery.</p>
+                <div class="gs-roadmap">
+                    <div class="gs-roadmap-item">
+                        <strong>Day 1-2: Discovery</strong>
+                        <p>Business context, goals, user flows, and current system review.</p>
+                    </div>
+                    <div class="gs-roadmap-item">
+                        <strong>Day 3-5: Solution Direction</strong>
+                        <p>Architecture path, scope priorities, risk mapping, and sequencing.</p>
+                    </div>
+                    <div class="gs-roadmap-item">
+                        <strong>Day 6-10: Execution Setup</strong>
+                        <p>Sprint structure, ownership model, reporting cadence, and quality gates.</p>
+                    </div>
+                    <div class="gs-roadmap-item">
+                        <strong>Day 11-14: Kickoff</strong>
+                        <p>Team alignment, implementation start, and milestone tracking.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Why Partner With Us Section -->
-    <section class="bi-section" style="padding: 80px 20px; background: linear-gradient(180deg, #F9FAFB 0%, #FFFFFF 100%);">
+    <section class="bi-section gs-section-alt" style="padding: 80px 20px;">
         <div class="container">
             <div class="section-header">
-                <h2>Why Ainvnt is Your Ideal Partner</h2>
-                <p>We've perfected the art of turning complex challenges into elegant solutions that drive measurable results</p>
+                <h2>Why Teams Choose Ainvnt</h2>
+                <p>We combine strategic planning and engineering depth so your project starts clear and scales with confidence.</p>
             </div>
 
             <div class="bi-card-grid">
                 <div class="bi-card">
-                    <div style="font-size: 2.5rem; margin-bottom: 15px; color: #1E88E5;">📋</div>
-                    <h3>Clear Communication</h3>
-                    <p>Transparent updates, regular touchpoints, and a dedicated project manager ensure you're always informed about progress and next steps.</p>
+                    <div class="gs-icon-box"><i class="fas fa-compass"></i></div>
+                    <h3>Strategic Clarity</h3>
+                    <p>We align business goals, scope, and priorities early to reduce rework and improve delivery speed.</p>
                 </div>
                 <div class="bi-card">
-                    <div style="font-size: 2.5rem; margin-bottom: 15px; color: #00BFA5;">⚙️</div>
-                    <h3>Tailored Solutions</h3>
-                    <p>No cookie-cutter approach. We analyze your unique requirements and design solutions specifically aligned with your business goals.</p>
+                    <div class="gs-icon-box"><i class="fas fa-users-gear"></i></div>
+                    <h3>Right Team Mix</h3>
+                    <p>Specialists are matched to your project stage and complexity for faster decisions and stronger output.</p>
                 </div>
                 <div class="bi-card">
-                    <div style="font-size: 2.5rem; margin-bottom: 15px; color: #42A5F5;">🚀</div>
-                    <h3>Expert Team</h3>
-                    <p>Access to specialists across web, mobile, cloud, AI, and more. Our collective expertise ensures best practices at every stage.</p>
+                    <div class="gs-icon-box"><i class="fas fa-triangle-exclamation"></i></div>
+                    <h3>Risk-First Planning</h3>
+                    <p>Technical and operational risks are mapped upfront so execution remains predictable and stable.</p>
                 </div>
                 <div class="bi-card">
-                    <div style="font-size: 2.5rem; margin-bottom: 15px; color: #1E88E5;">✅</div>
-                    <h3>Quality Assurance</h3>
-                    <p>Rigorous testing, code reviews, and compliance checks guarantee deliverables meet the highest standards before launch.</p>
+                    <div class="gs-icon-box"><i class="fas fa-chart-line"></i></div>
+                    <h3>Measurable Progress</h3>
+                    <p>Milestones, review loops, and transparent updates keep stakeholders aligned at every phase.</p>
                 </div>
             </div>
         </div>
@@ -137,32 +592,90 @@
     <section class="bi-section" style="padding: 80px 20px; background: white;">
         <div class="container">
             <div class="section-header">
-                <h2>Our Onboarding Process</h2>
-                <p>A proven methodology designed to accelerate time-to-value and ensure project success from day one</p>
+                <h2>How Your Engagement Flows</h2>
+                <p>A practical framework built for speed, accountability, and long-term scalability.</p>
             </div>
 
             <div class="bi-workflow-grid">
                 <div class="bi-step">
-                    <div class="step-number" style="background: linear-gradient(135deg, #1E88E5, #0D47A1); color: white;">01</div>
-                    <h3>Discovery & Planning</h3>
-                    <p>We dive deep into your business model, requirements, and success metrics. This phase sets the foundation for everything that follows.</p>
+                    <div class="bi-step-number" style="background: linear-gradient(135deg, #1E88E5, #0D47A1); color: white;">01</div>
+                    <h3>Discovery Session</h3>
+                    <p>We align on problem definition, constraints, expected outcomes, and delivery goals.</p>
                 </div>
                 <div class="bi-step">
-                    <div class="step-number" style="background: linear-gradient(135deg, #00BFA5, #1E88E5); color: white;">02</div>
-                    <h3>Team Assembly</h3>
-                    <p>Your dedicated team is assembled based on project needs. Meet your core contacts and establish communication protocols.</p>
+                    <div class="bi-step-number" style="background: linear-gradient(135deg, #00BFA5, #1E88E5); color: white;">02</div>
+                    <h3>Solution Blueprint</h3>
+                    <p>Architecture direction, feature sequencing, and integration dependencies are documented.</p>
                 </div>
                 <div class="bi-step">
-                    <div class="step-number" style="background: linear-gradient(135deg, #42A5F5, #00BFA5); color: white;">03</div>
-                    <h3>Kickoff & Development</h3>
-                    <p>Formal project kickoff launches the development phase with sprint planning, architectural reviews, and initial deliverables.</p>
+                    <div class="bi-step-number" style="background: linear-gradient(135deg, #42A5F5, #00BFA5); color: white;">03</div>
+                    <h3>Execution Planning</h3>
+                    <p>Backlog priorities, sprint rhythm, QA strategy, and communication model are finalized.</p>
                 </div>
                 <div class="bi-step">
-                    <div class="step-number" style="background: linear-gradient(135deg, #1E88E5, #0D47A1); color: white;">04</div>
-                    <h3>Launch & Support</h3>
-                    <p>Product launch with ongoing support, monitoring, and optimization. We remain your partner beyond deployment.</p>
+                    <div class="bi-step-number" style="background: linear-gradient(135deg, #1E88E5, #0D47A1); color: white;">04</div>
+                    <h3>Build and Iterate</h3>
+                    <p>Incremental delivery with review checkpoints ensures fast feedback and steady progress.</p>
+                </div>
+                <div class="bi-step">
+                    <div class="bi-step-number" style="background: linear-gradient(135deg, #00BFA5, #1E88E5); color: white;">05</div>
+                    <h3>Launch and Scale</h3>
+                    <p>Go-live support, performance improvements, and roadmap extension for next-phase growth.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section class="bi-section gs-section-alt" style="padding: 80px 20px;">
+        <div class="container gs-split">
+            <div>
+                <div class="section-header" style="text-align: left; margin: 0 0 28px; max-width: none;">
+                    <h2>Engagement Models That Fit Your Stage</h2>
+                    <p>Choose an operating model that matches your speed, ownership preference, and product maturity.</p>
+                </div>
+                <div class="gs-model-grid">
+                    <div class="gs-model-card">
+                        <h3>Dedicated Team</h3>
+                        <p>Best for products with continuous delivery and evolving roadmap priorities.</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i><span>Predictable sprint cadence</span></li>
+                            <li><i class="fas fa-check"></i><span>Long-term domain ownership</span></li>
+                            <li><i class="fas fa-check"></i><span>Deep collaboration model</span></li>
+                        </ul>
+                    </div>
+                    <div class="gs-model-card">
+                        <h3>Project Delivery</h3>
+                        <p>Ideal for fixed-scope outcomes with milestone-based execution.</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i><span>Defined acceptance criteria</span></li>
+                            <li><i class="fas fa-check"></i><span>Structured milestone reviews</span></li>
+                            <li><i class="fas fa-check"></i><span>Clear handover package</span></li>
+                        </ul>
+                    </div>
+                    <div class="gs-model-card">
+                        <h3>Team Extension</h3>
+                        <p>Suitable when your team needs focused expertise and faster execution support.</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i><span>Specialized skill injection</span></li>
+                            <li><i class="fas fa-check"></i><span>Flexible ramp-up capacity</span></li>
+                            <li><i class="fas fa-check"></i><span>Seamless workflow integration</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="gs-deliverables">
+                <h3>What You Receive Before Build Scales</h3>
+                <p>A practical foundation package to reduce uncertainty and accelerate delivery.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i><span>Objective and scope alignment summary</span></li>
+                    <li><i class="fas fa-check"></i><span>Technical approach and architecture outline</span></li>
+                    <li><i class="fas fa-check"></i><span>Prioritized backlog and milestone map</span></li>
+                    <li><i class="fas fa-check"></i><span>Risk and dependency register</span></li>
+                    <li><i class="fas fa-check"></i><span>Execution governance and communication plan</span></li>
+                    <li><i class="fas fa-check"></i><span>Initial timeline and team recommendation</span></li>
+                </ul>
+            </aside>
         </div>
     </section>
 
@@ -170,106 +683,176 @@
     <section class="bi-section" style="padding: 80px 20px; background: linear-gradient(180deg, #F9FAFB 0%, #FFFFFF 100%);">
         <div class="container">
             <div class="section-header">
-                <h2>To Get Started, We'll Need</h2>
-                <p>The more detail you provide, the better we can tailor our proposal and timeline to your needs</p>
+                <h2>What to Prepare Before Kickoff</h2>
+                <p>Share whatever you already have. Even partial inputs help us shape a better proposal and timeline.</p>
             </div>
 
             <div class="bi-card-grid">
                 <div class="bi-card" style="border-left: 4px solid #1E88E5;">
-                    <div style="font-size: 2rem; margin-bottom: 12px;">📄</div>
-                    <h3>Business Overview</h3>
-                    <p>Your company mission, target market, and primary business objectives. Understanding your context helps us provide better recommendations.</p>
+                    <div class="gs-icon-box"><i class="fas fa-building"></i></div>
+                    <h3>Business Context</h3>
+                    <p>Your offering, market segment, and key priorities driving this initiative.</p>
                 </div>
                 <div class="bi-card" style="border-left: 4px solid #00BFA5;">
-                    <div style="font-size: 2rem; margin-bottom: 12px;">🎯</div>
-                    <h3>Project Goals</h3>
-                    <p>Specific outcomes you want to achieve. What success looks like for your organization and key performance indicators to measure progress.</p>
+                    <div class="gs-icon-box"><i class="fas fa-bullseye"></i></div>
+                    <h3>Outcome Goals</h3>
+                    <p>Target metrics, expected impact, and the specific results you want to achieve.</p>
                 </div>
                 <div class="bi-card" style="border-left: 4px solid #42A5F5;">
-                    <div style="font-size: 2rem; margin-bottom: 12px;">👥</div>
-                    <h3>Target Audience</h3>
-                    <p>Who are your end-users<span class="emoji-icon emoji-check emoji-inline" aria-hidden="true"></span> Understanding their demographics, behaviors, and needs ensures we design with the right perspective.</p>
+                    <div class="gs-icon-box"><i class="fas fa-users"></i></div>
+                    <h3>Target Users</h3>
+                    <p>User profiles, usage behavior, and core pain points to solve.</p>
                 </div>
                 <div class="bi-card" style="border-left: 4px solid #1E88E5;">
-                    <div style="font-size: 2rem; margin-bottom: 12px;">💰</div>
-                    <h3>Budget & Timeline</h3>
-                    <p>Investment range and preferred launch date. This helps us scope features and deliver within your constraints.</p>
+                    <div class="gs-icon-box"><i class="fas fa-server"></i></div>
+                    <h3>Current Stack</h3>
+                    <p>Existing systems, APIs, integrations, and infrastructure constraints.</p>
                 </div>
                 <div class="bi-card" style="border-left: 4px solid #00BFA5;">
-                    <div style="font-size: 2rem; margin-bottom: 12px;">📚</div>
-                    <h3>Existing Documentation</h3>
-                    <p>Any existing requirements specs, wireframes, or technical documentation. This accelerates our analysis and planning phase.</p>
+                    <div class="gs-icon-box"><i class="fas fa-lock"></i></div>
+                    <h3>Security or Compliance</h3>
+                    <p>Data sensitivity, policy requirements, and governance expectations.</p>
                 </div>
                 <div class="bi-card" style="border-left: 4px solid #42A5F5;">
-                    <div style="font-size: 2rem; margin-bottom: 12px;">🔗</div>
-                    <h3>Success Criteria</h3>
-                    <p>How will we measure if this project succeeds<span class="emoji-icon emoji-check emoji-inline" aria-hidden="true"></span> Define metrics upfront to ensure alignment throughout execution.</p>
+                    <div class="gs-icon-box"><i class="fas fa-calendar-check"></i></div>
+                    <h3>Budget and Timeline</h3>
+                    <p>Investment range and launch targets to help us phase delivery intelligently.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bi-section" style="padding: 80px 20px; background: #fff;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Quick answers before you submit your project brief.</p>
+            </div>
+            <div class="gs-faq">
+                <details>
+                    <summary>How fast can we start after form submission?</summary>
+                    <p>We usually respond within one business day. After the first call, kickoff planning can begin in the same week.</p>
+                </details>
+                <details>
+                    <summary>Can you work with our existing team and systems?</summary>
+                    <p>Yes. We can integrate with your internal workflows and current stack while improving architecture where needed.</p>
+                </details>
+                <details>
+                    <summary>Do you support MVP and enterprise-scale products?</summary>
+                    <p>Yes. We support early-stage builds, modernization projects, and scale-up roadmaps across domains.</p>
+                </details>
+                <details>
+                    <summary>Will we get a clear plan before development scales?</summary>
+                    <p>Yes. You receive scope clarity, technical direction, risk mapping, and milestone-level execution planning.</p>
+                </details>
+                <details>
+                    <summary>Can you sign an NDA before sharing details?</summary>
+                    <p>Yes. We are comfortable operating under NDA and security-first collaboration models.</p>
+                </details>
             </div>
         </div>
     </section>
 
     <!-- Quick Start Form -->
-    <section style="padding: 80px 20px; background: linear-gradient(135deg, #0D47A1 0%, #1E88E5 50%, #00BFA5 100%); position: relative; overflow: hidden;">
-        <div style="position: absolute; top: -50%; left: -10%; width: 400px; height: 400px; background: rgba(30, 136, 229, 0.1); border-radius: 50%; animation: float 8s ease-in-out infinite;"></div>
-        <div style="position: absolute; bottom: -30%; right: -5%; width: 300px; height: 300px; background: rgba(30, 136, 229, 0.08); border-radius: 50%; animation: float 6s ease-in-out infinite reverse;"></div>
-        <div class="container" style="position: relative; z-index: 2;">
-            <div class="section-header" style="color: white; margin-bottom: 50px;">
-                <h2 style="color: white; font-size: 2.5rem;">Tell Us About Your Project</h2>
-                <p style="color: rgba(255,255,255,0.9); font-size: 1.1rem;">Complete this form and our team will review your requirements within 24 hours. We'll contact you with next steps and a customized proposal.</p>
+    <section id="project-brief" class="bi-section gs-contact-wrap" style="padding: 80px 20px;">
+        <div style="position: absolute; top: -45%; left: -8%; width: 390px; height: 390px; background: rgba(255,255,255,0.14); border-radius: 50%; animation: float 8s ease-in-out infinite;"></div>
+        <div style="position: absolute; bottom: -28%; right: -5%; width: 320px; height: 320px; background: rgba(255,255,255,0.14); border-radius: 50%; animation: float 6s ease-in-out infinite reverse;"></div>
+
+        <div class="container gs-contact-grid">
+            <div class="gs-contact-card">
+                <span class="bi-pill" style="background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.32); color: #fff; margin-bottom: 14px;">
+                    <i class="fas fa-clipboard-list"></i> Project Brief
+                </span>
+                <h2>Tell Us What You Are Building</h2>
+                <p>Share your goals, constraints, and target outcomes. We will review your brief and come back with practical next steps.</p>
+                <ul>
+                    <li><i class="fas fa-check"></i><span>Scope clarification and risk flags</span></li>
+                    <li><i class="fas fa-check"></i><span>Recommended engagement model</span></li>
+                    <li><i class="fas fa-check"></i><span>Initial delivery timeline</span></li>
+                    <li><i class="fas fa-check"></i><span>Actionable next-step guidance</span></li>
+                </ul>
+                <div class="gs-direct-links">
+                    <a href="mailto:ainvnt@outlook.com"><i class="fas fa-envelope"></i>ainvnt@outlook.com</a>
+                    <a href="tel:+919490364940"><i class="fas fa-phone"></i>+91 9490364940</a>
+                </div>
             </div>
 
-            <div style="max-width: 700px; margin: 0 auto; background: white; padding: 50px; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.2);">
-                <form id="contact-form" class="contact-form" style="display: flex; flex-direction: column; gap: 20px;">
-                    <div id="form-messages" style="display: none; padding: 15px; border-radius: 8px; margin-bottom: 10px;"></div>
+            <div class="gs-form-card">
+                <h3>Project Intake Form</h3>
+                <p>Complete this form and our team will respond with a structured plan.</p>
+                <form id="contact-form" class="contact-form" style="display: flex; flex-direction: column; gap: 14px;">
+                    <div id="form-messages" style="display: none; padding: 12px 14px; border-radius: 8px; margin-bottom: 2px;"></div>
                     <input type="hidden" name="time" id="time" value="">
-                    <div>
-                        <label style="display: block; color: #374151; font-weight: 500; margin-bottom: 8px;">Full Name *</label>
-                        <input type="text" name="name" id="from_name" placeholder="John Doe" required style="width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; transition: all 0.3s; box-sizing: border-box;" onfocus="this.style.borderColor='#1E88E5'" onblur="this.style.borderColor='#E5E7EB'">
+
+                    <div class="gs-form-grid">
+                        <div class="gs-form-field">
+                            <label for="from_name">Full Name *</label>
+                            <input type="text" name="name" id="from_name" placeholder="John Doe" required>
+                        </div>
+                        <div class="gs-form-field">
+                            <label for="reply_to">Work Email *</label>
+                            <input type="email" name="email" id="reply_to" placeholder="john@example.com" required>
+                        </div>
+                        <div class="gs-form-field">
+                            <label for="phone_number">Phone Number</label>
+                            <input type="tel" name="phone" id="phone_number" placeholder="+91 XXXXX XXXXX">
+                        </div>
+                        <div class="gs-form-field">
+                            <label for="company_name">Company Name</label>
+                            <input type="text" name="company_name" id="company_name" placeholder="Your company">
+                        </div>
+                        <div class="gs-form-field">
+                            <label for="service_interest">Service Interest *</label>
+                            <select name="service" id="service_interest" required>
+                                <option>Select a service</option>
+                                <option>Web Applications</option>
+                                <option>Mobile Applications</option>
+                                <option>Cloud Solutions</option>
+                                <option>AI and ML Solutions</option>
+                                <option>Business Intelligence and Analytics</option>
+                                <option>Data Engineering</option>
+                                <option>DevOps and Platform Engineering</option>
+                                <option>Cyber Security</option>
+                                <option>Quality Assurance</option>
+                                <option>Custom Development</option>
+                                <option>IT Consulting</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="gs-form-field">
+                            <label for="project_stage">Project Stage</label>
+                            <select name="project_stage" id="project_stage">
+                                <option value="">Select project stage</option>
+                                <option>Idea and Discovery</option>
+                                <option>MVP Planning</option>
+                                <option>Active Development</option>
+                                <option>Scaling and Optimization</option>
+                                <option>Modernization</option>
+                            </select>
+                        </div>
+                        <div class="gs-form-field gs-form-full">
+                            <label for="message">Project Details *</label>
+                            <textarea name="message" id="message" placeholder="Share goals, constraints, timeline, and technical requirements..." required></textarea>
+                        </div>
                     </div>
-                    <div>
-                        <label style="display: block; color: #374151; font-weight: 500; margin-bottom: 8px;">Email Address *</label>
-                        <input type="email" name="email" id="reply_to" placeholder="john@example.com" required style="width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; transition: all 0.3s; box-sizing: border-box;" onfocus="this.style.borderColor='#1E88E5'" onblur="this.style.borderColor='#E5E7EB'">
-                    </div>
-                    <div>
-                        <label style="display: block; color: #374151; font-weight: 500; margin-bottom: 8px;">Phone Number</label>
-                        <input type="tel" name="phone" id="phone_number" placeholder="+91 XXXXX XXXXX" style="width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; transition: all 0.3s; box-sizing: border-box;" onfocus="this.style.borderColor='#1E88E5'" onblur="this.style.borderColor='#E5E7EB'">
-                    </div>
-                    <div>
-                        <label style="display: block; color: #374151; font-weight: 500; margin-bottom: 8px;">Service Interest</label>
-                        <select name="service" id="service_interest" style="width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; transition: all 0.3s; background: white; box-sizing: border-box;" onfocus="this.style.borderColor='#1E88E5'" onblur="this.style.borderColor='#E5E7EB'">
-                            <option>Select a service</option>
-                            <option>Web Applications</option>
-                            <option>Mobile Apps</option>
-                            <option>Cloud Solutions</option>
-                            <option>AI & ML Solutions</option>
-                            <option>BI & Analytics</option>
-                            <option>Quality Assurance</option>
-                            <option>Custom Development</option>
-                            <option>IT Consulting</option>
-                            <option>Other</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label style="display: block; color: #374151; font-weight: 500; margin-bottom: 8px;">Message *</label>
-                        <textarea name="message" id="message" placeholder="Tell us about your project or inquiry..." rows="5" required style="width: 100%; padding: 12px 16px; border: 2px solid #E5E7EB; border-radius: 8px; font-size: 1rem; resize: vertical; transition: all 0.3s; box-sizing: border-box;" onfocus="this.style.borderColor='#1E88E5'" onblur="this.style.borderColor='#E5E7EB'"></textarea>
-                    </div>
-                    <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; gap: 10px;">
+
+                    <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 1.08rem; display: flex; align-items: center; justify-content: center; gap: 10px;">
                         <span id="btn-text">Send Message</span>
                         <i id="btn-icon" class="fas fa-paper-plane"></i>
                     </button>
-                    <p style="font-size: 0.9rem; color: #6B7280; text-align: center; margin-top: 10px;">We respect your privacy. Your information is safe with us.</p>
+                    <p class="gs-form-note">Your information is kept private and used only to respond to your inquiry.</p>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section style="padding: 60px 20px; background: linear-gradient(135deg, #F9FAFB 0%, #FFFFFF 100%); text-align: center;">
+    <section class="gs-mini-cta">
         <div class="container">
-            <h2 style="font-size: 2rem; color: #0D47A1; margin-bottom: 15px;">Have Questions Before Starting<span class="emoji-icon emoji-check emoji-solo" aria-hidden="true"></span></h2>
-            <p style="color: #6B7280; font-size: 1.1rem; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto;">Explore our comprehensive service offerings and discover why leading companies choose Ainvnt as their technology partner.</p>
-            <a href="about-us.html" class="btn btn-primary" style="display: inline-block; padding: 15px 35px; background: linear-gradient(135deg, #1E88E5 0%, #0D47A1 100%); color: white; text-decoration: none; border-radius: 8px; font-size: 1.1rem; font-weight: 600;">Learn About Us</a>
+            <h2>Need More Context Before You Begin?</h2>
+            <p>Explore our service offerings and delivery capabilities to see how we can support your next build.</p>
+            <a href="about-us.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 10px;">
+                <i class="fas fa-arrow-right"></i> Learn About Ainvnt
+            </a>
         </div>
     </section>
 
