@@ -34,8 +34,7 @@
                 <h4>Follow Us</h4>
                 <div class="social-links">
                     <a href="https://www.linkedin.com/company/ainvnt" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://twitter.com/ainvnt" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.facebook.com/ainvnt" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+                    <a href="https://x.com/Ainvnt" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
                     <a href="https://instagram.com/ainvnt" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
