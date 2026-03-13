@@ -5825,6 +5825,15 @@ button.btn-secondary:active {
 .about-value__icon {
     font-size: 3rem;
     margin-bottom: 20px;
+    color: var(--primary-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.about-value__icon i {
+    display: block;
 }
 
 .about-value h4 {
