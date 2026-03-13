@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ainvnt-v4';
+const CACHE_NAME = 'ainvnt-v5';
 const CACHE_TTL = 60 * 60 * 24 * 7; // TTL in seconds (7 days)
 // Helper: store timestamp for each cache entry
 function setCacheTimestamp(requestUrl) {
